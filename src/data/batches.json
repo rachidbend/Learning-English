@@ -1,0 +1,398 @@
+{
+    "version": "1.0",
+    "total_batches": 30,
+    "words_per_batch": 100,
+    "total_words": 3000,
+    "batches": [
+        {
+            "batch_id": 1,
+            "title": "Batch 1: Essential Foundation",
+            "description": "The 100 most common words in English",
+            "total_words": 100,
+            "oxford_range": [
+                1,
+                100
+            ],
+            "required_score": 90,
+            "unlocks_batch": 2,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 2,
+            "title": "Batch 2: Building Blocks",
+            "description": "Common verbs and everyday nouns",
+            "total_words": 100,
+            "oxford_range": [
+                101,
+                200
+            ],
+            "required_score": 90,
+            "unlocks_batch": 3,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 3,
+            "title": "Batch 3: Daily Life",
+            "description": "Words for describing daily activities and routines",
+            "total_words": 100,
+            "oxford_range": [
+                201,
+                300
+            ],
+            "required_score": 90,
+            "unlocks_batch": 4,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 4,
+            "title": "Batch 4: Time & Place",
+            "description": "Temporal and spatial vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                301,
+                400
+            ],
+            "required_score": 90,
+            "unlocks_batch": 5,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 5,
+            "title": "Batch 5: People & Relationships",
+            "description": "Words about people, family, and social connections",
+            "total_words": 100,
+            "oxford_range": [
+                401,
+                500
+            ],
+            "required_score": 90,
+            "unlocks_batch": 6,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 6,
+            "title": "Batch 6: Communication",
+            "description": "Speaking, writing, and expressing ideas",
+            "total_words": 100,
+            "oxford_range": [
+                501,
+                600
+            ],
+            "required_score": 90,
+            "unlocks_batch": 7,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 7,
+            "title": "Batch 7: Describing Things",
+            "description": "Adjectives and descriptive vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                601,
+                700
+            ],
+            "required_score": 90,
+            "unlocks_batch": 8,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 8,
+            "title": "Batch 8: Actions & Events",
+            "description": "Common action verbs and event vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                701,
+                800
+            ],
+            "required_score": 90,
+            "unlocks_batch": 9,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 9,
+            "title": "Batch 9: Feelings & Emotions",
+            "description": "Words for expressing emotions and mental states",
+            "total_words": 100,
+            "oxford_range": [
+                801,
+                900
+            ],
+            "required_score": 90,
+            "unlocks_batch": 10,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 10,
+            "title": "Batch 10: Work & Education",
+            "description": "Professional and academic vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                901,
+                1000
+            ],
+            "required_score": 90,
+            "unlocks_batch": 11,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 11,
+            "title": "Batch 11: Home & Environment",
+            "description": "Household items and surroundings",
+            "total_words": 100,
+            "oxford_range": [
+                1001,
+                1100
+            ],
+            "required_score": 90,
+            "unlocks_batch": 12,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 12,
+            "title": "Batch 12: Health & Body",
+            "description": "Medical terms and body parts",
+            "total_words": 100,
+            "oxford_range": [
+                1101,
+                1200
+            ],
+            "required_score": 90,
+            "unlocks_batch": 13,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 13,
+            "title": "Batch 13: Food & Nutrition",
+            "description": "Eating, cooking, and food-related vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                1201,
+                1300
+            ],
+            "required_score": 90,
+            "unlocks_batch": 14,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 14,
+            "title": "Batch 14: Travel & Transportation",
+            "description": "Moving around and journey vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                1301,
+                1400
+            ],
+            "required_score": 90,
+            "unlocks_batch": 15,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 15,
+            "title": "Batch 15: Money & Shopping",
+            "description": "Financial and commercial vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                1401,
+                1500
+            ],
+            "required_score": 90,
+            "unlocks_batch": 16,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 16,
+            "title": "Batch 16: Nature & Weather",
+            "description": "Natural world and climate vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                1501,
+                1600
+            ],
+            "required_score": 90,
+            "unlocks_batch": 17,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 17,
+            "title": "Batch 17: Technology & Media",
+            "description": "Modern technology and communication",
+            "total_words": 100,
+            "oxford_range": [
+                1601,
+                1700
+            ],
+            "required_score": 90,
+            "unlocks_batch": 18,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 18,
+            "title": "Batch 18: Society & Culture",
+            "description": "Social structures and cultural concepts",
+            "total_words": 100,
+            "oxford_range": [
+                1701,
+                1800
+            ],
+            "required_score": 90,
+            "unlocks_batch": 19,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 19,
+            "title": "Batch 19: Science & Research",
+            "description": "Scientific and investigative vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                1801,
+                1900
+            ],
+            "required_score": 90,
+            "unlocks_batch": 20,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 20,
+            "title": "Batch 20: Arts & Entertainment",
+            "description": "Creative and leisure activities",
+            "total_words": 100,
+            "oxford_range": [
+                1901,
+                2000
+            ],
+            "required_score": 90,
+            "unlocks_batch": 21,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 21,
+            "title": "Batch 21: Government & Politics",
+            "description": "Civic and political vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                2001,
+                2100
+            ],
+            "required_score": 90,
+            "unlocks_batch": 22,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 22,
+            "title": "Batch 22: Sports & Recreation",
+            "description": "Athletic and recreational terminology",
+            "total_words": 100,
+            "oxford_range": [
+                2101,
+                2200
+            ],
+            "required_score": 90,
+            "unlocks_batch": 23,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 23,
+            "title": "Batch 23: Law & Justice",
+            "description": "Legal and judicial vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                2201,
+                2300
+            ],
+            "required_score": 90,
+            "unlocks_batch": 24,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 24,
+            "title": "Batch 24: Religion & Philosophy",
+            "description": "Spiritual and philosophical concepts",
+            "total_words": 100,
+            "oxford_range": [
+                2301,
+                2400
+            ],
+            "required_score": 90,
+            "unlocks_batch": 25,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 25,
+            "title": "Batch 25: History & Geography",
+            "description": "Temporal and spatial historical concepts",
+            "total_words": 100,
+            "oxford_range": [
+                2401,
+                2500
+            ],
+            "required_score": 90,
+            "unlocks_batch": 26,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 26,
+            "title": "Batch 26: Business & Economics",
+            "description": "Commercial and economic vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                2501,
+                2600
+            ],
+            "required_score": 90,
+            "unlocks_batch": 27,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 27,
+            "title": "Batch 27: Military & Conflict",
+            "description": "Armed forces and conflict terminology",
+            "total_words": 100,
+            "oxford_range": [
+                2601,
+                2700
+            ],
+            "required_score": 90,
+            "unlocks_batch": 28,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 28,
+            "title": "Batch 28: Advanced Concepts",
+            "description": "Abstract and complex vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                2701,
+                2800
+            ],
+            "required_score": 90,
+            "unlocks_batch": 29,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 29,
+            "title": "Batch 29: Specialized Terms",
+            "description": "Technical and specialized vocabulary",
+            "total_words": 100,
+            "oxford_range": [
+                2801,
+                2900
+            ],
+            "required_score": 90,
+            "unlocks_batch": 30,
+            "estimated_study_time": "2-3 hours"
+        },
+        {
+            "batch_id": 30,
+            "title": "Batch 30: Master Level",
+            "description": "Final 100 words completing Oxford 3000",
+            "total_words": 100,
+            "oxford_range": [
+                2901,
+                3000
+            ],
+            "required_score": 90,
+            "unlocks_batch": null,
+            "estimated_study_time": "2-3 hours"
+        }
+    ]
+}

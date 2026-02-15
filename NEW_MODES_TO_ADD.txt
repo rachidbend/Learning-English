@@ -1,0 +1,149 @@
+// NEW MODES TO ADD TO LEARNINGFLOW.JSX
+// ADD THESE AFTER LINE 940 (after the review mode closes)
+
+                {/* MODE 5 (PHASE 5B): BATCH COMPLETE - Show batch completion screen */}
+                {currentMode === 'batch_complete' && (
+                    <BatchComplete
+                        batchId={currentBatchId}
+                        batchTitle={batchMetadata?.title || `Batch ${currentBatchId}`}
+                        statistics={calculateBatchStatistics()}
+                        onTakeBatchTest={handleStartBatchTest}
+                        onReviewWeak={handleStartReviewSession}
+                        onContinueToNextBatch={null}
+                        nextBatchLocked={true}
+                    />
+                )}
+
+                {/* MODE 6 (PHASE 5B): BATCH TEST - Comprehensive test */}
+                {currentMode === 'batch_test' && currentQuizQuestion && (
+                    <div>
+                        {/* Progress indicator */}
+                        <div className="mb-4 p-3 bg-blue-50 rounded-lg">
+                            <div className="flex items-center justify-between mb-2">
+                                <span className="text-sm font-semibold text-blue-900">
+                                    Batch Test
+                                </span>
+                                <span className="text-sm text-blue-700">
+                                    Question {batchTestIndex + 1} of {batchTestWords.length}
+                                </span>
+                            </div>
+                            <div className="w-full bg-blue-200 rounded-full h-2">
+                                <div
+                                    className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                                    style={{ width: `${((batchTestIndex + 1) / batchTestWords.length) * 100}%` }}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Quiz component */}
+                        <Quiz
+                            question={currentQuizQuestion}
+                            onAnswer={handleQuizAnswer}
+                            showSkipButton={false}
+                        />
+                    </div>
+                )}
+
+                {/* MODE 7 (PHASE 5B): BATCH TEST RESULTS - Show final results */}
+                {currentMode === 'batch_test_results' && (
+                    <QuizFeedback
+                        type="quiz_summary"
+                        quizSummary={{
+                            total_questions: batchTestResults.length,
+                            correct_answers: batchTestResults.filter(r => r.correct).length,
+                            incorrect_answers: batchTestResults.filter(r => !r.correct).length,
+                            accuracy_percentage: Math.round((batchTestResults.filter(r => r.correct).length / batchTestResults.length) * 100),
+                            words_tested: batchTestResults.map(r => r.wordId),
+                            weak_words: batchTestResults.filter(r => !r.correct).map(r => r.wordId),
+                            time_taken: null
+                        }}
+                        onReviewWeak={batchTestResults.filter(r => !r.correct).length > 0 ? () => {
+                            setReviewSessionWords(batchTestResults.filter(r => !r.correct).map(r => r.wordId));
+                            setReviewSessionIndex(0);
+                            setCurrentMode('review_session');
+                        } : null}
+                        onContinue={() => {
+                            const accuracy = Math.round((batchTestResults.filter(r => r.correct).length / batchTestResults.length) * 100);
+                            const passed = accuracy >= 90;
+
+                            if (passed) {
+                                alert(`Congratulations! You scored ${accuracy}%\n\nBatch ${currentBatchId} completed!\nBatch 2 would unlock here in Phase 8.`);
+                            }
+
+                            // Reset and return to batch complete screen
+                            setBatchTestResults([]);
+                            setBatchTestWords([]);
+                            setBatchTestIndex(0);
+                            setCurrentMode('batch_complete');
+                        }}
+                        showEncouragement={true}
+                        showStatistics={true}
+                    />
+                )}
+
+                {/* MODE 8 (PHASE 5B): REVIEW SESSION - Practice weak words */}
+                {currentMode === 'review_session' && reviewSessionWords.length > 0 && (
+                    <div>
+                        {/* Review session header */}
+                        <div className="mb-4">
+                            <div className="flex items-center justify-between mb-2">
+                                <h2 className="text-lg font-bold text-gray-900">
+                                    📚 Review Session
+                                </h2>
+                                <button
+                                    onClick={() => {
+                                        setReviewSessionWords([]);
+                                        setReviewSessionIndex(0);
+                                        setCurrentMode('batch_complete');
+                                    }}
+                                    className="text-sm text-gray-600 underline active:scale-95 transition"
+                                >
+                                    End Session
+                                </button>
+                            </div>
+                            <p className="text-sm text-gray-600">
+                                Reviewing {reviewSessionWords.length} weak words
+                            </p>
+                            <p className="text-xs text-gray-500 mt-1">
+                                Word {reviewSessionIndex + 1} of {reviewSessionWords.length}
+                            </p>
+                        </div>
+
+                        {/* Show WordCard for review */}
+                        <WordCard
+                            word={words.find(w => w.id === reviewSessionWords[reviewSessionIndex])}
+                            onNext={() => {
+                                if (reviewSessionIndex + 1 < reviewSessionWords.length) {
+                                    setReviewSessionIndex(prev => prev + 1);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                } else {
+                                    alert('Review session complete! Great work! 🎉');
+                                    setReviewSessionWords([]);
+                                    setReviewSessionIndex(0);
+                                    setCurrentMode('batch_complete');
+                                }
+                            }}
+                            onPrevious={() => {
+                                if (reviewSessionIndex > 0) {
+                                    setReviewSessionIndex(prev => prev - 1);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                            }}
+                            onMarkSeen={() => {
+                                if (reviewSessionIndex + 1 < reviewSessionWords.length) {
+                                    setReviewSessionIndex(prev => prev + 1);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                } else {
+                                    alert('Review session complete! 🎉');
+                                    setReviewSessionWords([]);
+                                    setReviewSessionIndex(0);
+                                    setCurrentMode('batch_complete');
+                                }
+                            }}
+                            isFirstWord={reviewSessionIndex === 0}
+                            isLastWord={reviewSessionIndex === reviewSessionWords.length - 1}
+                            currentIndex={reviewSessionIndex}
+                            totalWords={reviewSessionWords.length}
+                        />
+                    </div>
+                )}

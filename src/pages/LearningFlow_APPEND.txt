@@ -1,0 +1,13 @@
+
+                {/* MODE 5 (PHASE 5B): BATCH COMPLETE - Show batch completion screen */}
+                {currentMode === 'batch_complete' && (
+                    <BatchComplete
+                        batchId={currentBatchId}
+                        batchTitle={batchMetadata?.title || `Batch {currentBatchId}`}
+                        statistics={calculateBatchStatistics()}
+                        onTakeBatchTest={handleStartBatchTest}
+                        onReviewWeak={handleStartReviewSession}
+                        onContinueToNextBatch={null}
+                        nextBatchLocked={true}
+                    />
+                )}
