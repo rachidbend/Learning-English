@@ -1,76 +1,102 @@
 /**
- * useProgress Hook
- * React hook for managing progress in components
+ * useProgress.js
+ *
+ * React hook for managing progress state (v2 — spaced repetition system).
+ * Centralizes progress loading, saving, and computed values.
+ *
+ * Usage:
+ *   const { progress, isLoading, save, dueWords, stats } = useProgress();
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
     loadProgress,
     saveProgress,
-    markWordAsSeen,
-    updateWordConfidence,
+    getDueWords,
+    getNewWords,
+    getLearningWords,
     getWeakWords,
-    updateBatchTest
 } from '../data/progressManager';
 
-/**
- * Custom hook for progress management
- */
 export const useProgress = () => {
     const [progress, setProgress] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     // Load progress on mount
     useEffect(() => {
-        const loaded = loadProgress();
-        setProgress(loaded);
-        setIsLoading(false);
+        try {
+            const loaded = loadProgress();
+            setProgress(loaded);
+        } catch (err) {
+            console.error('[useProgress] Load failed:', err);
+        } finally {
+            setIsLoading(false);
+        }
     }, []);
 
-    // Save progress whenever it changes
-    useEffect(() => {
-        if (progress && !isLoading) {
-            saveProgress(progress);
+    // Save and update state
+    const save = useCallback((updatedProgress) => {
+        setProgress(updatedProgress);
+        saveProgress(updatedProgress);
+    }, []);
+
+    // Reload from localStorage (e.g. after DevPanel changes)
+    const reload = useCallback(() => {
+        try {
+            const loaded = loadProgress();
+            setProgress(loaded);
+        } catch (err) {
+            console.error('[useProgress] Reload failed:', err);
         }
-    }, [progress, isLoading]);
+    }, []);
 
-    // Helper functions that update state
-    const markSeen = (wordId, batchId) => {
-        setProgress(prev => {
-            const updated = { ...prev };
-            markWordAsSeen(updated, wordId, batchId);
-            return updated;
-        });
-    };
+    // Computed word lists
+    const dueWords = progress ? getDueWords(progress) : [];
+    const newWords = progress ? getNewWords(progress) : [];
+    const learningWords = progress ? getLearningWords(progress) : [];
+    const weakWords = progress ? getWeakWords(progress) : [];
 
-    const updateConfidence = (wordId, correct, questionType) => {
-        setProgress(prev => {
-            const updated = { ...prev };
-            updateWordConfidence(updated, wordId, correct, questionType);
-            return updated;
-        });
-    };
-
-    const completeBatchTest = (batchId, score, passed) => {
-        setProgress(prev => {
-            const updated = { ...prev };
-            updateBatchTest(updated, batchId, score, passed);
-            return updated;
-        });
-    };
-
-    const getWeak = () => {
-        return progress ? getWeakWords(progress) : [];
-    };
+    // Computed stats
+    const stats = progress ? computeStats(progress) : null;
 
     return {
         progress,
         isLoading,
-        markSeen,
-        updateConfidence,
-        completeBatchTest,
-        getWeak,
-        setProgress
+        save,
+        reload,
+        dueWords,
+        newWords,
+        learningWords,
+        weakWords,
+        stats,
+    };
+};
+
+/**
+ * Compute summary stats from progress data.
+ */
+const computeStats = (progress) => {
+    const words = Object.values(progress.wordProgress || {});
+
+    const totalWords = words.length;
+    const wordsInReview = words.filter(w => w.card_state === 'review').length;
+    const wordsLearning = words.filter(w => w.card_state === 'learning').length;
+    const wordsMastered = words.filter(w => (w.confidence || 0) >= 90).length;
+
+    // Average confidence across non-new words
+    const activeWords = words.filter(w => w.card_state !== 'new');
+    const avgConfidence = activeWords.length > 0
+        ? Math.round(activeWords.reduce((sum, w) => sum + (w.confidence || 0), 0) / activeWords.length)
+        : 0;
+
+    return {
+        totalWords,
+        wordsInReview,
+        wordsLearning,
+        wordsMastered,
+        avgConfidence,
+        streak: progress.stats?.current_streak_days || 0,
+        totalSessions: progress.stats?.total_sessions || 0,
     };
 };
 

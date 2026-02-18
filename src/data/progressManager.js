@@ -1,179 +1,117 @@
 /**
- * Progress Manager
- * Handles all localStorage operations for user progress
+ * progressManager.js
+ * 
+ * All localStorage read/write operations for the v2 spaced repetition system.
+ * Import this wherever you need to load or save progress.
+ * 
+ * REPLACES the old v1 progressManager.js
  */
 
 import {
-    initialProgressStructure,
+    createInitialProgress,
     createWordProgress,
     createBatchProgress,
-    WORD_STATUS,
-    BATCH_STATUS
-} from './progressStructure';
+    CARD_STATE,
+} from './progressSchema';
 
-// ==================== CONSTANTS ====================
+const STORAGE_KEY = 'elp_progress_v2';       // New key (v2 schema)
+const BACKUP_KEY = 'elp_progress_v2_backup';
 
-const STORAGE_KEY = 'englishLearningProgress';
-const BACKUP_KEY = 'englishLearningProgress_backup';
-const MAX_STORAGE_SIZE = 5 * 1024 * 1024; // 5MB (localStorage typically has 5-10MB limit)
-
-// ==================== CORE FUNCTIONS ====================
+// ─────────────────────────────────────────────
+// CORE OPERATIONS
+// ─────────────────────────────────────────────
 
 /**
- * Check if localStorage is available
- */
-export const isLocalStorageAvailable = () => {
-    try {
-        const test = '__localStorage_test__';
-        localStorage.setItem(test, test);
-        localStorage.removeItem(test);
-        return true;
-    } catch (e) {
-        return false;
-    }
-};
-
-/**
- * Get current storage size in bytes
- */
-export const getStorageSize = () => {
-    try {
-        const data = localStorage.getItem(STORAGE_KEY);
-        return data ? new Blob([data]).size : 0;
-    } catch (e) {
-        return 0;
-    }
-};
-
-/**
- * Load progress from localStorage
- * Returns initialized structure if nothing exists
+ * Load progress from localStorage.
+ * Returns fresh structure if nothing exists.
+ * Falls back to backup if main is corrupted.
  */
 export const loadProgress = () => {
     try {
-        // Check if localStorage is available
-        if (!isLocalStorageAvailable()) {
-            console.warn('localStorage not available, using in-memory storage');
-            return getInitialProgress();
-        }
+        if (!isAvailable()) return createInitialProgress();
 
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return createInitialProgress();
 
-        if (!stored) {
-            // First time user - return initial structure
-            return getInitialProgress();
-        }
+        const parsed = JSON.parse(raw);
+        return mergeWithDefaults(parsed);
 
-        // Parse stored data
-        const progress = JSON.parse(stored);
+    } catch (err) {
+        console.error('[progressManager] Load failed:', err);
 
-        // Validate structure
-        if (!progress || typeof progress !== 'object') {
-            console.warn('Invalid progress structure, resetting');
-            return getInitialProgress();
-        }
-
-        // Ensure all required fields exist
-        const validated = ensureProgressStructure(progress);
-
-        return validated;
-
-    } catch (error) {
-        console.error('Failed to load progress:', error);
-
-        // Try to load from backup
+        // Try backup
         try {
             const backup = localStorage.getItem(BACKUP_KEY);
             if (backup) {
-                console.log('Loading from backup');
-                const progress = JSON.parse(backup);
-                return ensureProgressStructure(progress);
+                console.warn('[progressManager] Loading from backup');
+                return mergeWithDefaults(JSON.parse(backup));
             }
-        } catch (backupError) {
-            console.error('Backup also failed:', backupError);
+        } catch (backupErr) {
+            console.error('[progressManager] Backup also failed:', backupErr);
         }
 
-        // Last resort - return fresh structure
-        return getInitialProgress();
+        return createInitialProgress();
     }
 };
 
 /**
- * Save progress to localStorage
- * Includes backup mechanism
+ * Save progress to localStorage.
+ * Creates backup of previous state before overwriting.
+ * Returns true on success, false on failure.
  */
 export const saveProgress = (progress) => {
     try {
-        // Check localStorage availability
-        if (!isLocalStorageAvailable()) {
-            console.warn('localStorage not available, cannot save');
+        if (!isAvailable()) {
+            console.warn('[progressManager] localStorage not available');
             return false;
         }
 
-        // Update timestamp
-        progress.lastUpdated = new Date().toISOString();
+        progress.last_updated = new Date().toISOString();
+        const serialized = JSON.stringify(progress);
 
-        // Stringify data
-        const data = JSON.stringify(progress);
-
-        // Check size
-        const size = new Blob([data]).size;
-        if (size > MAX_STORAGE_SIZE) {
-            console.error('Progress data too large:', size, 'bytes');
-            alert('Progress data is too large to save. Please export your progress.');
-            return false;
+        // Backup current before overwriting
+        const current = localStorage.getItem(STORAGE_KEY);
+        if (current) {
+            localStorage.setItem(BACKUP_KEY, current);
         }
 
-        // Create backup of current data
-        try {
-            const current = localStorage.getItem(STORAGE_KEY);
-            if (current) {
-                localStorage.setItem(BACKUP_KEY, current);
-            }
-        } catch (backupError) {
-            console.warn('Failed to create backup:', backupError);
-            // Continue anyway
-        }
-
-        // Save new data
-        localStorage.setItem(STORAGE_KEY, data);
-
+        localStorage.setItem(STORAGE_KEY, serialized);
         return true;
 
-    } catch (error) {
-        if (error.name === 'QuotaExceededError') {
-            console.error('localStorage quota exceeded');
-            alert('Storage limit reached. Please clear old data or export your progress.');
+    } catch (err) {
+        if (err.name === 'QuotaExceededError') {
+            console.error('[progressManager] Storage quota exceeded');
         } else {
-            console.error('Failed to save progress:', error);
+            console.error('[progressManager] Save failed:', err);
         }
         return false;
     }
 };
 
 /**
- * Clear all progress (with confirmation)
+ * Clear all progress.
+ * Use with caution — this is irreversible.
  */
 export const clearProgress = () => {
     try {
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(BACKUP_KEY);
         return true;
-    } catch (error) {
-        console.error('Failed to clear progress:', error);
+    } catch (err) {
+        console.error('[progressManager] Clear failed:', err);
         return false;
     }
 };
 
 /**
- * Export progress as JSON string
+ * Export progress as JSON string (for backup/debug)
  */
 export const exportProgress = () => {
     try {
         const progress = loadProgress();
         return JSON.stringify(progress, null, 2);
-    } catch (error) {
-        console.error('Failed to export progress:', error);
+    } catch (err) {
+        console.error('[progressManager] Export failed:', err);
         return null;
     }
 };
@@ -183,334 +121,183 @@ export const exportProgress = () => {
  */
 export const importProgress = (jsonString) => {
     try {
-        const progress = JSON.parse(jsonString);
-        const validated = ensureProgressStructure(progress);
+        const parsed = JSON.parse(jsonString);
+        const validated = mergeWithDefaults(parsed);
         return saveProgress(validated);
-    } catch (error) {
-        console.error('Failed to import progress:', error);
+    } catch (err) {
+        console.error('[progressManager] Import failed:', err);
         return false;
     }
 };
 
-// ==================== HELPER FUNCTIONS ====================
+// ─────────────────────────────────────────────
+// WORD PROGRESS HELPERS
+// ─────────────────────────────────────────────
 
 /**
- * Get initial progress structure with timestamp
- */
-const getInitialProgress = () => {
-    const progress = JSON.parse(JSON.stringify(initialProgressStructure));
-    progress.createdAt = new Date().toISOString();
-    progress.lastUpdated = new Date().toISOString();
-    return progress;
-};
-
-/**
- * Ensure progress has all required fields
- * Fills in missing fields with defaults
- */
-const ensureProgressStructure = (progress) => {
-    const complete = { ...initialProgressStructure };
-
-    // Merge with existing data
-    if (progress.version) complete.version = progress.version;
-    if (progress.createdAt) complete.createdAt = progress.createdAt;
-    if (progress.lastUpdated) complete.lastUpdated = progress.lastUpdated;
-
-    // Merge wordProgress
-    if (progress.wordProgress && typeof progress.wordProgress === 'object') {
-        complete.wordProgress = { ...progress.wordProgress };
-    }
-
-    // Merge batchProgress
-    if (progress.batchProgress && typeof progress.batchProgress === 'object') {
-        complete.batchProgress = { ...progress.batchProgress };
-    }
-
-    // Merge stats
-    if (progress.stats && typeof progress.stats === 'object') {
-        complete.stats = { ...initialProgressStructure.stats, ...progress.stats };
-    }
-
-    return complete;
-};
-
-/**
- * Ensure word progress exists
- */
-export const ensureWordProgress = (progress, wordId, batchId) => {
-    if (!progress.wordProgress) {
-        progress.wordProgress = {};
-    }
-
-    if (!progress.wordProgress[wordId]) {
-        progress.wordProgress[wordId] = createWordProgress(wordId, batchId);
-    }
-
-    return progress;
-};
-
-/**
- * Ensure batch progress exists
- */
-export const ensureBatchProgress = (progress, batchId) => {
-    if (!progress.batchProgress) {
-        progress.batchProgress = {};
-    }
-
-    if (!progress.batchProgress[batchId]) {
-        progress.batchProgress[batchId] = createBatchProgress(batchId);
-    }
-
-    return progress;
-};
-
-// ==================== WORD OPERATIONS ====================
-
-/**
- * Mark word as seen
- */
-export const markWordAsSeen = (progress, wordId, batchId) => {
-    ensureWordProgress(progress, wordId, batchId);
-    ensureBatchProgress(progress, batchId);
-
-    const wordProgress = progress.wordProgress[wordId];
-    const now = new Date().toISOString();
-
-    // Update word status
-    if (wordProgress.status === WORD_STATUS.UNSEEN) {
-        wordProgress.status = WORD_STATUS.SEEN;
-        wordProgress.first_seen_date = now;
-        wordProgress.times_seen = 1;
-
-        // Update batch progress
-        progress.batchProgress[batchId].words_seen += 1;
-    } else {
-        wordProgress.times_seen += 1;
-    }
-
-    wordProgress.last_seen_date = now;
-
-    // Update batch status
-    if (progress.batchProgress[batchId].status === BATCH_STATUS.LOCKED) {
-        progress.batchProgress[batchId].status = BATCH_STATUS.IN_PROGRESS;
-        progress.batchProgress[batchId].started_date = now;
-    }
-
-    // Update overall stats
-    updateOverallStats(progress);
-
-    return progress;
-};
-
-/**
- * Update word confidence after quiz
- */
-export const updateWordConfidence = (progress, wordId, correct, questionType = null) => {
-    ensureWordProgress(progress, wordId, progress.wordProgress[wordId]?.batch_id || 1);
-
-    const wordProgress = progress.wordProgress[wordId];
-    const now = new Date().toISOString();
-
-    // Calculate new confidence
-    if (correct) {
-        const increase = Math.max(10, (100 - wordProgress.confidence) * 0.2);
-        wordProgress.confidence = Math.min(100, wordProgress.confidence + increase);
-        wordProgress.times_correct += 1;
-    } else {
-        const decrease = 20;
-        wordProgress.confidence = Math.max(0, wordProgress.confidence - decrease);
-        wordProgress.times_incorrect += 1;
-    }
-
-    // Update status based on confidence
-    if (wordProgress.confidence >= 90) {
-        const wasMastered = wordProgress.status === WORD_STATUS.MASTERED;
-        wordProgress.status = WORD_STATUS.MASTERED;
-
-        // Update batch mastery count
-        if (!wasMastered) {
-            const batchId = wordProgress.batch_id;
-            if (progress.batchProgress[batchId]) {
-                progress.batchProgress[batchId].words_mastered += 1;
-            }
-        }
-    } else if (wordProgress.confidence >= 30) {
-        wordProgress.status = WORD_STATUS.LEARNING;
-    } else {
-        wordProgress.status = WORD_STATUS.SEEN;
-    }
-
-    wordProgress.times_tested += 1;
-    wordProgress.last_test_date = now;
-
-    // Add to quiz history
-    if (!wordProgress.quiz_history) {
-        wordProgress.quiz_history = [];
-    }
-    wordProgress.quiz_history.push({
-        timestamp: now,
-        correct: correct,
-        confidence_after: wordProgress.confidence,
-        question_type: questionType
-    });
-
-    // Keep only last 10 quiz results
-    if (wordProgress.quiz_history.length > 10) {
-        wordProgress.quiz_history = wordProgress.quiz_history.slice(-10);
-    }
-
-    // Update overall stats
-    updateOverallStats(progress);
-
-    return progress;
-};
-
-/**
- * Get word progress
+ * Get a single word's progress.
+ * Returns null if word has no progress yet.
  */
 export const getWordProgress = (progress, wordId) => {
-    return progress.wordProgress?.[wordId] || null;
+    return progress.wordProgress[String(wordId)] || null;
 };
 
 /**
- * Get all words with specific status
+ * Ensure a word progress entry exists.
+ * Creates it if missing. Mutates progress object.
  */
-export const getWordsByStatus = (progress, status) => {
-    if (!progress.wordProgress) return [];
-
-    return Object.entries(progress.wordProgress)
-        .filter(([_, wp]) => wp.status === status)
-        .map(([id, _]) => parseInt(id));
-};
-
-/**
- * Get weak words (confidence < 60%)
- */
-export const getWeakWords = (progress) => {
-    if (!progress.wordProgress) return [];
-
-    return Object.entries(progress.wordProgress)
-        .filter(([_, wp]) =>
-            wp.confidence < 60 &&
-            wp.status !== WORD_STATUS.UNSEEN
-        )
-        .map(([id, _]) => parseInt(id));
-};
-
-// ==================== BATCH OPERATIONS ====================
-
-/**
- * Update batch test results
- */
-export const updateBatchTest = (progress, batchId, score, passed) => {
-    ensureBatchProgress(progress, batchId);
-
-    const batchProgress = progress.batchProgress[batchId];
-    const now = new Date().toISOString();
-
-    batchProgress.test_taken = true;
-    batchProgress.test_score = score;
-    batchProgress.test_date = now;
-
-    if (passed) {
-        batchProgress.status = BATCH_STATUS.COMPLETED;
-        batchProgress.completed_date = now;
-
-        // Unlock next batch
-        const nextBatchId = batchId + 1;
-        ensureBatchProgress(progress, nextBatchId);
-        progress.batchProgress[nextBatchId].status = BATCH_STATUS.UNLOCKED;
+export const ensureWordProgress = (progress, wordId, batchId) => {
+    const key = String(wordId);
+    if (!progress.wordProgress[key]) {
+        progress.wordProgress[key] = createWordProgress(wordId, batchId);
     }
-
-    updateOverallStats(progress);
-
-    return progress;
+    return progress.wordProgress[key];
 };
 
 /**
- * Get batch progress
+ * Ensure a batch progress entry exists.
+ * Creates it if missing. Mutates progress object.
  */
-export const getBatchProgress = (progress, batchId) => {
-    return progress.batchProgress?.[batchId] || null;
-};
-
-// ==================== STATS OPERATIONS ====================
-
-/**
- * Update overall statistics
- */
-const updateOverallStats = (progress) => {
-    if (!progress.stats) {
-        progress.stats = { ...initialProgressStructure.stats };
+export const ensureBatchProgress = (progress, batchId) => {
+    const key = String(batchId);
+    if (!progress.batchProgress[key]) {
+        progress.batchProgress[key] = createBatchProgress(batchId);
     }
+    return progress.batchProgress[key];
+};
 
-    const stats = progress.stats;
+/**
+ * Get all words due for review right now.
+ */
+export const getDueWords = (progress, currentTime = null) => {
+    const now = currentTime || getNow();
 
-    // Count words by status
-    const wordProgresses = Object.values(progress.wordProgress || {});
-    stats.total_words_seen = wordProgresses.filter(
-        wp => wp.status !== WORD_STATUS.UNSEEN
-    ).length;
-    stats.total_words_mastered = wordProgresses.filter(
-        wp => wp.status === WORD_STATUS.MASTERED
-    ).length;
+    return Object.values(progress.wordProgress)
+        .filter(wp => {
+            if (!wp.due_date) return false;
+            if (wp.card_state === CARD_STATE.NEW) return false;
+            return new Date(wp.due_date) <= now;
+        })
+        .sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+};
 
-    // Count test statistics
-    stats.total_questions_answered = wordProgresses.reduce(
-        (sum, wp) => sum + wp.times_tested, 0
-    );
-    stats.total_correct_answers = wordProgresses.reduce(
-        (sum, wp) => sum + wp.times_correct, 0
-    );
+/**
+ * Get all new (unseen) words from existing wordProgress entries
+ */
+export const getNewWords = (progress) => {
+    return Object.values(progress.wordProgress)
+        .filter(wp => wp.card_state === CARD_STATE.NEW);
+};
 
-    // Calculate average test score
-    if (stats.total_questions_answered > 0) {
-        stats.average_test_score = Math.round(
-            (stats.total_correct_answers / stats.total_questions_answered) * 100
+/**
+ * Get IDs of words available to learn from a batch.
+ * Includes both:
+ * - Words NOT yet in wordProgress (never seen)
+ * - Words in wordProgress with card_state === NEW
+ * 
+ * @param {Object} progress - The progress object
+ * @param {Array} batchWords - Array of word objects from a batch (must have .id)
+ * @returns {number[]} Array of word IDs available to learn
+ */
+export const getAvailableNewWordIds = (progress, batchWords) => {
+    if (!batchWords || !Array.isArray(batchWords)) return [];
+
+    return batchWords
+        .map(w => w.id)
+        .filter(id => {
+            const wp = progress.wordProgress[String(id)];
+            // Available if: no progress entry yet, OR still in NEW state
+            return !wp || wp.card_state === CARD_STATE.NEW;
+        });
+};
+
+/**
+ * Get words currently in learning phase
+ */
+export const getLearningWords = (progress) => {
+    return Object.values(progress.wordProgress)
+        .filter(wp =>
+            wp.card_state === CARD_STATE.LEARNING ||
+            wp.card_state === CARD_STATE.RELEARNING
         );
-    }
-
-    // Update last study date
-    stats.last_study_date = new Date().toISOString();
-
-    return progress;
 };
 
 /**
- * Update study time
+ * Get words with low confidence (for review session prioritization)
  */
-export const addStudyTime = (progress, minutes) => {
-    if (!progress.stats) {
-        progress.stats = { ...initialProgressStructure.stats };
-    }
-
-    progress.stats.total_study_time_minutes += minutes;
-    updateOverallStats(progress);
-
-    return progress;
+export const getWeakWords = (progress, threshold = 60) => {
+    return Object.values(progress.wordProgress)
+        .filter(wp =>
+            wp.confidence < threshold &&
+            wp.card_state !== CARD_STATE.NEW
+        );
 };
 
-// ==================== DEBUGGING UTILITIES ====================
+// ─────────────────────────────────────────────
+// TIME UTILITIES
+// ─────────────────────────────────────────────
+
+/**
+ * Get current time, respecting dev time offset.
+ * ALL scheduling logic should use getNow() not new Date().
+ */
+export const getNow = () => {
+    try {
+        const offset = localStorage.getItem('dev_time_offset_days');
+        if (offset) {
+            const days = parseFloat(offset);
+            if (!isNaN(days) && days !== 0) {
+                return new Date(Date.now() + days * 86400000);
+            }
+        }
+    } catch (e) {
+        // Ignore — just return real time
+    }
+    return new Date();
+};
+
+/**
+ * Add days to a date and return ISO string
+ */
+export const addDays = (date, days) => {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result.toISOString();
+};
+
+/**
+ * Add minutes to a date and return ISO string
+ */
+export const addMinutes = (date, minutes) => {
+    return new Date(new Date(date).getTime() + minutes * 60000).toISOString();
+};
+
+// ─────────────────────────────────────────────
+// DEBUGGING UTILITIES
+// ─────────────────────────────────────────────
 
 /**
  * Get storage info (for debugging)
  */
 export const getStorageInfo = () => {
-    const available = isLocalStorageAvailable();
-    const size = getStorageSize();
+    const available = isAvailable();
+    let size = 0;
+    try {
+        const data = localStorage.getItem(STORAGE_KEY);
+        size = data ? new Blob([data]).size : 0;
+    } catch (e) { /* ignore */ }
+
     const sizeKB = (size / 1024).toFixed(2);
     const progress = available ? loadProgress() : null;
 
     return {
         available,
         size: `${sizeKB} KB`,
-        maxSize: `${(MAX_STORAGE_SIZE / 1024 / 1024).toFixed(2)} MB`,
-        percentUsed: `${((size / MAX_STORAGE_SIZE) * 100).toFixed(2)}%`,
         version: progress?.version || 'N/A',
-        createdAt: progress?.createdAt || 'N/A',
-        lastUpdated: progress?.lastUpdated || 'N/A',
+        created_at: progress?.created_at || 'N/A',
+        last_updated: progress?.last_updated || 'N/A',
         totalWords: Object.keys(progress?.wordProgress || {}).length,
-        totalBatches: Object.keys(progress?.batchProgress || {}).length
+        totalBatches: Object.keys(progress?.batchProgress || {}).length,
     };
 };
 
@@ -521,46 +308,68 @@ export const printProgressSummary = () => {
     const progress = loadProgress();
     const info = getStorageInfo();
 
-    console.log('=== Progress Summary ===');
+    console.log('=== Progress Summary (v2) ===');
     console.log('Storage:', info);
-    console.log('Words Seen:', progress.stats.total_words_seen);
-    console.log('Words Mastered:', progress.stats.total_words_mastered);
-    console.log('Average Score:', progress.stats.average_test_score + '%');
-    console.log('Study Time:', progress.stats.total_study_time_minutes, 'minutes');
-    console.log('========================');
+    console.log('Stats:', progress.stats);
+    console.log('============================');
 
     return progress;
 };
 
-// ==================== EXPORTS ====================
+// ─────────────────────────────────────────────
+// PRIVATE HELPERS
+// ─────────────────────────────────────────────
+
+/**
+ * Check if localStorage is available
+ */
+const isAvailable = () => {
+    try {
+        localStorage.setItem('__test__', '1');
+        localStorage.removeItem('__test__');
+        return true;
+    } catch (e) {
+        return false;
+    }
+};
+
+/**
+ * Merge saved progress with current defaults.
+ * Ensures any new fields added to schema are present.
+ */
+const mergeWithDefaults = (saved) => {
+    const defaults = createInitialProgress();
+    return {
+        ...defaults,
+        ...saved,
+        stats: { ...defaults.stats, ...(saved.stats || {}) },
+        settings: { ...defaults.settings, ...(saved.settings || {}) },
+        wordProgress: saved.wordProgress || {},
+        batchProgress: saved.batchProgress || {},
+    };
+};
+
+// ─────────────────────────────────────────────
+// DEFAULT EXPORT
+// ─────────────────────────────────────────────
 
 export default {
-    // Core operations
     loadProgress,
     saveProgress,
     clearProgress,
     exportProgress,
     importProgress,
-
-    // Word operations
-    ensureWordProgress,
-    markWordAsSeen,
-    updateWordConfidence,
     getWordProgress,
-    getWordsByStatus,
-    getWeakWords,
-
-    // Batch operations
+    ensureWordProgress,
     ensureBatchProgress,
-    updateBatchTest,
-    getBatchProgress,
-
-    // Stats operations
-    addStudyTime,
-
-    // Utilities
-    isLocalStorageAvailable,
-    getStorageSize,
+    getDueWords,
+    getNewWords,
+    getAvailableNewWordIds,
+    getLearningWords,
+    getWeakWords,
+    getNow,
+    addDays,
+    addMinutes,
     getStorageInfo,
-    printProgressSummary
+    printProgressSummary,
 };
