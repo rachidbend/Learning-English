@@ -1,6 +1,19 @@
 import React from 'react';
 import { QUESTION_TYPE_METADATA } from '../utils/questionTypes';
 
+/**
+ * QuizFeedback.jsx (MODIFIED for active recall)
+ *
+ * Shows immediate feedback after answering a quiz question.
+ *
+ * REMOVED: Manual quality rating buttons (now automatic via qualityCalculator)
+ * KEPT: Correct/incorrect feedback with explanations
+ *
+ * NOTE: This component now only shows IMMEDIATE feedback per question.
+ * Word-level quality is calculated automatically after ALL questions
+ * for that word are complete.
+ */
+
 const QuizFeedback = ({
     type,
     question = null,
@@ -192,73 +205,13 @@ const QuizFeedback = ({
                     </div>
                 </div>
 
-                {/* Options */}
-                <div className="space-y-3">
-                    <p className="text-sm font-medium text-gray-700 mb-3">
-                        What would you like to do?
-                    </p>
-
-                    {/* Option 1: Review Word Card */}
-                    {onReviewWord && (
-                        <button
-                            onClick={onReviewWord}
-                            className="w-full p-4 bg-primary text-white rounded-xl font-semibold text-left active:scale-98 transition-transform flex items-center justify-between"
-                        >
-                            <div className="flex items-center gap-3">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                                <div>
-                                    <p className="font-semibold">Review Word Card</p>
-                                    <p className="text-xs text-white/80">Study the full word with examples</p>
-                                </div>
-                            </div>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    )}
-
-                    {/* Option 2: Try Different Question */}
-                    {onRetryQuestion && (
-                        <button
-                            onClick={onRetryQuestion}
-                            className="w-full p-4 bg-white border-2 border-primary text-primary rounded-xl font-semibold text-left active:scale-98 transition-transform flex items-center justify-between"
-                        >
-                            <div className="flex items-center gap-3">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                </svg>
-                                <div>
-                                    <p className="font-semibold">Try Different Question</p>
-                                    <p className="text-xs text-primary/70">Test this word with another question type</p>
-                                </div>
-                            </div>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    )}
-
-                    {/* Option 3: Continue */}
-                    <button
-                        onClick={onContinue}
-                        className="w-full p-4 bg-gray-100 text-gray-700 rounded-xl font-semibold text-left active:scale-98 transition-transform flex items-center justify-between"
-                    >
-                        <div className="flex items-center gap-3">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                            <div>
-                                <p className="font-semibold">Continue Anyway</p>
-                                <p className="text-xs text-gray-600">Move on to the next word</p>
-                            </div>
-                        </div>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
+                {/* Continue button */}
+                <button
+                    onClick={onContinue}
+                    className="w-full mt-4 py-3 bg-primary text-white rounded-xl font-semibold active:scale-95 transition-transform"
+                >
+                    Continue →
+                </button>
             </div>
         );
     };

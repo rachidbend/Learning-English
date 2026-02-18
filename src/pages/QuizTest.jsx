@@ -1,3 +1,8 @@
+/**
+ * @deprecated LEGACY TEST PAGE — not used by the active application.
+ * This was created during Phase 4A (Quiz Engine) for standalone quiz testing.
+ * No route currently points here. Safe to delete once no longer needed for debugging.
+ */
 import React, { useState, useEffect } from 'react';
 import Quiz from '../components/Quiz';
 import { generateQuestion } from '../utils/quizGenerator';
