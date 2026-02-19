@@ -34,6 +34,7 @@ import Quiz from '../Quiz';
 import SessionProgress from './SessionProgress';
 import SessionComplete from './SessionComplete';
 import WordReviewTransition from './WordReviewTransition';
+import WrongAnswersReview from '../WrongAnswersReview';
 
 // Engine
 import { buildSession } from '../../engine/sessionBuilder';
@@ -53,6 +54,7 @@ const PHASE = {
     STUDY_CARD: 'study_card',
     QUIZ: 'quiz',
     WORD_COMPLETE: 'word_complete',
+    WRONG_REVIEW: 'wrong_review',
     SESSION_COMPLETE: 'session_complete',
 };
 
@@ -82,6 +84,8 @@ const ReviewSession = ({ initialSession = null }) => {
 
     // Just-completed word info (for word_complete phase)
     const [justCompletedWord, setJustCompletedWord] = useState(null);
+    const [wrongAnswers, setWrongAnswers] = useState([]);
+    const [quickFlash, setQuickFlash] = useState(null);
 
     // Session metadata
     const [sessionStartTime] = useState(Date.now());
@@ -89,6 +93,15 @@ const ReviewSession = ({ initialSession = null }) => {
 
     // Answer timing
     const questionStartTime = useRef(null);
+    const quickAdvanceTimer = useRef(null);
+
+    useEffect(() => {
+        return () => {
+            if (quickAdvanceTimer.current) {
+                clearTimeout(quickAdvanceTimer.current);
+            }
+        };
+    }, []);
 
     // ═══════════════════════════════════════════
     // SETUP: Load data and build session
@@ -164,11 +177,8 @@ const ReviewSession = ({ initialSession = null }) => {
         const wordId = descriptor.word_id;
         const wordProg = getWordProgress(prog || progress, wordId);
 
-        // Check if this is the first question for this word in this session
-        const isFirstForWord = !wordResults[wordId] || wordResults[wordId].length === 0;
-
         // Determine if we should show study card first
-        const shouldStudy = shouldShowStudyCard(wordProg, isFirstForWord);
+        const shouldStudy = shouldShowStudyCard(wordProg);
 
         if (shouldStudy) {
             setStudyingWordId(wordId);
@@ -182,26 +192,21 @@ const ReviewSession = ({ initialSession = null }) => {
     /**
      * Determine if word needs study card shown before quiz.
      *
-     * Show card if:
-     * - Word is in learning phase (building initial memory)
-     * - Word is in relearning phase (failed, needs reinforcement)
-     * - Word has low confidence (<50%) on first question only
+     * Show card only if word is in learning/relearning.
+     * Review cards should go directly to quiz.
      */
-    const shouldShowStudyCard = (wordProg, isFirstQuestion) => {
+    const shouldShowStudyCard = (wordProg) => {
         if (!wordProg) return false;
 
-        const { card_state, confidence } = wordProg;
+        const { card_state } = wordProg;
 
         // Always show for learning/relearning
         if (card_state === 'learning' || card_state === 'relearning') {
             return true;
         }
 
-        // Show for low confidence on first question only
-        if (isFirstQuestion && confidence < 50) {
-            return true;
-        }
-
+        // CHANGE: Review words (card_state === 'review') always skip the preview card
+        // and go straight to the quiz to test recall, not recognition.
         return false;
     };
 
@@ -237,7 +242,7 @@ const ReviewSession = ({ initialSession = null }) => {
             console.warn('[ReviewSession] Failed to generate question:', descriptor);
             const nextIdx = questionIndex + 1;
             setCurrentQuestionIndex(nextIdx);
-            prepareNextQuestion(sess, nextIdx, progress, allWords);
+            prepareNextQuestion(sess, nextIdx, progress, wordPool);
             return;
         }
 
@@ -261,6 +266,21 @@ const ReviewSession = ({ initialSession = null }) => {
         const timeTaken = Date.now() - (questionStartTime.current || Date.now());
         const wordId = currentQuestion._word_id;
         const descriptor = currentQuestion._descriptor;
+
+        if (!isCorrect) {
+            setWrongAnswers(prev => [
+                ...prev,
+                {
+                    id: `${wordId}_${Date.now()}_${currentQuestion.id}`,
+                    question: currentQuestion.question,
+                    options: currentQuestion.options,
+                    selected_index: selectedIndex,
+                    correct_index: currentQuestion.correct_index,
+                    question_type: descriptor.question_type,
+                    explanation: currentQuestion.metadata?.original_sentence || currentQuestion.metadata?.context || null,
+                }
+            ]);
+        }
 
         // Record result
         const result = {
@@ -292,20 +312,29 @@ const ReviewSession = ({ initialSession = null }) => {
         };
         setSession(updatedSession);
 
-        // Check if all questions for this word are now complete
-        const expectedCount = session.questions_per_word[wordId] || 3;
-        const completedCount = newWordResults[wordId].length;
-
-        if (completedCount >= expectedCount) {
-            // All questions for this word are done
-            completeWord(wordId, newWordResults[wordId], updatedSession, newWordResults);
-        } else {
-            // More questions remain — advance
-            const nextIdx = currentQuestionIndex + 1;
-            setCurrentQuestionIndex(nextIdx);
-            prepareNextQuestion(updatedSession, nextIdx, progress, words);
+        setQuickFlash({ isCorrect });
+        if (quickAdvanceTimer.current) {
+            clearTimeout(quickAdvanceTimer.current);
         }
-    }, [session, currentQuestion, currentQuestionIndex, wordResults, progress, words]); // eslint-disable-line react-hooks/exhaustive-deps
+
+        quickAdvanceTimer.current = setTimeout(() => {
+            setQuickFlash(null);
+
+            // Check if all questions for this word are now complete
+            const expectedCount = session.questions_per_word[wordId] || 3;
+            const completedCount = newWordResults[wordId].length;
+
+            if (completedCount >= expectedCount) {
+                // All questions for this word are done
+                completeWord(wordId, newWordResults[wordId], updatedSession, newWordResults);
+            } else {
+                // More questions remain — advance
+                const nextIdx = currentQuestionIndex + 1;
+                setCurrentQuestionIndex(nextIdx);
+                prepareNextQuestion(updatedSession, nextIdx, progress, distractorPool);
+            }
+        }, 800);
+    }, [session, currentQuestion, currentQuestionIndex, wordResults, progress, words, distractorPool]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // ═══════════════════════════════════════════
     // WORD COMPLETION
@@ -316,7 +345,13 @@ const ReviewSession = ({ initialSession = null }) => {
         const wordProg = getWordProgress(progress, wordId);
         if (!wordProg) {
             console.warn('[ReviewSession] No progress for word:', wordId);
-            advanceAfterWordComplete(updatedSession, newWordResults);
+            const nextIdx = updatedSession.state.current_question_index;
+            setCurrentQuestionIndex(nextIdx);
+            if (nextIdx >= updatedSession.question_queue.length) {
+                completeSession(updatedSession, progress);
+            } else {
+                prepareNextQuestion(updatedSession, nextIdx, progress, distractorPool);
+            }
             return;
         }
 
@@ -345,10 +380,15 @@ const ReviewSession = ({ initialSession = null }) => {
         };
         setSession({ ...updatedSession });
 
-        // Show brief word-complete feedback
-        setJustCompletedWord({ wordId, quality, updatedWordProg });
-        setPhase(PHASE.WORD_COMPLETE);
-    }, [progress, wordQualities]); // eslint-disable-line react-hooks/exhaustive-deps
+        // Auto-advance without stopping on per-word feedback
+        const nextIdx = updatedSession.state.current_question_index;
+        setCurrentQuestionIndex(nextIdx);
+        if (nextIdx >= updatedSession.question_queue.length) {
+            completeSession(updatedSession, newProgress);
+        } else {
+            prepareNextQuestion(updatedSession, nextIdx, newProgress, distractorPool);
+        }
+    }, [progress, wordQualities, distractorPool]); // eslint-disable-line react-hooks/exhaustive-deps
 
     /**
      * Called after word_complete phase ends (auto-advance or tap).
@@ -404,8 +444,12 @@ const ReviewSession = ({ initialSession = null }) => {
             setProgress({ ...finalProgress });
         }
 
-        setPhase(PHASE.SESSION_COMPLETE);
-    }, [session, progress, sessionStartTime]);
+        if (wrongAnswers.length > 0) {
+            setPhase(PHASE.WRONG_REVIEW);
+        } else {
+            setPhase(PHASE.SESSION_COMPLETE);
+        }
+    }, [session, progress, sessionStartTime, wrongAnswers]);
 
     // ═══════════════════════════════════════════
     // EXIT HANDLING
@@ -419,6 +463,9 @@ const ReviewSession = ({ initialSession = null }) => {
 
         if (confirmExit) {
             // Second tap — save and exit
+            if (quickAdvanceTimer.current) {
+                clearTimeout(quickAdvanceTimer.current);
+            }
             if (progress) saveProgress(progress);
             navigate('/');
         } else {
@@ -443,6 +490,16 @@ const ReviewSession = ({ initialSession = null }) => {
         );
     }
 
+    // Review wrong answers before final summary
+    if (phase === PHASE.WRONG_REVIEW) {
+        return (
+            <WrongAnswersReview
+                wrongAnswers={wrongAnswers}
+                onContinue={() => setPhase(PHASE.SESSION_COMPLETE)}
+            />
+        );
+    }
+
     // Session Complete
     if (phase === PHASE.SESSION_COMPLETE) {
         return (
@@ -459,6 +516,9 @@ const ReviewSession = ({ initialSession = null }) => {
     const totalQuestions = session.question_queue.length;
     const wordsCompleted = Object.keys(wordQualities).length;
     const totalWords = session.review_words.length;
+    const currentWordProgress = currentQuestion
+        ? getWordProgress(progress, currentQuestion._word_id)
+        : null;
 
     return (
         <div className="min-h-screen bg-background">
@@ -538,10 +598,20 @@ const ReviewSession = ({ initialSession = null }) => {
                             </p>
                         </div>
 
+                        {currentWordProgress?.card_state === 'relearning' && (
+                            <div className="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-xl text-center flex items-center justify-center gap-2">
+                                <span className="text-xl">🔄</span>
+                                <p className="text-sm font-medium text-amber-900">
+                                    Let's quickly review this word
+                                </p>
+                            </div>
+                        )}
+
                         <Quiz
                             question={currentQuestion}
                             onAnswer={handleQuizAnswer}
                             showSkipButton={false}
+                            mode="quick"
                         />
                     </div>
                 )}
@@ -555,6 +625,17 @@ const ReviewSession = ({ initialSession = null }) => {
                     />
                 )}
             </main>
+
+            {quickFlash && (
+                <div className="fixed inset-0 z-40 pointer-events-none">
+                    <div
+                        className={`absolute inset-0 border-[10px] ${quickFlash.isCorrect
+                            ? 'border-success bg-success/10'
+                            : 'border-error bg-error/10'
+                            }`}
+                    />
+                </div>
+            )}
 
             {/* Optional: Full transition overlay for word complete */}
             {/* Uncomment if you prefer the overlay style:

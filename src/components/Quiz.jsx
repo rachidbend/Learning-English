@@ -6,7 +6,8 @@ const Quiz = ({
     onAnswer,
     onSkip = null,
     showSkipButton = false,
-    timeLimit = null
+    timeLimit = null,
+    mode = 'review'
 }) => {
     // ==================== STATE ====================
 
@@ -43,6 +44,7 @@ const Quiz = ({
     // ==================== HELPER FUNCTIONS ====================
 
     const questionMeta = QUESTION_TYPE_METADATA[question.question_type];
+    const isQuickMode = mode === 'quick';
 
     const formatQuestionText = (text) => {
         return text.split('\n').map((line, index) => (
@@ -108,6 +110,13 @@ const Quiz = ({
 
         const correct = index === question.correct_index;
         setIsCorrect(correct);
+
+        if (isQuickMode) {
+            if (onAnswer) {
+                onAnswer(correct, index);
+            }
+            return;
+        }
 
         setTimeout(() => {
             setShowFeedback(true);
@@ -237,7 +246,7 @@ const Quiz = ({
             </div>
 
             {/* Feedback Section */}
-            {showFeedback && (
+            {!isQuickMode && showFeedback && (
                 <div className={`rounded-2xl p-6 mb-6 ${isCorrect
                         ? 'bg-success/10 border-2 border-success'
                         : 'bg-error/10 border-2 border-error'
@@ -289,14 +298,14 @@ const Quiz = ({
 
             {/* Action Buttons */}
             <div className="space-y-3">
-                {hasAnswered ? (
+                {hasAnswered && !isQuickMode ? (
                     <button
                         onClick={handleContinue}
                         className="w-full py-4 bg-primary text-white rounded-xl font-semibold text-lg active:scale-95 transition-transform"
                     >
                         Continue →
                     </button>
-                ) : (
+                ) : !hasAnswered ? (
                     <>
                         <div className="text-center text-sm text-gray-500 py-2">
                             Select an answer to continue
@@ -311,6 +320,10 @@ const Quiz = ({
                             </button>
                         )}
                     </>
+                ) : (
+                    <div className="text-center text-sm text-gray-500 py-2">
+                        Moving to next question...
+                    </div>
                 )}
             </div>
         </div>

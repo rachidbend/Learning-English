@@ -196,14 +196,14 @@ export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
 
     // Get all examples and try to find one where we can create a valid blank
     const examples = targetWord.parts_of_speech[0].examples;
+    const targetPos = targetWord.parts_of_speech[0].pos;
     let bestExample = null;
     let bestBlank = null;
     let replacedWord = null;
 
     // Try each example to find the best one
     for (const example of examples) {
-        const sentence = example.sentence.replace(/\{|\}/g, '');
-        const result = tryCreateBlank(sentence, targetWord.word);
+        const result = tryCreateBlank(example.sentence, targetWord.word);
 
         if (result.success) {
             bestExample = example;
@@ -230,10 +230,15 @@ export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
         metadata.distractor_count
     );
 
+    const correctForm = replacedWord || targetWord.word;
+    const formPattern = detectWordFormPattern(targetWord.word, correctForm, targetPos);
+
     // Build options
     const options = [
-        targetWord.word,
-        ...distractorWords.map(w => w.word)
+        correctForm,
+        ...distractorWords.map(w =>
+            applyWordFormPattern(w.word, formPattern, correctForm, targetPos)
+        )
     ];
 
     // Shuffle
@@ -251,7 +256,7 @@ export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
         {
             original_sentence: bestExample.sentence,
             context: bestExample.context,
-            original_correct_answer: targetWord.word,
+            original_correct_answer: correctForm,
             replaced_word: replacedWord,
             distractors: distractorWords.map(w => w.id)
         }
@@ -262,11 +267,24 @@ export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
  * Helper: Try to create a valid blank in a sentence
  */
 const tryCreateBlank = (sentence, baseWord) => {
+    const originalSentence = sentence || '';
+    const cleanSentence = originalSentence.replace(/\{|\}/g, '');
+
+    // Strategy 0: Prefer explicitly marked word from source data (e.g., "She {makes} dinner.")
+    const markedForm = extractMarkedWord(originalSentence);
+    if (markedForm) {
+        const markedRegex = new RegExp(`\\b(${escapeRegex(markedForm)})\\b`);
+        const blank = cleanSentence.replace(markedRegex, '_____');
+        if (isValidBlankPosition(blank, cleanSentence)) {
+            return { success: true, blank, replacedWord: markedForm };
+        }
+    }
+
     // Strategy 1: Exact match
     const exactRegex = new RegExp(`\\b(${escapeRegex(baseWord)})\\b`, 'gi');
-    if (exactRegex.test(sentence)) {
-        const blank = sentence.replace(exactRegex, '_____');
-        if (isValidBlankPosition(blank, sentence)) {
+    if (exactRegex.test(cleanSentence)) {
+        const blank = cleanSentence.replace(exactRegex, '_____');
+        if (isValidBlankPosition(blank, cleanSentence)) {
             return { success: true, blank, replacedWord: baseWord };
         }
     }
@@ -275,9 +293,9 @@ const tryCreateBlank = (sentence, baseWord) => {
     const irregularForms = getIrregularVerbForms(baseWord);
     for (const form of irregularForms) {
         const formRegex = new RegExp(`\\b(${escapeRegex(form)})\\b`, 'gi');
-        if (formRegex.test(sentence)) {
-            const blank = sentence.replace(formRegex, '_____');
-            if (isValidBlankPosition(blank, sentence)) {
+        if (formRegex.test(cleanSentence)) {
+            const blank = cleanSentence.replace(formRegex, '_____');
+            if (isValidBlankPosition(blank, cleanSentence)) {
                 return { success: true, blank, replacedWord: form };
             }
         }
@@ -297,9 +315,9 @@ const tryCreateBlank = (sentence, baseWord) => {
     for (const variant of variations) {
         if (variant.length < 2) continue; // Skip if too short
         const varRegex = new RegExp(`\\b(${escapeRegex(variant)})\\b`, 'gi');
-        if (varRegex.test(sentence)) {
-            const blank = sentence.replace(varRegex, '_____');
-            if (isValidBlankPosition(blank, sentence)) {
+        if (varRegex.test(cleanSentence)) {
+            const blank = cleanSentence.replace(varRegex, '_____');
+            if (isValidBlankPosition(blank, cleanSentence)) {
                 return { success: true, blank, replacedWord: variant };
             }
         }
@@ -428,10 +446,95 @@ const getIrregularVerbForms = (baseWord) => {
 };
 
 /**
+ * Helper to extract {marked} word from sentence
+ */
+const extractMarkedWord = (sentence) => {
+    const match = sentence.match(/\{([^}]+)\}/);
+    return match ? match[1] : null;
+};
+
+/**
  * Escape special regex characters
  */
 const escapeRegex = (str) => {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
+/**
+ * Detect the transformation pattern between base word and used form
+ * e.g., run -> runs (pattern: 's')
+ * e.g., run -> running (pattern: 'ing')
+ */
+const detectWordFormPattern = (base, current, pos) => {
+    if (!base || !current || base === current) return 'base';
+
+    const b = base.toLowerCase();
+    const c = current.toLowerCase();
+
+    // Check for common suffixes
+    if (c.endsWith('ing')) return 'ing';
+    if (c.endsWith('ed')) return 'ed';
+    if (c.endsWith('s') && !b.endsWith('s')) return 's';
+
+    // Check irregulars
+    const irregulars = getIrregularVerbForms(b);
+    if (irregulars.includes(c)) return 'irregular';
+
+    return 'base'; // Fallback
+};
+
+/**
+ * Apply a transformation pattern to a target word
+ */
+const applyWordFormPattern = (word, pattern, sampleTarget, pos) => {
+    if (!word) return '';
+    if (pattern === 'base') return word;
+
+    // Simple heuristic rules
+    // NOTE: reliable NLP would require a library like 'compromise', 
+    // but we want to keep this lightweight.
+
+    if (pattern === 's') {
+        if (word.endsWith('y') && !['a', 'e', 'i', 'o', 'u'].includes(word.charAt(word.length - 2))) {
+            return word.slice(0, -1) + 'ies';
+        }
+        if (word.endsWith('s') || word.endsWith('sh') || word.endsWith('ch') || word.endsWith('x')) {
+            return word + 'es';
+        }
+        return word + 's';
+    }
+
+    if (pattern === 'ing') {
+        if (word.endsWith('e') && !word.endsWith('ee')) {
+            return word.slice(0, -1) + 'ing';
+        }
+        // Doubling final consonant (simplified rule)
+        if (/[bcdfghjklmnpqrstvwxyz][aeiou][bcdfghjklmnpqrstvwxyz]$/i.test(word)) {
+            return word + word.slice(-1) + 'ing';
+        }
+        return word + 'ing';
+    }
+
+    if (pattern === 'ed') {
+        if (word.endsWith('e')) return word + 'd';
+        if (word.endsWith('y') && !['a', 'e', 'i', 'o', 'u'].includes(word.charAt(word.length - 2))) {
+            return word.slice(0, -1) + 'ied';
+        }
+        // Doubling final consonant
+        if (/[bcdfghjklmnpqrstvwxyz][aeiou][bcdfghjklmnpqrstvwxyz]$/i.test(word)) {
+            return word + word.slice(-1) + 'ed';
+        }
+        return word + 'ed';
+    }
+
+    if (pattern === 'irregular') {
+        // Since we don't know correct form for the distractor, 
+        // fallback to standard conjugation if we can extract tense from sampleTarget
+        // For now, just use base as fallback is safer than crashing
+        return word;
+    }
+
+    return word;
 };
 
 // ============================================================
