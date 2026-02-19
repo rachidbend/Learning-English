@@ -23,16 +23,6 @@ const TABS = [
 ];
 
 const DevPanel = () => {
-    // TODO: UNCOMMENT THE GUARD BELOW BEFORE FINAL PRODUCTION RELEASE!
-    // Temporarily disabled to allow testing on Vercel via phone.
-    // if (!import.meta.env.DEV) {
-    //     return null;
-    // }
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState('time');
-    const panelRef = useRef(null);
-
     // Check for activation
     useEffect(() => {
         // Check URL param
@@ -47,6 +37,13 @@ const DevPanel = () => {
             setIsOpen(true);
         }
 
+        // Custom event to open from UI
+        const handleOpenEvent = () => {
+            setIsOpen(true);
+            sessionStorage.setItem('dev_panel_active', 'true');
+        };
+        window.addEventListener('open-dev-panel', handleOpenEvent);
+
         // Keyboard shortcut: Ctrl+Shift+D (Cmd+Shift+D on Mac)
         const handleKeyDown = (e) => {
             if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'D') {
@@ -60,7 +57,10 @@ const DevPanel = () => {
         };
 
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('open-dev-panel', handleOpenEvent);
+        };
     }, []);
 
     const handleClose = () => {

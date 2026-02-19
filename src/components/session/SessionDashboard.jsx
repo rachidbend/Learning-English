@@ -231,6 +231,16 @@ const SessionDashboard = () => {
                         💡 Questions are spaced out between words for better retention
                     </p>
                 </div>
+
+                {/* ── Footer ────────────────────────────────── */}
+                <div className="mt-8 text-center pb-4">
+                    <button
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-dev-panel'))}
+                        className="text-[10px] text-gray-300 hover:text-gray-500 transition-colors uppercase tracking-widest font-semibold"
+                    >
+                        Dev Tools
+                    </button>
+                </div>
             </div>
         </div>
     );
