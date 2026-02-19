@@ -23,6 +23,10 @@ const TABS = [
 ];
 
 const DevPanel = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('time');
+    const panelRef = useRef(null);
+
     // Check for activation
     useEffect(() => {
         // Check URL param
