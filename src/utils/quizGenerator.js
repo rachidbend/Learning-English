@@ -230,16 +230,33 @@ export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
         metadata.distractor_count
     );
 
-    const correctForm = replacedWord || targetWord.word;
-    const formPattern = detectWordFormPattern(targetWord.word, correctForm, targetPos);
+    // Get the exact correct word string
+    const correctFormKey = bestExample.form_used || 'base';
+    let correctFormWord = targetWord.word;
+    if (targetWord.forms && targetWord.forms[correctFormKey]) {
+        correctFormWord = targetWord.forms[correctFormKey];
+    } else {
+        // Fallback for non-augmented words
+        correctFormWord = replacedWord || targetWord.word;
+    }
 
-    // Build options
-    const options = [
-        correctForm,
-        ...distractorWords.map(w =>
-            applyWordFormPattern(w.word, formPattern, correctForm, targetPos)
-        )
-    ];
+    // Map distractors to the same tense/form key
+    const options = [correctFormWord];
+
+    for (const distractor of distractorWords) {
+        let mappedDistractor = distractor.word;
+
+        // Try explicit form mapping from dictionary
+        if (distractor.forms && distractor.forms[correctFormKey]) {
+            mappedDistractor = distractor.forms[correctFormKey];
+        } else if (correctFormKey === 'plural' && targetPos === 'noun') {
+            // Very simple fallback for noun plurals if data isn't augmented
+            mappedDistractor = distractor.word + 's';
+        }
+        // If no explicit mapping is found, we keep mappedDistractor as distractor.word (base form)
+
+        options.push(mappedDistractor);
+    }
 
     // Shuffle
     const { options: shuffledOptions, correctIndex } = shuffleOptions(options, 0);
@@ -256,7 +273,7 @@ export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
         {
             original_sentence: bestExample.sentence,
             context: bestExample.context,
-            original_correct_answer: correctForm,
+            original_correct_answer: correctFormWord,
             replaced_word: replacedWord,
             distractors: distractorWords.map(w => w.id)
         }
@@ -273,30 +290,35 @@ const tryCreateBlank = (sentence, baseWord) => {
     // Strategy 0: Prefer explicitly marked word from source data (e.g., "She {makes} dinner.")
     const markedForm = extractMarkedWord(originalSentence);
     if (markedForm) {
-        const markedRegex = new RegExp(`\\b(${escapeRegex(markedForm)})\\b`);
-        const blank = cleanSentence.replace(markedRegex, '_____');
-        if (isValidBlankPosition(blank, cleanSentence)) {
-            return { success: true, blank, replacedWord: markedForm };
+        const markedRegex = new RegExp(`\\b(${escapeRegex(markedForm)})\\b`, 'i');
+        const match = cleanSentence.match(markedRegex);
+        if (match) {
+            const blank = cleanSentence.replace(markedRegex, '_____');
+            if (isValidBlankPosition(blank, cleanSentence)) {
+                return { success: true, blank, replacedWord: match[0] };
+            }
         }
     }
 
     // Strategy 1: Exact match
-    const exactRegex = new RegExp(`\\b(${escapeRegex(baseWord)})\\b`, 'gi');
-    if (exactRegex.test(cleanSentence)) {
+    const exactRegex = new RegExp(`\\b(${escapeRegex(baseWord)})\\b`, 'i');
+    const exactMatch = cleanSentence.match(exactRegex);
+    if (exactMatch) {
         const blank = cleanSentence.replace(exactRegex, '_____');
         if (isValidBlankPosition(blank, cleanSentence)) {
-            return { success: true, blank, replacedWord: baseWord };
+            return { success: true, blank, replacedWord: exactMatch[0] };
         }
     }
 
     // Strategy 2: Try irregular verb forms (for common verbs)
     const irregularForms = getIrregularVerbForms(baseWord);
     for (const form of irregularForms) {
-        const formRegex = new RegExp(`\\b(${escapeRegex(form)})\\b`, 'gi');
-        if (formRegex.test(cleanSentence)) {
+        const formRegex = new RegExp(`\\b(${escapeRegex(form)})\\b`, 'i');
+        const formMatch = cleanSentence.match(formRegex);
+        if (formMatch) {
             const blank = cleanSentence.replace(formRegex, '_____');
             if (isValidBlankPosition(blank, cleanSentence)) {
-                return { success: true, blank, replacedWord: form };
+                return { success: true, blank, replacedWord: formMatch[0] };
             }
         }
     }
@@ -314,11 +336,12 @@ const tryCreateBlank = (sentence, baseWord) => {
 
     for (const variant of variations) {
         if (variant.length < 2) continue; // Skip if too short
-        const varRegex = new RegExp(`\\b(${escapeRegex(variant)})\\b`, 'gi');
-        if (varRegex.test(cleanSentence)) {
+        const varRegex = new RegExp(`\\b(${escapeRegex(variant)})\\b`, 'i');
+        const varMatch = cleanSentence.match(varRegex);
+        if (varMatch) {
             const blank = cleanSentence.replace(varRegex, '_____');
             if (isValidBlankPosition(blank, cleanSentence)) {
-                return { success: true, blank, replacedWord: variant };
+                return { success: true, blank, replacedWord: varMatch[0] };
             }
         }
     }
@@ -326,30 +349,13 @@ const tryCreateBlank = (sentence, baseWord) => {
     return { success: false };
 };
 
-/**
- * Check if blank position is valid
- */
 const isValidBlankPosition = (blankSentence, originalSentence) => {
     // Must contain exactly one blank
     const blankCount = (blankSentence.match(/_____/g) || []).length;
     if (blankCount !== 1) return false;
 
-    // Must not end with blank (unless sentence ends with punctuation after blank)
-    if (/\s_____\s*$/.test(blankSentence)) {
-        return false; // Blank at very end with no punctuation
-    }
-
-    // Must have content before and after blank
-    const parts = blankSentence.split('_____');
-    if (parts.length !== 2) return false;
-
-    const before = parts[0].trim();
-    const after = parts[1].trim();
-
-    if (before.length === 0 || after.length === 0) return false;
-
-    // Sentence with blank should be shorter than original
-    if (blankSentence.length >= originalSentence.length) return false;
+    // Must have content before OR after blank (don't blank out single-word sentences)
+    if (blankSentence.trim() === '_____') return false;
 
     return true;
 };

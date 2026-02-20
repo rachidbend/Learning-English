@@ -196,17 +196,7 @@ const ReviewSession = ({ initialSession = null }) => {
      * Review cards should go directly to quiz.
      */
     const shouldShowStudyCard = (wordProg) => {
-        if (!wordProg) return false;
-
-        const { card_state } = wordProg;
-
-        // Always show for learning/relearning
-        if (card_state === 'learning' || card_state === 'relearning') {
-            return true;
-        }
-
-        // CHANGE: Review words (card_state === 'review') always skip the preview card
-        // and go straight to the quiz to test recall, not recognition.
+        // DISABLED FOR NOW
         return false;
     };
 
@@ -626,16 +616,7 @@ const ReviewSession = ({ initialSession = null }) => {
                 )}
             </main>
 
-            {quickFlash && (
-                <div className="fixed inset-0 z-40 pointer-events-none">
-                    <div
-                        className={`absolute inset-0 border-[10px] ${quickFlash.isCorrect
-                            ? 'border-success bg-success/10'
-                            : 'border-error bg-error/10'
-                            }`}
-                    />
-                </div>
-            )}
+
 
             {/* Optional: Full transition overlay for word complete */}
             {/* Uncomment if you prefer the overlay style:

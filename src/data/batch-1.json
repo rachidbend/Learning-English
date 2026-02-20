@@ -18,27 +18,41 @@
                         {
                             "sentence": "I {am} a student.",
                             "translation": "{أنا} طالب.",
-                            "context": "Identity and occupation"
+                            "context": "Identity and occupation",
+                            "form_used": "firstPerson"
                         },
                         {
                             "sentence": "They {are} at home.",
                             "translation": "{هم} في البيت.",
-                            "context": "Location"
+                            "context": "Location",
+                            "form_used": "plural"
                         },
                         {
                             "sentence": "She {was} happy yesterday.",
                             "translation": "{كانت} سعيدة أمس.",
-                            "context": "Past state or condition"
+                            "context": "Past state or condition",
+                            "form_used": "pastSingular"
                         },
                         {
                             "sentence": "The meeting will {be} tomorrow.",
                             "translation": "{سيكون} الاجتماع غداً.",
-                            "context": "Future occurrence"
+                            "context": "Future occurrence",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "The most fundamental verb in English. 'Be' changes form based on subject and tense (am, is, are, was, were, been, being). In Arabic, the present tense often omits the equivalent verb (أنا طالب = I am a student), but it's always explicit in English. Essential for describing identity, location, states, and forming continuous tenses."
+            "notes": "The most fundamental verb in English. 'Be' changes form based on subject and tense (am, is, are, was, were, been, being). In Arabic, the present tense often omits the equivalent verb (أنا طالب = I am a student), but it's always explicit in English. Essential for describing identity, location, states, and forming continuous tenses.",
+            "forms": {
+                "base": "be",
+                "thirdPerson": "is",
+                "pastSingular": "was",
+                "pastPlural": "were",
+                "pastParticiple": "been",
+                "presentParticiple": "being",
+                "firstPerson": "am",
+                "plural": "are"
+            }
         },
         {
             "id": 2,
@@ -55,27 +69,38 @@
                         {
                             "sentence": "I {have} a car.",
                             "translation": "{لدي} سيارة.",
-                            "context": "Possession"
+                            "context": "Possession",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {has} two children.",
                             "translation": "{لديها} طفلان.",
-                            "context": "Family relationships"
+                            "context": "Family relationships",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "We {have} finished our work.",
                             "translation": "{أكملنا} عملنا.",
-                            "context": "Perfect tense formation"
+                            "context": "Perfect tense formation",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "They {have} to leave now.",
                             "translation": "{يجب عليهم} المغادرة الآن.",
-                            "context": "Obligation or necessity"
+                            "context": "Obligation or necessity",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "A versatile verb with multiple meanings. As a main verb, it indicates possession (لديه). As an auxiliary verb, it forms perfect tenses ('have done' = فعل). 'Have to' expresses obligation (يجب). Changes to 'has' with third person singular (he/she/it). Very common in daily English conversation."
+            "notes": "A versatile verb with multiple meanings. As a main verb, it indicates possession (لديه). As an auxiliary verb, it forms perfect tenses ('have done' = فعل). 'Have to' expresses obligation (يجب). Changes to 'has' with third person singular (he/she/it). Very common in daily English conversation.",
+            "forms": {
+                "base": "have",
+                "thirdPerson": "has",
+                "past": "had",
+                "pastParticiple": "had",
+                "presentParticiple": "having"
+            }
         },
         {
             "id": 3,
@@ -92,27 +117,38 @@
                         {
                             "sentence": "What {do} you do?",
                             "translation": "ماذا {تعمل}؟",
-                            "context": "Asking about occupation"
+                            "context": "Asking about occupation",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I {did} my homework.",
                             "translation": "{أنجزت} واجبي المنزلي.",
-                            "context": "Completing tasks"
+                            "context": "Completing tasks",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "{Do} you speak English?",
                             "translation": "هل {تتحدث} الإنجليزية؟",
-                            "context": "Forming questions"
+                            "context": "Forming questions",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {does} not like coffee.",
                             "translation": "هي {لا تحب} القهوة.",
-                            "context": "Forming negatives"
+                            "context": "Forming negatives",
+                            "form_used": "thirdPerson"
                         }
                     ]
                 }
             ],
-            "notes": "Functions both as a main verb (to perform) and auxiliary verb. As auxiliary, it forms questions and negatives in simple tenses. Changes to 'does' for he/she/it in present tense. Common phrase 'How do you do?' is a formal greeting. Notice how Arabic doesn't have a direct equivalent for auxiliary 'do' in questions."
+            "notes": "Functions both as a main verb (to perform) and auxiliary verb. As auxiliary, it forms questions and negatives in simple tenses. Changes to 'does' for he/she/it in present tense. Common phrase 'How do you do?' is a formal greeting. Notice how Arabic doesn't have a direct equivalent for auxiliary 'do' in questions.",
+            "forms": {
+                "base": "do",
+                "thirdPerson": "does",
+                "past": "did",
+                "pastParticiple": "done",
+                "presentParticiple": "doing"
+            }
         },
         {
             "id": 4,
@@ -129,27 +165,38 @@
                         {
                             "sentence": "She {said} hello to me.",
                             "translation": "{قالت} لي مرحباً.",
-                            "context": "Reporting speech"
+                            "context": "Reporting speech",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "What did you {say}?",
                             "translation": "ماذا {قلت}؟",
-                            "context": "Asking for repetition"
+                            "context": "Asking for repetition",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The sign {says} 'No Parking'.",
                             "translation": "تقول اللافتة '{ممنوع الوقوف}'.",
-                            "context": "Written text"
+                            "context": "Written text",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "They {say} it will rain tomorrow.",
                             "translation": "{يقولون} إنها ستمطر غداً.",
-                            "context": "General opinion or rumor"
+                            "context": "General opinion or rumor",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Often confused with 'tell', but 'say' focuses on the words spoken, while 'tell' focuses on the person being told. Use 'say' when reporting exact words or general statements. Past tense is 'said' (irregular). Common in reported speech: 'He said that...' Notice it's used for both spoken and written communication."
+            "notes": "Often confused with 'tell', but 'say' focuses on the words spoken, while 'tell' focuses on the person being told. Use 'say' when reporting exact words or general statements. Past tense is 'said' (irregular). Common in reported speech: 'He said that...' Notice it's used for both spoken and written communication.",
+            "forms": {
+                "base": "say",
+                "thirdPerson": "says",
+                "past": "said",
+                "pastParticiple": "said",
+                "presentParticiple": "saying"
+            }
         },
         {
             "id": 5,
@@ -166,27 +213,38 @@
                         {
                             "sentence": "I {go} to school every day.",
                             "translation": "{أذهب} إلى المدرسة كل يوم.",
-                            "context": "Regular movement"
+                            "context": "Regular movement",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Let's {go} home.",
                             "translation": "لنذهب إلى {البيت}.",
-                            "context": "Suggestion to move"
+                            "context": "Suggestion to move",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The time {goes} quickly.",
                             "translation": "{يمر} الوقت بسرعة.",
-                            "context": "Time passing"
+                            "context": "Time passing",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "This milk has {gone} bad.",
                             "translation": "{فسد} هذا الحليب.",
-                            "context": "Change of state"
+                            "context": "Change of state",
+                            "form_used": "pastParticiple"
                         }
                     ]
                 }
             ],
-            "notes": "One of the most common verbs of movement. Past tense 'went' is completely irregular. 'Go' appears in many phrases: 'go shopping', 'go swimming' (activities), 'go crazy' (become), 'go well' (proceed). Often paired with prepositions: go to, go in, go out, go up. The continuous form 'going to' expresses future plans."
+            "notes": "One of the most common verbs of movement. Past tense 'went' is completely irregular. 'Go' appears in many phrases: 'go shopping', 'go swimming' (activities), 'go crazy' (become), 'go well' (proceed). Often paired with prepositions: go to, go in, go out, go up. The continuous form 'going to' expresses future plans.",
+            "forms": {
+                "base": "go",
+                "thirdPerson": "goes",
+                "past": "went",
+                "pastParticiple": "gone",
+                "presentParticiple": "going"
+            }
         },
         {
             "id": 6,
@@ -203,27 +261,38 @@
                         {
                             "sentence": "I {got} a new phone.",
                             "translation": "{حصلت} على هاتف جديد.",
-                            "context": "Obtaining something"
+                            "context": "Obtaining something",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "She's {getting} tired.",
                             "translation": "إنها {تشعر} بالتعب.",
-                            "context": "Becoming or changing state"
+                            "context": "Becoming or changing state",
+                            "form_used": "presentParticiple"
                         },
                         {
                             "sentence": "Can you {get} me some water?",
                             "translation": "هل يمكنك {إحضار} بعض الماء لي؟",
-                            "context": "Fetching something"
+                            "context": "Fetching something",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I don't {get} it.",
                             "translation": "لا {أفهم}.",
-                            "context": "Understanding (informal)"
+                            "context": "Understanding (informal)",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Extremely versatile and informal. Has many meanings depending on context: receive (يحصل على), become (يصبح), understand (يفهم), arrive (يصل), fetch (يحضر). Very common in spoken English. Past tense 'got', past participle 'gotten' (US) or 'got' (UK). Appears in phrasal verbs: get up, get out, get on."
+            "notes": "Extremely versatile and informal. Has many meanings depending on context: receive (يحصل على), become (يصبح), understand (يفهم), arrive (يصل), fetch (يحضر). Very common in spoken English. Past tense 'got', past participle 'gotten' (US) or 'got' (UK). Appears in phrasal verbs: get up, get out, get on.",
+            "forms": {
+                "base": "get",
+                "thirdPerson": "gets",
+                "past": "got",
+                "pastParticiple": "gotten",
+                "presentParticiple": "getting"
+            }
         },
         {
             "id": 7,
@@ -240,27 +309,38 @@
                         {
                             "sentence": "She {makes} delicious food.",
                             "translation": "{تعد} طعاماً لذيذاً.",
-                            "context": "Creating or preparing"
+                            "context": "Creating or preparing",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "This song {makes} me happy.",
                             "translation": "تجعلني هذه الأغنية {سعيداً}.",
-                            "context": "Causing a feeling"
+                            "context": "Causing a feeling",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "I {made} a decision.",
                             "translation": "{اتخذت} قراراً.",
-                            "context": "Decisions and choices"
+                            "context": "Decisions and choices",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "He {makes} a lot of money.",
                             "translation": "{يكسب} الكثير من المال.",
-                            "context": "Earning"
+                            "context": "Earning",
+                            "form_used": "thirdPerson"
                         }
                     ]
                 }
             ],
-            "notes": "Often confused with 'do'. Use 'make' for creating/producing things (make food, make a plan) and 'do' for activities (do homework, do work). 'Make' is used with many nouns: make a mistake, make friends, make a decision. In Arabic, different verbs are used depending on context (يصنع، يعد، يجعل، يكسب)."
+            "notes": "Often confused with 'do'. Use 'make' for creating/producing things (make food, make a plan) and 'do' for activities (do homework, do work). 'Make' is used with many nouns: make a mistake, make friends, make a decision. In Arabic, different verbs are used depending on context (يصنع، يعد، يجعل، يكسب).",
+            "forms": {
+                "base": "make",
+                "thirdPerson": "makes",
+                "past": "made",
+                "pastParticiple": "made",
+                "presentParticiple": "making"
+            }
         },
         {
             "id": 8,
@@ -277,27 +357,38 @@
                         {
                             "sentence": "I {know} his name.",
                             "translation": "{أعرف} اسمه.",
-                            "context": "Having information"
+                            "context": "Having information",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Do you {know} how to swim?",
                             "translation": "هل {تعرف} كيف تسبح؟",
-                            "context": "Having a skill"
+                            "context": "Having a skill",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {knows} the answer.",
                             "translation": "{تعلم} الإجابة.",
-                            "context": "Being aware of facts"
+                            "context": "Being aware of facts",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "I've {known} her for years.",
                             "translation": "{أعرفها} منذ سنوات.",
-                            "context": "Being acquainted with someone"
+                            "context": "Being acquainted with someone",
+                            "form_used": "pastParticiple"
                         }
                     ]
                 }
             ],
-            "notes": "A stative verb (not usually used in continuous form). Don't say 'I am knowing' - say 'I know'. Use 'know' for facts, information, and people you're familiar with. Past tense 'knew', past participle 'known'. Common phrases: 'I don't know', 'You know what?', 'as far as I know'."
+            "notes": "A stative verb (not usually used in continuous form). Don't say 'I am knowing' - say 'I know'. Use 'know' for facts, information, and people you're familiar with. Past tense 'knew', past participle 'known'. Common phrases: 'I don't know', 'You know what?', 'as far as I know'.",
+            "forms": {
+                "base": "know",
+                "thirdPerson": "knows",
+                "past": "knew",
+                "pastParticiple": "known",
+                "presentParticiple": "knowing"
+            }
         },
         {
             "id": 9,
@@ -314,27 +405,38 @@
                         {
                             "sentence": "I {think} he is right.",
                             "translation": "{أعتقد} أنه على حق.",
-                            "context": "Expressing opinion"
+                            "context": "Expressing opinion",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "What are you {thinking} about?",
                             "translation": "فيم {تفكر}؟",
-                            "context": "Mental process"
+                            "context": "Mental process",
+                            "form_used": "presentParticiple"
                         },
                         {
                             "sentence": "Let me {think} for a moment.",
                             "translation": "دعني {أفكر} للحظة.",
-                            "context": "Considering or reflecting"
+                            "context": "Considering or reflecting",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I {thought} you were coming.",
                             "translation": "{ظننت} أنك قادم.",
-                            "context": "Past belief"
+                            "context": "Past belief",
+                            "form_used": "past"
                         }
                     ]
                 }
             ],
-            "notes": "Used for mental processes, opinions, and beliefs. Can be stative (I think he's nice = opinion) or active (I'm thinking about it = active mental process). Past tense 'thought'. Common phrases: 'I think so', 'I don't think so', 'What do you think?'. Often softens statements to sound less direct."
+            "notes": "Used for mental processes, opinions, and beliefs. Can be stative (I think he's nice = opinion) or active (I'm thinking about it = active mental process). Past tense 'thought'. Common phrases: 'I think so', 'I don't think so', 'What do you think?'. Often softens statements to sound less direct.",
+            "forms": {
+                "base": "think",
+                "thirdPerson": "thinks",
+                "past": "thought",
+                "pastParticiple": "thought",
+                "presentParticiple": "thinking"
+            }
         },
         {
             "id": 10,
@@ -351,27 +453,38 @@
                         {
                             "sentence": "{Take} your coat with you.",
                             "translation": "{خذ} معطفك معك.",
-                            "context": "Carrying something"
+                            "context": "Carrying something",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "This will {take} two hours.",
                             "translation": "سيستغرق هذا {ساعتين}.",
-                            "context": "Duration of time"
+                            "context": "Duration of time",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I {take} the bus to work.",
                             "translation": "{أستقل} الحافلة إلى العمل.",
-                            "context": "Using transportation"
+                            "context": "Using transportation",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {took} a photo.",
                             "translation": "{التقطت} صورة.",
-                            "context": "Capturing images"
+                            "context": "Capturing images",
+                            "form_used": "past"
                         }
                     ]
                 }
             ],
-            "notes": "Very common with multiple meanings: physically moving something (يأخذ), requiring time (يستغرق), using transport (يستقل), capturing images (يلتقط). Past tense 'took', past participle 'taken'. Many fixed phrases: take a shower, take a break, take care, take place. Often paired with 'bring' (bring here, take there)."
+            "notes": "Very common with multiple meanings: physically moving something (يأخذ), requiring time (يستغرق), using transport (يستقل), capturing images (يلتقط). Past tense 'took', past participle 'taken'. Many fixed phrases: take a shower, take a break, take care, take place. Often paired with 'bring' (bring here, take there).",
+            "forms": {
+                "base": "take",
+                "thirdPerson": "takes",
+                "past": "took",
+                "pastParticiple": "taken",
+                "presentParticiple": "taking"
+            }
         },
         {
             "id": 11,
@@ -388,27 +501,38 @@
                         {
                             "sentence": "I can {see} the mountains.",
                             "translation": "{أرى} الجبال.",
-                            "context": "Visual perception"
+                            "context": "Visual perception",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I {see} what you mean.",
                             "translation": "{أفهم} ما تعنيه.",
-                            "context": "Understanding"
+                            "context": "Understanding",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "See you tomorrow!",
                             "translation": "{أراك} غداً!",
-                            "context": "Meeting someone"
+                            "context": "Meeting someone",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Let me {see} that document.",
                             "translation": "دعني {أرى} تلك الوثيقة.",
-                            "context": "Looking at something"
+                            "context": "Looking at something",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Not used in continuous form for physical sight ('I see' not 'I am seeing'), except when meaning 'meeting someone' (I'm seeing her tomorrow). Past tense 'saw', past participle 'seen'. Different from 'look at' (intentional) and 'watch' (for moving things). Common: 'see you later', 'I see' (I understand)."
+            "notes": "Not used in continuous form for physical sight ('I see' not 'I am seeing'), except when meaning 'meeting someone' (I'm seeing her tomorrow). Past tense 'saw', past participle 'seen'. Different from 'look at' (intentional) and 'watch' (for moving things). Common: 'see you later', 'I see' (I understand).",
+            "forms": {
+                "base": "see",
+                "thirdPerson": "sees",
+                "past": "saw",
+                "pastParticiple": "seen",
+                "presentParticiple": "seeing"
+            }
         },
         {
             "id": 12,
@@ -425,27 +549,38 @@
                         {
                             "sentence": "{Come} here, please.",
                             "translation": "{تعال} هنا، من فضلك.",
-                            "context": "Requesting movement toward speaker"
+                            "context": "Requesting movement toward speaker",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "He {came} home late.",
                             "translation": "{عاد} إلى البيت متأخراً.",
-                            "context": "Arriving at a destination"
+                            "context": "Arriving at a destination",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "Spring is {coming}.",
                             "translation": "{يقترب} الربيع.",
-                            "context": "Approaching in time"
+                            "context": "Approaching in time",
+                            "form_used": "presentParticiple"
                         },
                         {
                             "sentence": "The answer {came} to me suddenly.",
                             "translation": "{جاءتني} الإجابة فجأة.",
-                            "context": "Ideas or thoughts arriving"
+                            "context": "Ideas or thoughts arriving",
+                            "form_used": "past"
                         }
                     ]
                 }
             ],
-            "notes": "Opposite of 'go'. 'Come' indicates movement toward the speaker or reference point, while 'go' indicates movement away. Past tense 'came', past participle 'come'. Common phrases: come on (encouragement), come from (origin), come back (return). Used for both physical and abstract arrival."
+            "notes": "Opposite of 'go'. 'Come' indicates movement toward the speaker or reference point, while 'go' indicates movement away. Past tense 'came', past participle 'come'. Common phrases: come on (encouragement), come from (origin), come back (return). Used for both physical and abstract arrival.",
+            "forms": {
+                "base": "come",
+                "thirdPerson": "comes",
+                "past": "came",
+                "pastParticiple": "come",
+                "presentParticiple": "coming"
+            }
         },
         {
             "id": 13,
@@ -462,27 +597,38 @@
                         {
                             "sentence": "I {want} some water.",
                             "translation": "{أريد} بعض الماء.",
-                            "context": "Expressing desire"
+                            "context": "Expressing desire",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {wants} to learn English.",
                             "translation": "{تريد} أن تتعلم الإنجليزية.",
-                            "context": "Intention or goal"
+                            "context": "Intention or goal",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "What do you {want} for dinner?",
                             "translation": "ماذا {تريد} للعشاء؟",
-                            "context": "Asking about preferences"
+                            "context": "Asking about preferences",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "They {wanted} to help us.",
                             "translation": "{أرادوا} مساعدتنا.",
-                            "context": "Past desire"
+                            "context": "Past desire",
+                            "form_used": "past"
                         }
                     ]
                 }
             ],
-            "notes": "Stative verb expressing desire or need. Followed by noun (want food) or infinitive (want to go). More direct than 'would like' which is more polite. Not usually used in continuous form. In questions, 'Do you want...?' is common but can sound abrupt; 'Would you like...?' is more polite."
+            "notes": "Stative verb expressing desire or need. Followed by noun (want food) or infinitive (want to go). More direct than 'would like' which is more polite. Not usually used in continuous form. In questions, 'Do you want...?' is common but can sound abrupt; 'Would you like...?' is more polite.",
+            "forms": {
+                "base": "want",
+                "thirdPerson": "wants",
+                "past": "wanted",
+                "pastParticiple": "wanted",
+                "presentParticiple": "wanting"
+            }
         },
         {
             "id": 14,
@@ -499,27 +645,38 @@
                         {
                             "sentence": "Please {give} me that book.",
                             "translation": "من فضلك {أعطني} ذلك الكتاب.",
-                            "context": "Transferring objects"
+                            "context": "Transferring objects",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {gave} him a present.",
                             "translation": "{أعطته} هدية.",
-                            "context": "Presenting gifts"
+                            "context": "Presenting gifts",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "Can you {give} me some advice?",
                             "translation": "هل يمكنك {إعطائي} بعض النصائح؟",
-                            "context": "Providing help or information"
+                            "context": "Providing help or information",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "His speech {gave} us hope.",
                             "translation": "{منحنا} خطابه الأمل.",
-                            "context": "Causing a feeling"
+                            "context": "Causing a feeling",
+                            "form_used": "past"
                         }
                     ]
                 }
             ],
-            "notes": "Takes two objects: give someone something or give something to someone. Past tense 'gave', past participle 'given'. Used for both concrete items and abstract concepts (give permission, give advice, give a speech). Many phrasal verbs: give up (quit), give in (surrender), give away (donate)."
+            "notes": "Takes two objects: give someone something or give something to someone. Past tense 'gave', past participle 'given'. Used for both concrete items and abstract concepts (give permission, give advice, give a speech). Many phrasal verbs: give up (quit), give in (surrender), give away (donate).",
+            "forms": {
+                "base": "give",
+                "thirdPerson": "gives",
+                "past": "gave",
+                "pastParticiple": "given",
+                "presentParticiple": "giving"
+            }
         },
         {
             "id": 15,
@@ -536,22 +693,26 @@
                         {
                             "sentence": "I {use} my phone every day.",
                             "translation": "{أستخدم} هاتفي كل يوم.",
-                            "context": "Regular employment of tools"
+                            "context": "Regular employment of tools",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Can I {use} your pen?",
                             "translation": "هل يمكنني {استخدام} قلمك؟",
-                            "context": "Requesting to borrow"
+                            "context": "Requesting to borrow",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "We {used} to live here.",
                             "translation": "{كنا} نعيش هنا.",
-                            "context": "Past habits (used to)"
+                            "context": "Past habits (used to)",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "This is {used} for cutting.",
                             "translation": "{يُستخدم} هذا للقص.",
-                            "context": "Purpose or function"
+                            "context": "Purpose or function",
+                            "form_used": "past"
                         }
                     ]
                 },
@@ -563,27 +724,38 @@
                         {
                             "sentence": "What's the {use} of this tool?",
                             "translation": "ما {فائدة} هذه الأداة؟",
-                            "context": "Purpose or utility"
+                            "context": "Purpose or utility",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "It's no {use} complaining.",
                             "translation": "لا {فائدة} من الشكوى.",
-                            "context": "Pointlessness"
+                            "context": "Pointlessness",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Make good {use} of your time.",
                             "translation": "{استغل} وقتك جيداً.",
-                            "context": "Efficient employment"
+                            "context": "Efficient employment",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "This has many {uses}.",
                             "translation": "لهذا {استخدامات} عديدة.",
-                            "context": "Multiple applications"
+                            "context": "Multiple applications",
+                            "form_used": "thirdPerson"
                         }
                     ]
                 }
             ],
-            "notes": "As a verb, pronunciation is /juːz/ (like 'yooz'). As a noun, /juːs/ (like 'yoos'). 'Used to' expresses past habits (كان). Don't confuse with 'be used to' (معتاد على) meaning familiar with. Common phrase: 'it's no use' meaning pointless. The noun often appears in 'make use of' and 'of use'."
+            "notes": "As a verb, pronunciation is /juːz/ (like 'yooz'). As a noun, /juːs/ (like 'yoos'). 'Used to' expresses past habits (كان). Don't confuse with 'be used to' (معتاد على) meaning familiar with. Common phrase: 'it's no use' meaning pointless. The noun often appears in 'make use of' and 'of use'.",
+            "forms": {
+                "base": "use",
+                "thirdPerson": "uses",
+                "past": "used",
+                "pastParticiple": "used",
+                "presentParticiple": "using"
+            }
         },
         {
             "id": 16,
@@ -600,27 +772,38 @@
                         {
                             "sentence": "I can't {find} my keys.",
                             "translation": "لا أستطيع {إيجاد} مفاتيحي.",
-                            "context": "Searching for lost items"
+                            "context": "Searching for lost items",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "We {found} a good restaurant.",
                             "translation": "{وجدنا} مطعماً جيداً.",
-                            "context": "Discovering something new"
+                            "context": "Discovering something new",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "I {find} it difficult.",
                             "translation": "{أجده} صعباً.",
-                            "context": "Forming opinions"
+                            "context": "Forming opinions",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Did you {find} the answer?",
                             "translation": "هل {وجدت} الإجابة؟",
-                            "context": "Solving problems"
+                            "context": "Solving problems",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Past tense and past participle both 'found' (irregular). Often used with 'out' to mean discover information (find out = يكتشف). 'Find it + adjective' expresses opinion (I find it interesting). Different from 'look for' which is the action of searching. Commonly used: 'find time', 'find a way', 'find yourself' (discover your identity)."
+            "notes": "Past tense and past participle both 'found' (irregular). Often used with 'out' to mean discover information (find out = يكتشف). 'Find it + adjective' expresses opinion (I find it interesting). Different from 'look for' which is the action of searching. Commonly used: 'find time', 'find a way', 'find yourself' (discover your identity).",
+            "forms": {
+                "base": "find",
+                "thirdPerson": "finds",
+                "past": "found",
+                "pastParticiple": "found",
+                "presentParticiple": "finding"
+            }
         },
         {
             "id": 17,
@@ -637,27 +820,38 @@
                         {
                             "sentence": "She {told} me the truth.",
                             "translation": "{أخبرتني} بالحقيقة.",
-                            "context": "Sharing information"
+                            "context": "Sharing information",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "Can you {tell} me the time?",
                             "translation": "هل يمكنك {إخباري} بالوقت؟",
-                            "context": "Requesting information"
+                            "context": "Requesting information",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I can't {tell} the difference.",
                             "translation": "لا أستطيع {التمييز}.",
-                            "context": "Distinguishing or recognizing"
+                            "context": "Distinguishing or recognizing",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "{Tell} him to come here.",
                             "translation": "{قل} له أن يأتي هنا.",
-                            "context": "Giving instructions"
+                            "context": "Giving instructions",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Different from 'say': 'tell' focuses on the person receiving information and often includes them in the sentence (tell someone something). 'Say' focuses on the words. Past tense 'told'. Common phrases: tell a story, tell a lie, tell the truth, tell the difference. 'Tell' + person + infinitive gives commands (tell him to go)."
+            "notes": "Different from 'say': 'tell' focuses on the person receiving information and often includes them in the sentence (tell someone something). 'Say' focuses on the words. Past tense 'told'. Common phrases: tell a story, tell a lie, tell the truth, tell the difference. 'Tell' + person + infinitive gives commands (tell him to go).",
+            "forms": {
+                "base": "tell",
+                "thirdPerson": "tells",
+                "past": "told",
+                "pastParticiple": "told",
+                "presentParticiple": "telling"
+            }
         },
         {
             "id": 18,
@@ -674,22 +868,26 @@
                         {
                             "sentence": "I {work} at a hospital.",
                             "translation": "{أعمل} في مستشفى.",
-                            "context": "Employment"
+                            "context": "Employment",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {works} hard every day.",
                             "translation": "{تعمل} بجد كل يوم.",
-                            "context": "Effort and activity"
+                            "context": "Effort and activity",
+                            "form_used": "thirdPerson"
                         },
                         {
                             "sentence": "Does this machine {work}?",
                             "translation": "هل {تعمل} هذه الآلة؟",
-                            "context": "Functioning properly"
+                            "context": "Functioning properly",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "This plan will {work}.",
                             "translation": "ستنجح هذه {الخطة}.",
-                            "context": "Being effective"
+                            "context": "Being effective",
+                            "form_used": "base"
                         }
                     ]
                 },
@@ -701,27 +899,38 @@
                         {
                             "sentence": "I go to {work} at 8 AM.",
                             "translation": "أذهب إلى {العمل} في الثامنة صباحاً.",
-                            "context": "Workplace"
+                            "context": "Workplace",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I have a lot of {work} to do.",
                             "translation": "لدي الكثير من {العمل}.",
-                            "context": "Tasks or duties"
+                            "context": "Tasks or duties",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "This is good {work}.",
                             "translation": "هذا {عمل} جيد.",
-                            "context": "Quality of output"
+                            "context": "Quality of output",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "He is out of {work}.",
                             "translation": "هو {عاطل} عن العمل.",
-                            "context": "Unemployment"
+                            "context": "Unemployment",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "As uncountable noun, 'work' means tasks or employment (no 's' for plural). As countable, 'works' means artistic creations or factories. The verb means both to be employed and to function. 'At work' means at your workplace. Many collocations: hard work, homework, work out (exercise or solve)."
+            "notes": "As uncountable noun, 'work' means tasks or employment (no 's' for plural). As countable, 'works' means artistic creations or factories. The verb means both to be employed and to function. 'At work' means at your workplace. Many collocations: hard work, homework, work out (exercise or solve).",
+            "forms": {
+                "base": "work",
+                "thirdPerson": "works",
+                "past": "worked",
+                "pastParticiple": "worked",
+                "presentParticiple": "working"
+            }
         },
         {
             "id": 19,
@@ -738,22 +947,26 @@
                         {
                             "sentence": "I'll {call} you tomorrow.",
                             "translation": "{سأتصل} بك غداً.",
-                            "context": "Phone communication"
+                            "context": "Phone communication",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {called} my name.",
                             "translation": "{نادت} باسمي.",
-                            "context": "Summoning someone"
+                            "context": "Summoning someone",
+                            "form_used": "past"
                         },
                         {
                             "sentence": "They {call} him Mike.",
                             "translation": "{يدعونه} مايك.",
-                            "context": "Naming someone"
+                            "context": "Naming someone",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Let's {call} a meeting.",
                             "translation": "لندعُ إلى {اجتماع}.",
-                            "context": "Arranging or convening"
+                            "context": "Arranging or convening",
+                            "form_used": "base"
                         }
                     ]
                 },
@@ -765,27 +978,38 @@
                         {
                             "sentence": "I received a {call} from her.",
                             "translation": "تلقيت {مكالمة} منها.",
-                            "context": "Phone conversation"
+                            "context": "Phone conversation",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Did you hear that {call}?",
                             "translation": "هل سمعت ذلك {النداء}؟",
-                            "context": "Shout or cry"
+                            "context": "Shout or cry",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "It's your {call}.",
                             "translation": "هذا {قرارك}.",
-                            "context": "Decision or choice"
+                            "context": "Decision or choice",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The doctor is on {call}.",
                             "translation": "الطبيب {مناوب}.",
-                            "context": "Being available"
+                            "context": "Being available",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Very versatile word. Main meanings: telephone (يتصل), shout (ينادي), name (يسمي). As noun, refers to phone call or a cry/shout. Common phrases: call back (return a call), call for (require), call off (cancel), phone call, wake-up call. In Arabic, different verbs used for different meanings."
+            "notes": "Very versatile word. Main meanings: telephone (يتصل), shout (ينادي), name (يسمي). As noun, refers to phone call or a cry/shout. Common phrases: call back (return a call), call for (require), call off (cancel), phone call, wake-up call. In Arabic, different verbs used for different meanings.",
+            "forms": {
+                "base": "call",
+                "thirdPerson": "calls",
+                "past": "called",
+                "pastParticiple": "called",
+                "presentParticiple": "calling"
+            }
         },
         {
             "id": 20,
@@ -802,22 +1026,26 @@
                         {
                             "sentence": "What {time} is it?",
                             "translation": "كم {الساعة}؟",
-                            "context": "Clock time"
+                            "context": "Clock time",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I don't have {time} now.",
                             "translation": "ليس لدي {وقت} الآن.",
-                            "context": "Available period"
+                            "context": "Available period",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "We had a good {time}.",
                             "translation": "قضينا {وقتاً} جميلاً.",
-                            "context": "Experience or occasion"
+                            "context": "Experience or occasion",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "This is the third {time}.",
                             "translation": "هذه هي {المرة} الثالثة.",
-                            "context": "Occurrence or instance"
+                            "context": "Occurrence or instance",
+                            "form_used": "base"
                         }
                     ]
                 },
@@ -829,27 +1057,36 @@
                         {
                             "sentence": "I {timed} the race.",
                             "translation": "{ضبطت} توقيت السباق.",
-                            "context": "Measuring duration"
+                            "context": "Measuring duration",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "We need to {time} this perfectly.",
                             "translation": "نحتاج {لضبط} توقيت هذا بشكل مثالي.",
-                            "context": "Scheduling carefully"
+                            "context": "Scheduling carefully",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She {timed} her arrival well.",
                             "translation": "{اختارت} توقيت وصولها جيداً.",
-                            "context": "Choosing the right moment"
+                            "context": "Choosing the right moment",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The bomb was {timed} to explode.",
                             "translation": "{ضُبط} توقيت القنبلة للانفجار.",
-                            "context": "Setting a schedule"
+                            "context": "Setting a schedule",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Uncountable when referring to time in general (time flies), countable when referring to instances (three times). Many expressions: in time (before deadline), on time (punctual), at the same time, all the time, from time to time. As verb, usually means to measure duration or choose the right moment."
+            "notes": "Uncountable when referring to time in general (time flies), countable when referring to instances (three times). Many expressions: in time (before deadline), on time (punctual), at the same time, all the time, from time to time. As verb, usually means to measure duration or choose the right moment.",
+            "forms": {
+                "base": "time",
+                "singular": "time",
+                "plural": "times"
+            }
         },
         {
             "id": 21,
@@ -866,22 +1103,26 @@
                         {
                             "sentence": "{Look} at this picture.",
                             "translation": "{انظر} إلى هذه الصورة.",
-                            "context": "Directing attention"
+                            "context": "Directing attention",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "You {look} tired.",
                             "translation": "{تبدو} متعباً.",
-                            "context": "Appearance"
+                            "context": "Appearance",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I'm {looking} for my keys.",
                             "translation": "{أبحث} عن مفاتيحي.",
-                            "context": "Searching"
+                            "context": "Searching",
+                            "form_used": "presentParticiple"
                         },
                         {
                             "sentence": "Let me {look} at the problem.",
                             "translation": "دعني {أفحص} المشكلة.",
-                            "context": "Examining or considering"
+                            "context": "Examining or considering",
+                            "form_used": "base"
                         }
                     ]
                 },
@@ -893,27 +1134,38 @@
                         {
                             "sentence": "Take a {look} at this.",
                             "translation": "ألقِ {نظرة} على هذا.",
-                            "context": "Quick observation"
+                            "context": "Quick observation",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She has a new {look}.",
                             "translation": "لديها {مظهر} جديد.",
-                            "context": "Style or appearance"
+                            "context": "Style or appearance",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I don't like the {look} of this.",
                             "translation": "لا يعجبني {شكل} هذا الأمر.",
-                            "context": "First impression"
+                            "context": "First impression",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "He gave me a strange {look}.",
                             "translation": "أعطاني {نظرة} غريبة.",
-                            "context": "Facial expression"
+                            "context": "Facial expression",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Different from 'see' and 'watch'. 'Look' is active/intentional (ينظر), 'see' is passive (يرى), 'watch' is for moving things (يشاهد). Many phrasal verbs: look for (search), look after (care for), look forward to (anticipate). 'Look + adjective' describes appearance (look happy, look beautiful)."
+            "notes": "Different from 'see' and 'watch'. 'Look' is active/intentional (ينظر), 'see' is passive (يرى), 'watch' is for moving things (يشاهد). Many phrasal verbs: look for (search), look after (care for), look forward to (anticipate). 'Look + adjective' describes appearance (look happy, look beautiful).",
+            "forms": {
+                "base": "look",
+                "thirdPerson": "looks",
+                "past": "looked",
+                "pastParticiple": "looked",
+                "presentParticiple": "looking"
+            }
         },
         {
             "id": 22,
@@ -930,27 +1182,36 @@
                         {
                             "sentence": "This is the best {way} to learn.",
                             "translation": "هذه أفضل {طريقة} للتعلم.",
-                            "context": "Method or approach"
+                            "context": "Method or approach",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Which {way} should I go?",
                             "translation": "في أي {اتجاه} يجب أن أذهب؟",
-                            "context": "Direction"
+                            "context": "Direction",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Is this the {way} to the station?",
                             "translation": "هل هذا هو {الطريق} إلى المحطة؟",
-                            "context": "Route or path"
+                            "context": "Route or path",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She has her own {way} of thinking.",
                             "translation": "لديها {طريقتها} الخاصة في التفكير.",
-                            "context": "Style or manner"
+                            "context": "Style or manner",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Multiple related meanings: method (طريقة), route (طريق), direction (اتجاه), manner (أسلوب). Very common in expressions: by the way (بالمناسبة), in a way (بطريقة ما), no way (مستحيل), on the way (في الطريق), give way (يتنازل). Often used with prepositions: in this way, on my way."
+            "notes": "Multiple related meanings: method (طريقة), route (طريق), direction (اتجاه), manner (أسلوب). Very common in expressions: by the way (بالمناسبة), in a way (بطريقة ما), no way (مستحيل), on the way (في الطريق), give way (يتنازل). Often used with prepositions: in this way, on my way.",
+            "forms": {
+                "base": "way",
+                "singular": "way",
+                "plural": "ways"
+            }
         },
         {
             "id": 23,
@@ -967,27 +1228,36 @@
                         {
                             "sentence": "Many {people} were at the event.",
                             "translation": "كان {أناس} كثيرون في الحدث.",
-                            "context": "General reference to humans"
+                            "context": "General reference to humans",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Young {people} use social media often.",
                             "translation": "يستخدم {الشباب} وسائل التواصل الاجتماعي كثيراً.",
-                            "context": "Specific groups"
+                            "context": "Specific groups",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "What do {people} think about this?",
                             "translation": "ما رأي {الناس} في هذا؟",
-                            "context": "Public opinion"
+                            "context": "Public opinion",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The {people} of Egypt are friendly.",
                             "translation": "{شعب} مصر ودود.",
-                            "context": "Nation or ethnic group"
+                            "context": "Nation or ethnic group",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Plural form, but doesn't end in 's'. Singular is 'person'. Takes plural verb (People are..., not People is...). 'People' as 'شعب' refers to a nation. When counting individuals, use 'person': three people, one person. Don't say 'peoples' except in rare contexts about ethnic groups."
+            "notes": "Plural form, but doesn't end in 's'. Singular is 'person'. Takes plural verb (People are..., not People is...). 'People' as 'شعب' refers to a nation. When counting individuals, use 'person': three people, one person. Don't say 'peoples' except in rare contexts about ethnic groups.",
+            "forms": {
+                "base": "people",
+                "singular": "person",
+                "plural": "people"
+            }
         },
         {
             "id": 24,
@@ -1004,22 +1274,26 @@
                         {
                             "sentence": "This is a {good} book.",
                             "translation": "هذا كتاب {جيد}.",
-                            "context": "Quality"
+                            "context": "Quality",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She is a {good} person.",
                             "translation": "إنها شخص {طيب}.",
-                            "context": "Moral character"
+                            "context": "Moral character",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Have a {good} day!",
                             "translation": "أتمنى لك يوماً {سعيداً}!",
-                            "context": "Pleasant wishes"
+                            "context": "Pleasant wishes",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "He is {good} at math.",
                             "translation": "إنه {جيد} في الرياضيات.",
-                            "context": "Skilled or proficient"
+                            "context": "Skilled or proficient",
+                            "form_used": "base"
                         }
                     ]
                 },
@@ -1031,27 +1305,36 @@
                         {
                             "sentence": "He did it for the {good} of everyone.",
                             "translation": "فعل ذلك من أجل {مصلحة} الجميع.",
-                            "context": "Benefit or welfare"
+                            "context": "Benefit or welfare",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "What's the {good} of worrying?",
                             "translation": "ما {فائدة} القلق؟",
-                            "context": "Usefulness"
+                            "context": "Usefulness",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "It's for your own {good}.",
                             "translation": "إنه لمصلحتك {الخاصة}.",
-                            "context": "Personal benefit"
+                            "context": "Personal benefit",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Do {good} to others.",
                             "translation": "أحسِن إلى {الآخرين}.",
-                            "context": "Moral virtue"
+                            "context": "Moral virtue",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Very common adjective. Comparative is 'better', superlative 'best' (irregular). 'Good' is adjective (describes nouns), 'well' is adverb (describes verbs). Say 'He speaks well' not 'He speaks good'. Many expressions: good morning, good luck, for good (permanently), as good as (almost)."
+            "notes": "Very common adjective. Comparative is 'better', superlative 'best' (irregular). 'Good' is adjective (describes nouns), 'well' is adverb (describes verbs). Say 'He speaks well' not 'He speaks good'. Many expressions: good morning, good luck, for good (permanently), as good as (almost).",
+            "forms": {
+                "base": "good",
+                "comparative": "better",
+                "superlative": "best"
+            }
         },
         {
             "id": 25,
@@ -1068,27 +1351,36 @@
                         {
                             "sentence": "I bought a {new} car.",
                             "translation": "اشتريت سيارة {جديدة}.",
-                            "context": "Recently acquired"
+                            "context": "Recently acquired",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "We have a {new} teacher.",
                             "translation": "لدينا معلم {جديد}.",
-                            "context": "Recently arrived"
+                            "context": "Recently arrived",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "This is a {new} idea.",
                             "translation": "هذه فكرة {جديدة}.",
-                            "context": "Original or innovative"
+                            "context": "Original or innovative",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She is {new} to the city.",
                             "translation": "هي {جديدة} في المدينة.",
-                            "context": "Unfamiliar or inexperienced"
+                            "context": "Unfamiliar or inexperienced",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Opposite of 'old'. Can mean recently made, recently purchased, recently arrived, or unfamiliar. 'New to' means inexperienced with something. Be careful with pronunciation: sounds like 'noo' not 'nue'. Common phrases: brand new (completely new), what's new? (what's happening?), Happy New Year!"
+            "notes": "Opposite of 'old'. Can mean recently made, recently purchased, recently arrived, or unfamiliar. 'New to' means inexperienced with something. Be careful with pronunciation: sounds like 'noo' not 'nue'. Common phrases: brand new (completely new), what's new? (what's happening?), Happy New Year!",
+            "forms": {
+                "base": "new",
+                "comparative": "newer",
+                "superlative": "newest"
+            }
         },
         {
             "id": 26,
@@ -1105,27 +1397,36 @@
                         {
                             "sentence": "Today is a beautiful {day}.",
                             "translation": "اليوم {يوم} جميل.",
-                            "context": "24-hour period"
+                            "context": "24-hour period",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I work during the {day}.",
                             "translation": "أعمل خلال {النهار}.",
-                            "context": "Daylight hours"
+                            "context": "Daylight hours",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "One {day} I will visit Paris.",
                             "translation": "{يوماً ما} سأزور باريس.",
-                            "context": "Future unspecified time"
+                            "context": "Future unspecified time",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "In my father's {day}, things were different.",
                             "translation": "في {عهد} أبي، كانت الأمور مختلفة.",
-                            "context": "Era or period"
+                            "context": "Era or period",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Can mean a 24-hour period (يوم), only the light part (نهار), or an era/period (عهد، زمن). Days of the week are capitalized in English (Monday, Tuesday). Common expressions: day by day (تدريجياً), these days (في هذه الأيام), someday (يوماً ما), all day long (طوال اليوم)."
+            "notes": "Can mean a 24-hour period (يوم), only the light part (نهار), or an era/period (عهد، زمن). Days of the week are capitalized in English (Monday, Tuesday). Common expressions: day by day (تدريجياً), these days (في هذه الأيام), someday (يوماً ما), all day long (طوال اليوم).",
+            "forms": {
+                "base": "day",
+                "singular": "day",
+                "plural": "days"
+            }
         },
         {
             "id": 27,
@@ -1142,27 +1443,36 @@
                         {
                             "sentence": "This {year} has been great.",
                             "translation": "كان هذا {العام} رائعاً.",
-                            "context": "Current 12-month period"
+                            "context": "Current 12-month period",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I am ten {years} old.",
                             "translation": "عمري عشر {سنوات}.",
-                            "context": "Age"
+                            "context": "Age",
+                            "form_used": "plural"
                         },
                         {
                             "sentence": "She lived there for many {years}.",
                             "translation": "عاشت هناك لسنوات {عديدة}.",
-                            "context": "Duration"
+                            "context": "Duration",
+                            "form_used": "plural"
                         },
                         {
                             "sentence": "The {year} 2024 was eventful.",
                             "translation": "كان {عام} 2024 حافلاً بالأحداث.",
-                            "context": "Specific calendar year"
+                            "context": "Specific calendar year",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Plural 'years'. Used with numbers and age: three years old, in five years. 'Year' without article often refers to academic/school year (next year = العام القادم). Common: New Year, year by year, all year round, leap year. In Arabic, both سنة and عام are used, with slight differences in formal vs. colloquial contexts."
+            "notes": "Plural 'years'. Used with numbers and age: three years old, in five years. 'Year' without article often refers to academic/school year (next year = العام القادم). Common: New Year, year by year, all year round, leap year. In Arabic, both سنة and عام are used, with slight differences in formal vs. colloquial contexts.",
+            "forms": {
+                "base": "year",
+                "singular": "year",
+                "plural": "years"
+            }
         },
         {
             "id": 28,
@@ -1179,22 +1489,26 @@
                         {
                             "sentence": "This is my {first} day at work.",
                             "translation": "هذا هو يومي {الأول} في العمل.",
-                            "context": "Order in sequence"
+                            "context": "Order in sequence",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "He won {first} place.",
                             "translation": "فاز بالمركز {الأول}.",
-                            "context": "Ranking or position"
+                            "context": "Ranking or position",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Safety is our {first} priority.",
                             "translation": "السلامة هي أولويتنا {الأولى}.",
-                            "context": "Importance"
+                            "context": "Importance",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "She was the {first} to arrive.",
                             "translation": "كانت {أول} من وصل.",
-                            "context": "Earliest in time"
+                            "context": "Earliest in time",
+                            "form_used": "base"
                         }
                     ]
                 },
@@ -1206,27 +1520,34 @@
                         {
                             "sentence": "{First}, let me introduce myself.",
                             "translation": "{أولاً}، دعوني أقدم نفسي.",
-                            "context": "Sequence of actions"
+                            "context": "Sequence of actions",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Think {first}, then act.",
                             "translation": "فكر {أولاً}، ثم تصرف.",
-                            "context": "Priority in order"
+                            "context": "Priority in order",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I {first} met her in 2020.",
                             "translation": "{التقيتها} لأول مرة في 2020.",
-                            "context": "Initial occurrence"
+                            "context": "Initial occurrence",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Who wants to go {first}?",
                             "translation": "من يريد الذهاب {أولاً}؟",
-                            "context": "Going before others"
+                            "context": "Going before others",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Ordinal number (unlike 'one' which is cardinal). As adjective, describes order or importance. As adverb, means before other things. Common phrases: first of all (قبل كل شيء), at first (في البداية), first aid (إسعافات أولية), first class (درجة أولى). Often paired with 'last'."
+            "notes": "Ordinal number (unlike 'one' which is cardinal). As adjective, describes order or importance. As adverb, means before other things. Common phrases: first of all (قبل كل شيء), at first (في البداية), first aid (إسعافات أولية), first class (درجة أولى). Often paired with 'last'.",
+            "forms": {
+                "base": "first"
+            }
         },
         {
             "id": 29,
@@ -1243,27 +1564,36 @@
                         {
                             "sentence": "What is that {thing}?",
                             "translation": "ما ذلك {الشيء}؟",
-                            "context": "Unidentified object"
+                            "context": "Unidentified object",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The important {thing} is to try.",
                             "translation": "{الأمر} المهم هو أن تحاول.",
-                            "context": "Fact or consideration"
+                            "context": "Fact or consideration",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "I have many {things} to do.",
                             "translation": "لدي {أشياء} كثيرة لأفعلها.",
-                            "context": "Tasks or items"
+                            "context": "Tasks or items",
+                            "form_used": "plural"
                         },
                         {
                             "sentence": "How are {things} going?",
                             "translation": "كيف تسير {الأمور}؟",
-                            "context": "General situation"
+                            "context": "General situation",
+                            "form_used": "plural"
                         }
                     ]
                 }
             ],
-            "notes": "Very general word that can refer to any object, idea, situation, or matter. Often used when you don't want to be specific or don't know the exact name. Common expressions: the thing is... (المشكلة هي), first thing (أول شيء), among other things (من بين أشياء أخرى), things like that (أشياء مثل ذلك)."
+            "notes": "Very general word that can refer to any object, idea, situation, or matter. Often used when you don't want to be specific or don't know the exact name. Common expressions: the thing is... (المشكلة هي), first thing (أول شيء), among other things (من بين أشياء أخرى), things like that (أشياء مثل ذلك).",
+            "forms": {
+                "base": "thing",
+                "singular": "thing",
+                "plural": "things"
+            }
         },
         {
             "id": 30,
@@ -1280,27 +1610,36 @@
                         {
                             "sentence": "That {man} is my teacher.",
                             "translation": "ذلك {الرجل} هو معلمي.",
-                            "context": "Adult male individual"
+                            "context": "Adult male individual",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "The evolution of {man} took millions of years.",
                             "translation": "استغرق تطور {الإنسان} ملايين السنين.",
-                            "context": "Humankind or humanity"
+                            "context": "Humankind or humanity",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "He is a {man} of his word.",
                             "translation": "إنه {رجل} يفي بوعده.",
-                            "context": "Character or type"
+                            "context": "Character or type",
+                            "form_used": "base"
                         },
                         {
                             "sentence": "Every {man} for himself.",
                             "translation": "كل {امرئ} لنفسه.",
-                            "context": "Individual person"
+                            "context": "Individual person",
+                            "form_used": "base"
                         }
                     ]
                 }
             ],
-            "notes": "Plural is 'men' (irregular). Can mean an adult male specifically (رجل) or mankind/humanity in general (الإنسان), though this usage is becoming dated. Opposite is 'woman'. In modern usage, 'humanity' or 'people' is preferred over 'man' when referring to all humans. Common: young man, old man, man-made."
+            "notes": "Plural is 'men' (irregular). Can mean an adult male specifically (رجل) or mankind/humanity in general (الإنسان), though this usage is becoming dated. Opposite is 'woman'. In modern usage, 'humanity' or 'people' is preferred over 'man' when referring to all humans. Common: young man, old man, man-made.",
+            "forms": {
+                "base": "man",
+                "singular": "man",
+                "plural": "men"
+            }
         }
     ]
 }
