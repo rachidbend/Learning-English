@@ -307,6 +307,8 @@ const ReviewSession = ({ initialSession = null }) => {
             clearTimeout(quickAdvanceTimer.current);
         }
 
+        const advanceDelay = isCorrect ? 1000 : 2000;
+
         quickAdvanceTimer.current = setTimeout(() => {
             setQuickFlash(null);
 
@@ -318,12 +320,9 @@ const ReviewSession = ({ initialSession = null }) => {
                 // All questions for this word are done
                 completeWord(wordId, newWordResults[wordId], updatedSession, newWordResults);
             } else {
-                // More questions remain — advance
-                const nextIdx = currentQuestionIndex + 1;
-                setCurrentQuestionIndex(nextIdx);
-                prepareNextQuestion(updatedSession, nextIdx, progress, distractorPool);
+                showQuestion(updatedSession, currentQuestionIndex + 1);
             }
-        }, 800);
+        }, advanceDelay);
     }, [session, currentQuestion, currentQuestionIndex, wordResults, progress, words, distractorPool]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // ═══════════════════════════════════════════

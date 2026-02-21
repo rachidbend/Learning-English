@@ -1,0 +1,4945 @@
+{
+  "version": "1.0",
+  "description": "Oxford 3000 Word Reference - Advanced Levels (B1)",
+  "source": "Oxford 3000 American English + COCA Frequency Rankings",
+  "total_words": 807,
+  "metadata": {
+    "created_date": "2026-02-21",
+    "cefr_level": "B1",
+    "ordering": "COCA frequency within CEFR level"
+  },
+  "levels": [
+    {
+      "level_id": "advanced_1",
+      "level_name": "Advanced 1",
+      "cefr_equivalent": "B1",
+      "description": "Independent user - expressing opinions and experiences",
+      "total_words": 269,
+      "batches": [
+        {
+          "batch_id": 19,
+          "batch_name": "Batch 19",
+          "word_count": 89,
+          "words": [
+            {
+              "id": 1759,
+              "word": "go",
+              "pos": "n.",
+              "coca_rank": 31
+            },
+            {
+              "id": 1760,
+              "word": "water",
+              "pos": "v.",
+              "coca_rank": 287
+            },
+            {
+              "id": 1761,
+              "word": "young",
+              "pos": "n.",
+              "coca_rank": 288
+            },
+            {
+              "id": 1762,
+              "word": "whether",
+              "pos": "conj.",
+              "coca_rank": 351
+            },
+            {
+              "id": 1763,
+              "word": "political",
+              "pos": "adj.",
+              "coca_rank": 356
+            },
+            {
+              "id": 1764,
+              "word": "center",
+              "pos": "v.",
+              "coca_rank": 367
+            },
+            {
+              "id": 1765,
+              "word": "court",
+              "pos": "n.",
+              "coca_rank": 388
+            },
+            {
+              "id": 1766,
+              "word": "within",
+              "pos": "prep.",
+              "coca_rank": 399
+            },
+            {
+              "id": 1767,
+              "word": "better",
+              "pos": "n.",
+              "coca_rank": 404
+            },
+            {
+              "id": 1768,
+              "word": "policy",
+              "pos": "n.",
+              "coca_rank": 406
+            },
+            {
+              "id": 1769,
+              "word": "require",
+              "pos": "v.",
+              "coca_rank": 457
+            },
+            {
+              "id": 1770,
+              "word": "security",
+              "pos": "n.",
+              "coca_rank": 475
+            },
+            {
+              "id": 1771,
+              "word": "nation",
+              "pos": "n.",
+              "coca_rank": 483
+            },
+            {
+              "id": 1772,
+              "word": "remain",
+              "pos": "v.",
+              "coca_rank": 499
+            },
+            {
+              "id": 1773,
+              "word": "pull",
+              "pos": "n.",
+              "coca_rank": 503
+            },
+            {
+              "id": 1774,
+              "word": "raise",
+              "pos": "n.",
+              "coca_rank": 512
+            },
+            {
+              "id": 1775,
+              "word": "development",
+              "pos": "n.",
+              "coca_rank": 522
+            },
+            {
+              "id": 1776,
+              "word": "federal",
+              "pos": "adj.",
+              "coca_rank": 523
+            },
+            {
+              "id": 1777,
+              "word": "effort",
+              "pos": "n.",
+              "coca_rank": 530
+            },
+            {
+              "id": 1778,
+              "word": "need",
+              "pos": "modal v.",
+              "coca_rank": 550
+            },
+            {
+              "id": 1779,
+              "word": "type",
+              "pos": "v.",
+              "coca_rank": 552
+            },
+            {
+              "id": 1780,
+              "word": "economic",
+              "pos": "adj.",
+              "coca_rank": 559
+            },
+            {
+              "id": 1781,
+              "word": "simply",
+              "pos": "adv.",
+              "coca_rank": 580
+            },
+            {
+              "id": 1782,
+              "word": "election",
+              "pos": "n.",
+              "coca_rank": 620
+            },
+            {
+              "id": 1783,
+              "word": "face",
+              "pos": "v.",
+              "coca_rank": 621
+            },
+            {
+              "id": 1784,
+              "word": "whatever",
+              "pos": "det./pron.",
+              "coca_rank": 631
+            },
+            {
+              "id": 1785,
+              "word": "current",
+              "pos": "adj.",
+              "coca_rank": 650
+            },
+            {
+              "id": 1786,
+              "word": "shoot",
+              "pos": "v.",
+              "coca_rank": 657
+            },
+            {
+              "id": 1787,
+              "word": "point",
+              "pos": "v.",
+              "coca_rank": 674
+            },
+            {
+              "id": 1788,
+              "word": "truth",
+              "pos": "n.",
+              "coca_rank": 681
+            },
+            {
+              "id": 1789,
+              "word": "upon",
+              "pos": "prep.",
+              "coca_rank": 682
+            },
+            {
+              "id": 1790,
+              "word": "economy",
+              "pos": "n.",
+              "coca_rank": 693
+            },
+            {
+              "id": 1791,
+              "word": "bank",
+              "pos": "(river) n.",
+              "coca_rank": 695
+            },
+            {
+              "id": 1792,
+              "word": "deal",
+              "pos": "n.",
+              "coca_rank": 698
+            },
+            {
+              "id": 1793,
+              "word": "push",
+              "pos": "n.",
+              "coca_rank": 724
+            },
+            {
+              "id": 1794,
+              "word": "private",
+              "pos": "adj.",
+              "coca_rank": 728
+            },
+            {
+              "id": 1795,
+              "word": "administration",
+              "pos": "n.",
+              "coca_rank": 744
+            },
+            {
+              "id": 1796,
+              "word": "analysis",
+              "pos": "n.",
+              "coca_rank": 758
+            },
+            {
+              "id": 1797,
+              "word": "performance",
+              "pos": "n.",
+              "coca_rank": 765
+            },
+            {
+              "id": 1798,
+              "word": "board",
+              "pos": "v.",
+              "coca_rank": 768
+            },
+            {
+              "id": 1799,
+              "word": "represent",
+              "pos": "v.",
+              "coca_rank": 776
+            },
+            {
+              "id": 1800,
+              "word": "state",
+              "pos": "adj., v.",
+              "coca_rank": 778
+            },
+            {
+              "id": 1801,
+              "word": "place",
+              "pos": "v.",
+              "coca_rank": 779
+            },
+            {
+              "id": 1802,
+              "word": "sex",
+              "pos": "n.",
+              "coca_rank": 799
+            },
+            {
+              "id": 1803,
+              "word": "financial",
+              "pos": "adj.",
+              "coca_rank": 804
+            },
+            {
+              "id": 1804,
+              "word": "decade",
+              "pos": "n.",
+              "coca_rank": 807
+            },
+            {
+              "id": 1805,
+              "word": "act",
+              "pos": "n.",
+              "coca_rank": 813
+            },
+            {
+              "id": 1806,
+              "word": "treatment",
+              "pos": "n.",
+              "coca_rank": 825
+            },
+            {
+              "id": 1807,
+              "word": "candidate",
+              "pos": "n.",
+              "coca_rank": 830
+            },
+            {
+              "id": 1808,
+              "word": "determine",
+              "pos": "v.",
+              "coca_rank": 832
+            },
+            {
+              "id": 1809,
+              "word": "resource",
+              "pos": "n.",
+              "coca_rank": 833
+            },
+            {
+              "id": 1810,
+              "word": "prove",
+              "pos": "v.",
+              "coca_rank": 836
+            },
+            {
+              "id": 1811,
+              "word": "hang",
+              "pos": "v.",
+              "coca_rank": 843
+            },
+            {
+              "id": 1812,
+              "word": "loss",
+              "pos": "n.",
+              "coca_rank": 846
+            },
+            {
+              "id": 1813,
+              "word": "note",
+              "pos": "v.",
+              "coca_rank": 849
+            },
+            {
+              "id": 1814,
+              "word": "despite",
+              "pos": "prep.",
+              "coca_rank": 854
+            },
+            {
+              "id": 1815,
+              "word": "that",
+              "pos": "adv.",
+              "coca_rank": 857
+            },
+            {
+              "id": 1816,
+              "word": "occur",
+              "pos": "v.",
+              "coca_rank": 859
+            },
+            {
+              "id": 1817,
+              "word": "vote",
+              "pos": "n., v.",
+              "coca_rank": 861
+            },
+            {
+              "id": 1818,
+              "word": "district",
+              "pos": "n.",
+              "coca_rank": 885
+            },
+            {
+              "id": 1819,
+              "word": "growth",
+              "pos": "n.",
+              "coca_rank": 889
+            },
+            {
+              "id": 1820,
+              "word": "force",
+              "pos": "n., v.",
+              "coca_rank": 893
+            },
+            {
+              "id": 1821,
+              "word": "theory",
+              "pos": "n.",
+              "coca_rank": 896
+            },
+            {
+              "id": 1822,
+              "word": "staff",
+              "pos": "n.",
+              "coca_rank": 897
+            },
+            {
+              "id": 1823,
+              "word": "legal",
+              "pos": "adj.",
+              "coca_rank": 899
+            },
+            {
+              "id": 1824,
+              "word": "set",
+              "pos": "(put) v.",
+              "coca_rank": 901
+            },
+            {
+              "id": 1825,
+              "word": "property",
+              "pos": "n.",
+              "coca_rank": 906
+            },
+            {
+              "id": 1826,
+              "word": "lay",
+              "pos": "v.",
+              "coca_rank": 907
+            },
+            {
+              "id": 1827,
+              "word": "authority",
+              "pos": "n.",
+              "coca_rank": 909
+            },
+            {
+              "id": 1828,
+              "word": "impact",
+              "pos": "n., v.",
+              "coca_rank": 914
+            },
+            {
+              "id": 1829,
+              "word": "indicate",
+              "pos": "v.",
+              "coca_rank": 915
+            },
+            {
+              "id": 1830,
+              "word": "central",
+              "pos": "adj.",
+              "coca_rank": 922
+            },
+            {
+              "id": 1831,
+              "word": "particularly",
+              "pos": "adv.",
+              "coca_rank": 925
+            },
+            {
+              "id": 1832,
+              "word": "union",
+              "pos": "n.",
+              "coca_rank": 935
+            },
+            {
+              "id": 1833,
+              "word": "pressure",
+              "pos": "n.",
+              "coca_rank": 937
+            },
+            {
+              "id": 1834,
+              "word": "treat",
+              "pos": "v.",
+              "coca_rank": 951
+            },
+            {
+              "id": 1835,
+              "word": "version",
+              "pos": "n.",
+              "coca_rank": 953
+            },
+            {
+              "id": 1836,
+              "word": "reality",
+              "pos": "n.",
+              "coca_rank": 956
+            },
+            {
+              "id": 1837,
+              "word": "global",
+              "pos": "adj.",
+              "coca_rank": 966
+            },
+            {
+              "id": 1838,
+              "word": "various",
+              "pos": "adj.",
+              "coca_rank": 967
+            },
+            {
+              "id": 1839,
+              "word": "weapon",
+              "pos": "n.",
+              "coca_rank": 976
+            },
+            {
+              "id": 1840,
+              "word": "absolutely",
+              "pos": "adv.",
+              "coca_rank": 980
+            },
+            {
+              "id": 1841,
+              "word": "marriage",
+              "pos": "n.",
+              "coca_rank": 1006
+            },
+            {
+              "id": 1842,
+              "word": "operation",
+              "pos": "n.",
+              "coca_rank": 1007
+            },
+            {
+              "id": 1843,
+              "word": "indeed",
+              "pos": "adv.",
+              "coca_rank": 1008
+            },
+            {
+              "id": 1844,
+              "word": "agent",
+              "pos": "n.",
+              "coca_rank": 1012
+            },
+            {
+              "id": 1845,
+              "word": "religious",
+              "pos": "adj.",
+              "coca_rank": 1026
+            },
+            {
+              "id": 1846,
+              "word": "head",
+              "pos": "v.",
+              "coca_rank": 1027
+            },
+            {
+              "id": 1847,
+              "word": "kind",
+              "pos": "(caring) adj.",
+              "coca_rank": 1029
+            }
+          ]
+        },
+        {
+          "batch_id": 20,
+          "batch_name": "Batch 20",
+          "word_count": 89,
+          "words": [
+            {
+              "id": 1848,
+              "word": "production",
+              "pos": "n.",
+              "coca_rank": 1037
+            },
+            {
+              "id": 1849,
+              "word": "relate",
+              "pos": "v.",
+              "coca_rank": 1038
+            },
+            {
+              "id": 1850,
+              "word": "management",
+              "pos": "n.",
+              "coca_rank": 1040
+            },
+            {
+              "id": 1851,
+              "word": "original",
+              "pos": "n.",
+              "coca_rank": 1041
+            },
+            {
+              "id": 1852,
+              "word": "victim",
+              "pos": "n.",
+              "coca_rank": 1042
+            },
+            {
+              "id": 1853,
+              "word": "politics",
+              "pos": "n.",
+              "coca_rank": 1059
+            },
+            {
+              "id": 1854,
+              "word": "base",
+              "pos": "n., v.",
+              "coca_rank": 1072
+            },
+            {
+              "id": 1855,
+              "word": "therefore",
+              "pos": "adv.",
+              "coca_rank": 1085
+            },
+            {
+              "id": 1856,
+              "word": "unless",
+              "pos": "conj.",
+              "coca_rank": 1103
+            },
+            {
+              "id": 1857,
+              "word": "nor",
+              "pos": "conj./adv.",
+              "coca_rank": 1104
+            },
+            {
+              "id": 1858,
+              "word": "generation",
+              "pos": "n.",
+              "coca_rank": 1118
+            },
+            {
+              "id": 1859,
+              "word": "admit",
+              "pos": "v.",
+              "coca_rank": 1121
+            },
+            {
+              "id": 1860,
+              "word": "throughout",
+              "pos": "prep./adv.",
+              "coca_rank": 1127
+            },
+            {
+              "id": 1861,
+              "word": "shake",
+              "pos": "n.",
+              "coca_rank": 1131
+            },
+            {
+              "id": 1862,
+              "word": "obviously",
+              "pos": "adv.",
+              "coca_rank": 1139
+            },
+            {
+              "id": 1863,
+              "word": "sexual",
+              "pos": "adj.",
+              "coca_rank": 1150
+            },
+            {
+              "id": 1864,
+              "word": "once",
+              "pos": "conj.",
+              "coca_rank": 1153
+            },
+            {
+              "id": 1865,
+              "word": "suffer",
+              "pos": "v.",
+              "coca_rank": 1167
+            },
+            {
+              "id": 1866,
+              "word": "experience",
+              "pos": "v.",
+              "coca_rank": 1170
+            },
+            {
+              "id": 1867,
+              "word": "safety",
+              "pos": "n.",
+              "coca_rank": 1172
+            },
+            {
+              "id": 1868,
+              "word": "while",
+              "pos": "n.",
+              "coca_rank": 1174
+            },
+            {
+              "id": 1869,
+              "word": "normal",
+              "pos": "n.",
+              "coca_rank": 1178
+            },
+            {
+              "id": 1870,
+              "word": "tend",
+              "pos": "v.",
+              "coca_rank": 1182
+            },
+            {
+              "id": 1871,
+              "word": "eventually",
+              "pos": "adv.",
+              "coca_rank": 1184
+            },
+            {
+              "id": 1872,
+              "word": "reflect",
+              "pos": "v.",
+              "coca_rank": 1193
+            },
+            {
+              "id": 1873,
+              "word": "folk",
+              "pos": "n., adj.",
+              "coca_rank": 1194
+            },
+            {
+              "id": 1874,
+              "word": "surface",
+              "pos": "n.",
+              "coca_rank": 1195
+            },
+            {
+              "id": 1875,
+              "word": "client",
+              "pos": "n.",
+              "coca_rank": 1197
+            },
+            {
+              "id": 1876,
+              "word": "edge",
+              "pos": "n.",
+              "coca_rank": 1198
+            },
+            {
+              "id": 1877,
+              "word": "environmental",
+              "pos": "adj.",
+              "coca_rank": 1203
+            },
+            {
+              "id": 1878,
+              "word": "responsibility",
+              "pos": "n.",
+              "coca_rank": 1204
+            },
+            {
+              "id": 1879,
+              "word": "by",
+              "pos": "adv.",
+              "coca_rank": 1208
+            },
+            {
+              "id": 1880,
+              "word": "effective",
+              "pos": "adj.",
+              "coca_rank": 1213
+            },
+            {
+              "id": 1881,
+              "word": "previous",
+              "pos": "adj.",
+              "coca_rank": 1214
+            },
+            {
+              "id": 1882,
+              "word": "consumer",
+              "pos": "n.",
+              "coca_rank": 1216
+            },
+            {
+              "id": 1883,
+              "word": "element",
+              "pos": "n.",
+              "coca_rank": 1217
+            },
+            {
+              "id": 1884,
+              "word": "nuclear",
+              "pos": "adj.",
+              "coca_rank": 1218
+            },
+            {
+              "id": 1885,
+              "word": "spirit",
+              "pos": "n.",
+              "coca_rank": 1219
+            },
+            {
+              "id": 1886,
+              "word": "directly",
+              "pos": "adv.",
+              "coca_rank": 1220
+            },
+            {
+              "id": 1887,
+              "word": "define",
+              "pos": "v.",
+              "coca_rank": 1222
+            },
+            {
+              "id": 1888,
+              "word": "announce",
+              "pos": "v.",
+              "coca_rank": 1229
+            },
+            {
+              "id": 1889,
+              "word": "journal",
+              "pos": "n.",
+              "coca_rank": 1230
+            },
+            {
+              "id": 1890,
+              "word": "collection",
+              "pos": "n.",
+              "coca_rank": 1233
+            },
+            {
+              "id": 1891,
+              "word": "cultural",
+              "pos": "adj.",
+              "coca_rank": 1240
+            },
+            {
+              "id": 1892,
+              "word": "deliver",
+              "pos": "v.",
+              "coca_rank": 1247
+            },
+            {
+              "id": 1893,
+              "word": "editor",
+              "pos": "n.",
+              "coca_rank": 1249
+            },
+            {
+              "id": 1894,
+              "word": "claim",
+              "pos": "v., n.",
+              "coca_rank": 1253
+            },
+            {
+              "id": 1895,
+              "word": "agreement",
+              "pos": "n.",
+              "coca_rank": 1255
+            },
+            {
+              "id": 1896,
+              "word": "powerful",
+              "pos": "adj.",
+              "coca_rank": 1256
+            },
+            {
+              "id": 1897,
+              "word": "generally",
+              "pos": "adv.",
+              "coca_rank": 1282
+            },
+            {
+              "id": 1898,
+              "word": "basic",
+              "pos": "adj.",
+              "coca_rank": 1288
+            },
+            {
+              "id": 1899,
+              "word": "religion",
+              "pos": "n.",
+              "coca_rank": 1294
+            },
+            {
+              "id": 1900,
+              "word": "communication",
+              "pos": "n.",
+              "coca_rank": 1299
+            },
+            {
+              "id": 1901,
+              "word": "encourage",
+              "pos": "v.",
+              "coca_rank": 1305
+            },
+            {
+              "id": 1902,
+              "word": "belief",
+              "pos": "n.",
+              "coca_rank": 1310
+            },
+            {
+              "id": 1903,
+              "word": "sample",
+              "pos": "n.",
+              "coca_rank": 1321
+            },
+            {
+              "id": 1904,
+              "word": "involved",
+              "pos": "adj.",
+              "coca_rank": 1322
+            },
+            {
+              "id": 1905,
+              "word": "path",
+              "pos": "n.",
+              "coca_rank": 1325
+            },
+            {
+              "id": 1906,
+              "word": "examine",
+              "pos": "v.",
+              "coca_rank": 1353
+            },
+            {
+              "id": 1907,
+              "word": "application",
+              "pos": "n.",
+              "coca_rank": 1354
+            },
+            {
+              "id": 1908,
+              "word": "result",
+              "pos": "v.",
+              "coca_rank": 1358
+            },
+            {
+              "id": 1909,
+              "word": "ignore",
+              "pos": "v.",
+              "coca_rank": 1362
+            },
+            {
+              "id": 1910,
+              "word": "location",
+              "pos": "n.",
+              "coca_rank": 1367
+            },
+            {
+              "id": 1911,
+              "word": "promote",
+              "pos": "v.",
+              "coca_rank": 1371
+            },
+            {
+              "id": 1912,
+              "word": "remind",
+              "pos": "v.",
+              "coca_rank": 1378
+            },
+            {
+              "id": 1913,
+              "word": "commercial",
+              "pos": "adj., n.",
+              "coca_rank": 1383
+            },
+            {
+              "id": 1914,
+              "word": "basis",
+              "pos": "n.",
+              "coca_rank": 1385
+            },
+            {
+              "id": 1915,
+              "word": "highly",
+              "pos": "adv.",
+              "coca_rank": 1387
+            },
+            {
+              "id": 1916,
+              "word": "strength",
+              "pos": "n.",
+              "coca_rank": 1389
+            },
+            {
+              "id": 1917,
+              "word": "move",
+              "pos": "n.",
+              "coca_rank": 1390
+            },
+            {
+              "id": 1918,
+              "word": "commit",
+              "pos": "v.",
+              "coca_rank": 1405
+            },
+            {
+              "id": 1919,
+              "word": "will",
+              "pos": "n.",
+              "coca_rank": 1416
+            },
+            {
+              "id": 1920,
+              "word": "connection",
+              "pos": "n.",
+              "coca_rank": 1418
+            },
+            {
+              "id": 1921,
+              "word": "key",
+              "pos": "v.",
+              "coca_rank": 1422
+            },
+            {
+              "id": 1922,
+              "word": "responsible",
+              "pos": "adj.",
+              "coca_rank": 1425
+            },
+            {
+              "id": 1923,
+              "word": "southern",
+              "pos": "adj.",
+              "coca_rank": 1429
+            },
+            {
+              "id": 1924,
+              "word": "totally",
+              "pos": "adv.",
+              "coca_rank": 1430
+            },
+            {
+              "id": 1925,
+              "word": "western",
+              "pos": "adj.",
+              "coca_rank": 1431
+            },
+            {
+              "id": 1926,
+              "word": "following",
+              "pos": "n.",
+              "coca_rank": 1440
+            },
+            {
+              "id": 1927,
+              "word": "share",
+              "pos": "n.",
+              "coca_rank": 1442
+            },
+            {
+              "id": 1928,
+              "word": "appreciate",
+              "pos": "v.",
+              "coca_rank": 1452
+            },
+            {
+              "id": 1929,
+              "word": "currently",
+              "pos": "adv.",
+              "coca_rank": 1455
+            },
+            {
+              "id": 1930,
+              "word": "survive",
+              "pos": "v.",
+              "coca_rank": 1461
+            },
+            {
+              "id": 1931,
+              "word": "intelligence",
+              "pos": "n.",
+              "coca_rank": 1465
+            },
+            {
+              "id": 1932,
+              "word": "border",
+              "pos": "n.",
+              "coca_rank": 1468
+            },
+            {
+              "id": 1933,
+              "word": "attitude",
+              "pos": "n.",
+              "coca_rank": 1474
+            },
+            {
+              "id": 1934,
+              "word": "seriously",
+              "pos": "adv.",
+              "coca_rank": 1479
+            },
+            {
+              "id": 1935,
+              "word": "relation",
+              "pos": "n.",
+              "coca_rank": 1488
+            },
+            {
+              "id": 1936,
+              "word": "aware",
+              "pos": "adj.",
+              "coca_rank": 1506
+            }
+          ]
+        },
+        {
+          "batch_id": 21,
+          "batch_name": "Batch 21",
+          "word_count": 91,
+          "words": [
+            {
+              "id": 1937,
+              "word": "identity",
+              "pos": "n.",
+              "coca_rank": 1507
+            },
+            {
+              "id": 1938,
+              "word": "extra",
+              "pos": "n., adv.",
+              "coca_rank": 1509
+            },
+            {
+              "id": 1939,
+              "word": "hire",
+              "pos": "v.",
+              "coca_rank": 1521
+            },
+            {
+              "id": 1940,
+              "word": "measure",
+              "pos": "v., n.",
+              "coca_rank": 1535
+            },
+            {
+              "id": 1941,
+              "word": "view",
+              "pos": "v.",
+              "coca_rank": 1545
+            },
+            {
+              "id": 1942,
+              "word": "reaction",
+              "pos": "n.",
+              "coca_rank": 1552
+            },
+            {
+              "id": 1943,
+              "word": "IT",
+              "pos": "n.",
+              "coca_rank": 1554
+            },
+            {
+              "id": 1944,
+              "word": "grade",
+              "pos": "n.",
+              "coca_rank": 1556
+            },
+            {
+              "id": 1945,
+              "word": "enemy",
+              "pos": "n.",
+              "coca_rank": 1561
+            },
+            {
+              "id": 1946,
+              "word": "captain",
+              "pos": "n.",
+              "coca_rank": 1568
+            },
+            {
+              "id": 1947,
+              "word": "tiny",
+              "pos": "adj.",
+              "coca_rank": 1578
+            },
+            {
+              "id": 1948,
+              "word": "mental",
+              "pos": "adj.",
+              "coca_rank": 1579
+            },
+            {
+              "id": 1949,
+              "word": "software",
+              "pos": "n.",
+              "coca_rank": 1580
+            },
+            {
+              "id": 1950,
+              "word": "glad",
+              "pos": "adj.",
+              "coca_rank": 1581
+            },
+            {
+              "id": 1951,
+              "word": "cut",
+              "pos": "n.",
+              "coca_rank": 1589
+            },
+            {
+              "id": 1952,
+              "word": "category",
+              "pos": "n.",
+              "coca_rank": 1609
+            },
+            {
+              "id": 1953,
+              "word": "possibly",
+              "pos": "adv.",
+              "coca_rank": 1622
+            },
+            {
+              "id": 1954,
+              "word": "technique",
+              "pos": "n.",
+              "coca_rank": 1623
+            },
+            {
+              "id": 1955,
+              "word": "intend",
+              "pos": "v.",
+              "coca_rank": 1626
+            },
+            {
+              "id": 1956,
+              "word": "academic",
+              "pos": "adj.",
+              "coca_rank": 1629
+            },
+            {
+              "id": 1957,
+              "word": "gather",
+              "pos": "v.",
+              "coca_rank": 1633
+            },
+            {
+              "id": 1958,
+              "word": "scientific",
+              "pos": "adj.",
+              "coca_rank": 1634
+            },
+            {
+              "id": 1959,
+              "word": "participate",
+              "pos": "v.",
+              "coca_rank": 1637
+            },
+            {
+              "id": 1960,
+              "word": "youth",
+              "pos": "n.",
+              "coca_rank": 1640
+            },
+            {
+              "id": 1961,
+              "word": "obvious",
+              "pos": "adj.",
+              "coca_rank": 1647
+            },
+            {
+              "id": 1962,
+              "word": "explore",
+              "pos": "v.",
+              "coca_rank": 1650
+            },
+            {
+              "id": 1963,
+              "word": "conclusion",
+              "pos": "n.",
+              "coca_rank": 1659
+            },
+            {
+              "id": 1964,
+              "word": "feature",
+              "pos": "v.",
+              "coca_rank": 1664
+            },
+            {
+              "id": 1965,
+              "word": "slightly",
+              "pos": "adv.",
+              "coca_rank": 1671
+            },
+            {
+              "id": 1966,
+              "word": "historical",
+              "pos": "adj.",
+              "coca_rank": 1677
+            },
+            {
+              "id": 1967,
+              "word": "consequence",
+              "pos": "n.",
+              "coca_rank": 1685
+            },
+            {
+              "id": 1968,
+              "word": "next",
+              "pos": "n.",
+              "coca_rank": 1687
+            },
+            {
+              "id": 1969,
+              "word": "familiar",
+              "pos": "adj.",
+              "coca_rank": 1692
+            },
+            {
+              "id": 1970,
+              "word": "reference",
+              "pos": "n.",
+              "coca_rank": 1695
+            },
+            {
+              "id": 1971,
+              "word": "judge",
+              "pos": "n., v.",
+              "coca_rank": 1699
+            },
+            {
+              "id": 1972,
+              "word": "ad",
+              "pos": "n.",
+              "coca_rank": 1700
+            },
+            {
+              "id": 1973,
+              "word": "emergency",
+              "pos": "n.",
+              "coca_rank": 1703
+            },
+            {
+              "id": 1974,
+              "word": "tour",
+              "pos": "v.",
+              "coca_rank": 1705
+            },
+            {
+              "id": 1975,
+              "word": "combine",
+              "pos": "v.",
+              "coca_rank": 1707
+            },
+            {
+              "id": 1976,
+              "word": "fuel",
+              "pos": "n.",
+              "coca_rank": 1714
+            },
+            {
+              "id": 1977,
+              "word": "confirm",
+              "pos": "v.",
+              "coca_rank": 1725
+            },
+            {
+              "id": 1978,
+              "word": "proud",
+              "pos": "adj.",
+              "coca_rank": 1729
+            },
+            {
+              "id": 1979,
+              "word": "cover",
+              "pos": "n.",
+              "coca_rank": 1730
+            },
+            {
+              "id": 1980,
+              "word": "native",
+              "pos": "adj., n.",
+              "coca_rank": 1734
+            },
+            {
+              "id": 1981,
+              "word": "duty",
+              "pos": "n.",
+              "coca_rank": 1741
+            },
+            {
+              "id": 1982,
+              "word": "expand",
+              "pos": "v.",
+              "coca_rank": 1745
+            },
+            {
+              "id": 1983,
+              "word": "trend",
+              "pos": "n.",
+              "coca_rank": 1748
+            },
+            {
+              "id": 1984,
+              "word": "repeat",
+              "pos": "n.",
+              "coca_rank": 1750
+            },
+            {
+              "id": 1985,
+              "word": "breath",
+              "pos": "n.",
+              "coca_rank": 1751
+            },
+            {
+              "id": 1986,
+              "word": "press",
+              "pos": "n., v.",
+              "coca_rank": 1759
+            },
+            {
+              "id": 1987,
+              "word": "forever",
+              "pos": "adv.",
+              "coca_rank": 1767
+            },
+            {
+              "id": 1988,
+              "word": "deep",
+              "pos": "adv.",
+              "coca_rank": 1769
+            },
+            {
+              "id": 1989,
+              "word": "cheap",
+              "pos": "adv.",
+              "coca_rank": 1772
+            },
+            {
+              "id": 1990,
+              "word": "literature",
+              "pos": "n.",
+              "coca_rank": 1773
+            },
+            {
+              "id": 1991,
+              "word": "direct",
+              "pos": "v., adv.",
+              "coca_rank": 1774
+            },
+            {
+              "id": 1992,
+              "word": "importance",
+              "pos": "n.",
+              "coca_rank": 1777
+            },
+            {
+              "id": 1993,
+              "word": "now",
+              "pos": "conj.",
+              "coca_rank": 1787
+            },
+            {
+              "id": 1994,
+              "word": "file",
+              "pos": "n.",
+              "coca_rank": 1792
+            },
+            {
+              "id": 1995,
+              "word": "studio",
+              "pos": "n.",
+              "coca_rank": 1793
+            },
+            {
+              "id": 1996,
+              "word": "episode",
+              "pos": "n.",
+              "coca_rank": 1807
+            },
+            {
+              "id": 1997,
+              "word": "politician",
+              "pos": "n.",
+              "coca_rank": 1811
+            },
+            {
+              "id": 1998,
+              "word": "setting",
+              "pos": "n.",
+              "coca_rank": 1821
+            },
+            {
+              "id": 1999,
+              "word": "theme",
+              "pos": "n.",
+              "coca_rank": 1825
+            },
+            {
+              "id": 2000,
+              "word": "issue",
+              "pos": "n.",
+              "coca_rank": 1826
+            },
+            {
+              "id": 2001,
+              "word": "educational",
+              "pos": "adj.",
+              "coca_rank": 1831
+            },
+            {
+              "id": 2002,
+              "word": "empty",
+              "pos": "v.",
+              "coca_rank": 1832
+            },
+            {
+              "id": 2003,
+              "word": "investigate",
+              "pos": "v.",
+              "coca_rank": 1834
+            },
+            {
+              "id": 2004,
+              "word": "plenty",
+              "pos": "pron.",
+              "coca_rank": 1838
+            },
+            {
+              "id": 2005,
+              "word": "fear",
+              "pos": "v.",
+              "coca_rank": 1840
+            },
+            {
+              "id": 2006,
+              "word": "afford",
+              "pos": "v.",
+              "coca_rank": 1841
+            },
+            {
+              "id": 2007,
+              "word": "specifically",
+              "pos": "adv.",
+              "coca_rank": 1849
+            },
+            {
+              "id": 2008,
+              "word": "though",
+              "pos": "conj., adv.",
+              "coca_rank": 1851
+            },
+            {
+              "id": 2009,
+              "word": "limit",
+              "pos": "n., v.",
+              "coca_rank": 1855
+            },
+            {
+              "id": 2010,
+              "word": "locate",
+              "pos": "v.",
+              "coca_rank": 1858
+            },
+            {
+              "id": 2011,
+              "word": "equal",
+              "pos": "adj., v.",
+              "coca_rank": 1860
+            },
+            {
+              "id": 2012,
+              "word": "lip",
+              "pos": "n.",
+              "coca_rank": 1861
+            },
+            {
+              "id": 2013,
+              "word": "clear",
+              "pos": "v.",
+              "coca_rank": 1869
+            },
+            {
+              "id": 2014,
+              "word": "sight",
+              "pos": "n.",
+              "coca_rank": 1874
+            },
+            {
+              "id": 2015,
+              "word": "release",
+              "pos": "v., n.",
+              "coca_rank": 1878
+            },
+            {
+              "id": 2016,
+              "word": "profit",
+              "pos": "n.",
+              "coca_rank": 1880
+            },
+            {
+              "id": 2017,
+              "word": "challenge",
+              "pos": "n.",
+              "coca_rank": 1881
+            },
+            {
+              "id": 2018,
+              "word": "tape",
+              "pos": "n.",
+              "coca_rank": 1884
+            },
+            {
+              "id": 2019,
+              "word": "official",
+              "pos": "adj.",
+              "coca_rank": 1899
+            },
+            {
+              "id": 2020,
+              "word": "percentage",
+              "pos": "n.",
+              "coca_rank": 1903
+            },
+            {
+              "id": 2021,
+              "word": "honest",
+              "pos": "adj.",
+              "coca_rank": 1907
+            },
+            {
+              "id": 2022,
+              "word": "standard",
+              "pos": "n., adj.",
+              "coca_rank": 1908
+            },
+            {
+              "id": 2023,
+              "word": "beauty",
+              "pos": "n.",
+              "coca_rank": 1919
+            },
+            {
+              "id": 2024,
+              "word": "illegal",
+              "pos": "adj.",
+              "coca_rank": 1936
+            },
+            {
+              "id": 2025,
+              "word": "definition",
+              "pos": "n.",
+              "coca_rank": 1940
+            },
+            {
+              "id": 2026,
+              "word": "album",
+              "pos": "n.",
+              "coca_rank": 1943
+            },
+            {
+              "id": 2027,
+              "word": "eastern",
+              "pos": "adj.",
+              "coca_rank": 1950
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "advanced_2",
+      "level_name": "Advanced 2",
+      "cefr_equivalent": "B1",
+      "description": "Confident communication - handling complex situations",
+      "total_words": 269,
+      "batches": [
+        {
+          "batch_id": 22,
+          "batch_name": "Batch 22",
+          "word_count": 89,
+          "words": [
+            {
+              "id": 2028,
+              "word": "chapter",
+              "pos": "n.",
+              "coca_rank": 1954
+            },
+            {
+              "id": 2029,
+              "word": "bother",
+              "pos": "v.",
+              "coca_rank": 1962
+            },
+            {
+              "id": 2030,
+              "word": "guilty",
+              "pos": "adj.",
+              "coca_rank": 1966
+            },
+            {
+              "id": 2031,
+              "word": "warn",
+              "pos": "v.",
+              "coca_rank": 1967
+            },
+            {
+              "id": 2032,
+              "word": "influence",
+              "pos": "n., v.",
+              "coca_rank": 1968
+            },
+            {
+              "id": 2033,
+              "word": "except",
+              "pos": "conj.",
+              "coca_rank": 1970
+            },
+            {
+              "id": 2034,
+              "word": "climb",
+              "pos": "n.",
+              "coca_rank": 1978
+            },
+            {
+              "id": 2035,
+              "word": "payment",
+              "pos": "n.",
+              "coca_rank": 1981
+            },
+            {
+              "id": 2036,
+              "word": "conclude",
+              "pos": "v.",
+              "coca_rank": 1983
+            },
+            {
+              "id": 2037,
+              "word": "chest",
+              "pos": "n.",
+              "coca_rank": 1989
+            },
+            {
+              "id": 2038,
+              "word": "pleasure",
+              "pos": "n.",
+              "coca_rank": 1995
+            },
+            {
+              "id": 2039,
+              "word": "talent",
+              "pos": "n.",
+              "coca_rank": 1999
+            },
+            {
+              "id": 2040,
+              "word": "necessarily",
+              "pos": "adv.",
+              "coca_rank": 2000
+            },
+            {
+              "id": 2041,
+              "word": "knock",
+              "pos": "n.",
+              "coca_rank": 2005
+            },
+            {
+              "id": 2042,
+              "word": "previously",
+              "pos": "adv.",
+              "coca_rank": 2006
+            },
+            {
+              "id": 2043,
+              "word": "wing",
+              "pos": "n.",
+              "coca_rank": 2007
+            },
+            {
+              "id": 2044,
+              "word": "experiment",
+              "pos": "v.",
+              "coca_rank": 2011
+            },
+            {
+              "id": 2045,
+              "word": "rare",
+              "pos": "adj.",
+              "coca_rank": 2015
+            },
+            {
+              "id": 2046,
+              "word": "northern",
+              "pos": "adj.",
+              "coca_rank": 2021
+            },
+            {
+              "id": 2047,
+              "word": "leaf",
+              "pos": "n.",
+              "coca_rank": 2025
+            },
+            {
+              "id": 2048,
+              "word": "package",
+              "pos": "n.",
+              "coca_rank": 2037
+            },
+            {
+              "id": 2049,
+              "word": "difficulty",
+              "pos": "n.",
+              "coca_rank": 2039
+            },
+            {
+              "id": 2050,
+              "word": "hardly",
+              "pos": "adv.",
+              "coca_rank": 2040
+            },
+            {
+              "id": 2051,
+              "word": "comment",
+              "pos": "v.",
+              "coca_rank": 2045
+            },
+            {
+              "id": 2052,
+              "word": "invest",
+              "pos": "v.",
+              "coca_rank": 2048
+            },
+            {
+              "id": 2053,
+              "word": "personally",
+              "pos": "adv.",
+              "coca_rank": 2049
+            },
+            {
+              "id": 2054,
+              "word": "chain",
+              "pos": "n.",
+              "coca_rank": 2053
+            },
+            {
+              "id": 2055,
+              "word": "convince",
+              "pos": "v.",
+              "coca_rank": 2056
+            },
+            {
+              "id": 2056,
+              "word": "channel",
+              "pos": "n.",
+              "coca_rank": 2057
+            },
+            {
+              "id": 2057,
+              "word": "pray",
+              "pos": "v.",
+              "coca_rank": 2070
+            },
+            {
+              "id": 2058,
+              "word": "improvement",
+              "pos": "n.",
+              "coca_rank": 2071
+            },
+            {
+              "id": 2059,
+              "word": "ought",
+              "pos": "modal v.",
+              "coca_rank": 2073
+            },
+            {
+              "id": 2060,
+              "word": "length",
+              "pos": "n.",
+              "coca_rank": 2078
+            },
+            {
+              "id": 2061,
+              "word": "meanwhile",
+              "pos": "adv.",
+              "coca_rank": 2081
+            },
+            {
+              "id": 2062,
+              "word": "essential",
+              "pos": "adj.",
+              "coca_rank": 2086
+            },
+            {
+              "id": 2063,
+              "word": "proper",
+              "pos": "adj.",
+              "coca_rank": 2095
+            },
+            {
+              "id": 2064,
+              "word": "marketing",
+              "pos": "n.",
+              "coca_rank": 2097
+            },
+            {
+              "id": 2065,
+              "word": "bomb",
+              "pos": "n., v.",
+              "coca_rank": 2100
+            },
+            {
+              "id": 2066,
+              "word": "lack",
+              "pos": "n., v.",
+              "coca_rank": 2103
+            },
+            {
+              "id": 2067,
+              "word": "muscle",
+              "pos": "n.",
+              "coca_rank": 2104
+            },
+            {
+              "id": 2068,
+              "word": "contact",
+              "pos": "n., v.",
+              "coca_rank": 2105
+            },
+            {
+              "id": 2069,
+              "word": "typically",
+              "pos": "adv.",
+              "coca_rank": 2110
+            },
+            {
+              "id": 2070,
+              "word": "spending",
+              "pos": "n.",
+              "coca_rank": 2111
+            },
+            {
+              "id": 2071,
+              "word": "far",
+              "pos": "adj.",
+              "coca_rank": 2114
+            },
+            {
+              "id": 2072,
+              "word": "reject",
+              "pos": "v.",
+              "coca_rank": 2128
+            },
+            {
+              "id": 2073,
+              "word": "contrast",
+              "pos": "n., v.",
+              "coca_rank": 2133
+            },
+            {
+              "id": 2074,
+              "word": "pass",
+              "pos": "n.",
+              "coca_rank": 2138
+            },
+            {
+              "id": 2075,
+              "word": "producer",
+              "pos": "n.",
+              "coca_rank": 2141
+            },
+            {
+              "id": 2076,
+              "word": "account",
+              "pos": "n.",
+              "coca_rank": 2147
+            },
+            {
+              "id": 2077,
+              "word": "living",
+              "pos": "adj., n.",
+              "coca_rank": 2151
+            },
+            {
+              "id": 2078,
+              "word": "comparison",
+              "pos": "n.",
+              "coca_rank": 2153
+            },
+            {
+              "id": 2079,
+              "word": "hand",
+              "pos": "v.",
+              "coca_rank": 2154
+            },
+            {
+              "id": 2080,
+              "word": "solid",
+              "pos": "adj., n.",
+              "coca_rank": 2158
+            },
+            {
+              "id": 2081,
+              "word": "branch",
+              "pos": "n.",
+              "coca_rank": 2159
+            },
+            {
+              "id": 2082,
+              "word": "mad",
+              "pos": "adj.",
+              "coca_rank": 2160
+            },
+            {
+              "id": 2083,
+              "word": "gentleman",
+              "pos": "n.",
+              "coca_rank": 2162
+            },
+            {
+              "id": 2084,
+              "word": "prayer",
+              "pos": "n.",
+              "coca_rank": 2171
+            },
+            {
+              "id": 2085,
+              "word": "frequently",
+              "pos": "adv.",
+              "coca_rank": 2172
+            },
+            {
+              "id": 2086,
+              "word": "click",
+              "pos": "v., n.",
+              "coca_rank": 2177
+            },
+            {
+              "id": 2087,
+              "word": "emotion",
+              "pos": "n.",
+              "coca_rank": 2178
+            },
+            {
+              "id": 2088,
+              "word": "brand",
+              "pos": "n., v.",
+              "coca_rank": 2187
+            },
+            {
+              "id": 2089,
+              "word": "attract",
+              "pos": "v.",
+              "coca_rank": 2200
+            },
+            {
+              "id": 2090,
+              "word": "separate",
+              "pos": "v.",
+              "coca_rank": 2204
+            },
+            {
+              "id": 2091,
+              "word": "breathe",
+              "pos": "v.",
+              "coca_rank": 2205
+            },
+            {
+              "id": 2092,
+              "word": "warning",
+              "pos": "n.",
+              "coca_rank": 2212
+            },
+            {
+              "id": 2093,
+              "word": "quit",
+              "pos": "v.",
+              "coca_rank": 2216
+            },
+            {
+              "id": 2094,
+              "word": "seed",
+              "pos": "n.",
+              "coca_rank": 2218
+            },
+            {
+              "id": 2095,
+              "word": "technical",
+              "pos": "adj.",
+              "coca_rank": 2224
+            },
+            {
+              "id": 2096,
+              "word": "divide",
+              "pos": "v.",
+              "coca_rank": 2239
+            },
+            {
+              "id": 2097,
+              "word": "cream",
+              "pos": "adj.",
+              "coca_rank": 2241
+            },
+            {
+              "id": 2098,
+              "word": "soil",
+              "pos": "n.",
+              "coca_rank": 2244
+            },
+            {
+              "id": 2099,
+              "word": "journey",
+              "pos": "n.",
+              "coca_rank": 2246
+            },
+            {
+              "id": 2100,
+              "word": "perfectly",
+              "pos": "adv.",
+              "coca_rank": 2256
+            },
+            {
+              "id": 2101,
+              "word": "whole",
+              "pos": "n.",
+              "coca_rank": 2265
+            },
+            {
+              "id": 2102,
+              "word": "slow",
+              "pos": "v.",
+              "coca_rank": 2284
+            },
+            {
+              "id": 2103,
+              "word": "whenever",
+              "pos": "conj.",
+              "coca_rank": 2285
+            },
+            {
+              "id": 2104,
+              "word": "entry",
+              "pos": "n.",
+              "coca_rank": 2286
+            },
+            {
+              "id": 2105,
+              "word": "rule",
+              "pos": "v.",
+              "coca_rank": 2292
+            },
+            {
+              "id": 2106,
+              "word": "due",
+              "pos": "adj.",
+              "coca_rank": 2293
+            },
+            {
+              "id": 2107,
+              "word": "benefit",
+              "pos": "v.",
+              "coca_rank": 2295
+            },
+            {
+              "id": 2108,
+              "word": "achievement",
+              "pos": "n.",
+              "coca_rank": 2301
+            },
+            {
+              "id": 2109,
+              "word": "alcohol",
+              "pos": "n.",
+              "coca_rank": 2302
+            },
+            {
+              "id": 2110,
+              "word": "touch",
+              "pos": "n.",
+              "coca_rank": 2305
+            },
+            {
+              "id": 2111,
+              "word": "fairly",
+              "pos": "adv.",
+              "coca_rank": 2314
+            },
+            {
+              "id": 2112,
+              "word": "pour",
+              "pos": "v.",
+              "coca_rank": 2319
+            },
+            {
+              "id": 2113,
+              "word": "immigrant",
+              "pos": "n.",
+              "coca_rank": 2320
+            },
+            {
+              "id": 2114,
+              "word": "unable",
+              "pos": "adj.",
+              "coca_rank": 2325
+            },
+            {
+              "id": 2115,
+              "word": "violent",
+              "pos": "adj.",
+              "coca_rank": 2329
+            },
+            {
+              "id": 2116,
+              "word": "symptom",
+              "pos": "n.",
+              "coca_rank": 2335
+            }
+          ]
+        },
+        {
+          "batch_id": 23,
+          "batch_name": "Batch 23",
+          "word_count": 89,
+          "words": [
+            {
+              "id": 2117,
+              "word": "complaint",
+              "pos": "n.",
+              "coca_rank": 2337
+            },
+            {
+              "id": 2118,
+              "word": "supporter",
+              "pos": "n.",
+              "coca_rank": 2341
+            },
+            {
+              "id": 2119,
+              "word": "pretend",
+              "pos": "v.",
+              "coca_rank": 2344
+            },
+            {
+              "id": 2120,
+              "word": "childhood",
+              "pos": "n.",
+              "coca_rank": 2346
+            },
+            {
+              "id": 2121,
+              "word": "poverty",
+              "pos": "n.",
+              "coca_rank": 2353
+            },
+            {
+              "id": 2122,
+              "word": "shift",
+              "pos": "n.",
+              "coca_rank": 2360
+            },
+            {
+              "id": 2123,
+              "word": "range",
+              "pos": "n.",
+              "coca_rank": 2380
+            },
+            {
+              "id": 2124,
+              "word": "layer",
+              "pos": "n.",
+              "coca_rank": 2385
+            },
+            {
+              "id": 2125,
+              "word": "passion",
+              "pos": "n.",
+              "coca_rank": 2388
+            },
+            {
+              "id": 2126,
+              "word": "block",
+              "pos": "v.",
+              "coca_rank": 2389
+            },
+            {
+              "id": 2127,
+              "word": "highway",
+              "pos": "n.",
+              "coca_rank": 2390
+            },
+            {
+              "id": 2128,
+              "word": "win",
+              "pos": "n.",
+              "coca_rank": 2397
+            },
+            {
+              "id": 2129,
+              "word": "mystery",
+              "pos": "n.",
+              "coca_rank": 2398
+            },
+            {
+              "id": 2130,
+              "word": "host",
+              "pos": "n.",
+              "coca_rank": 2403
+            },
+            {
+              "id": 2131,
+              "word": "sharp",
+              "pos": "adj.",
+              "coca_rank": 2408
+            },
+            {
+              "id": 2132,
+              "word": "substance",
+              "pos": "n.",
+              "coca_rank": 2409
+            },
+            {
+              "id": 2133,
+              "word": "atmosphere",
+              "pos": "n.",
+              "coca_rank": 2410
+            },
+            {
+              "id": 2134,
+              "word": "cable",
+              "pos": "n.",
+              "coca_rank": 2416
+            },
+            {
+              "id": 2135,
+              "word": "silent",
+              "pos": "adj.",
+              "coca_rank": 2424
+            },
+            {
+              "id": 2136,
+              "word": "total",
+              "pos": "adj., n.",
+              "coca_rank": 2427
+            },
+            {
+              "id": 2137,
+              "word": "consist",
+              "pos": "v.",
+              "coca_rank": 2433
+            },
+            {
+              "id": 2138,
+              "word": "surely",
+              "pos": "adv.",
+              "coca_rank": 2435
+            },
+            {
+              "id": 2139,
+              "word": "immediate",
+              "pos": "adj.",
+              "coca_rank": 2438
+            },
+            {
+              "id": 2140,
+              "word": "engineering",
+              "pos": "n.",
+              "coca_rank": 2443
+            },
+            {
+              "id": 2141,
+              "word": "bury",
+              "pos": "v.",
+              "coca_rank": 2446
+            },
+            {
+              "id": 2142,
+              "word": "still",
+              "pos": "adj.",
+              "coca_rank": 2447
+            },
+            {
+              "id": 2143,
+              "word": "flag",
+              "pos": "n.",
+              "coca_rank": 2450
+            },
+            {
+              "id": 2144,
+              "word": "coach",
+              "pos": "v.",
+              "coca_rank": 2456
+            },
+            {
+              "id": 2145,
+              "word": "assist",
+              "pos": "v.",
+              "coca_rank": 2467
+            },
+            {
+              "id": 2146,
+              "word": "entertainment",
+              "pos": "n.",
+              "coca_rank": 2472
+            },
+            {
+              "id": 2147,
+              "word": "count",
+              "pos": "n.",
+              "coca_rank": 2481
+            },
+            {
+              "id": 2148,
+              "word": "priest",
+              "pos": "n.",
+              "coca_rank": 2484
+            },
+            {
+              "id": 2149,
+              "word": "employment",
+              "pos": "n.",
+              "coca_rank": 2485
+            },
+            {
+              "id": 2150,
+              "word": "waste",
+              "pos": "n., v., adj.",
+              "coca_rank": 2486
+            },
+            {
+              "id": 2151,
+              "word": "practical",
+              "pos": "adj.",
+              "coca_rank": 2496
+            },
+            {
+              "id": 2152,
+              "word": "musical",
+              "pos": "n.",
+              "coca_rank": 2498
+            },
+            {
+              "id": 2153,
+              "word": "prince",
+              "pos": "n.",
+              "coca_rank": 2502
+            },
+            {
+              "id": 2154,
+              "word": "trade",
+              "pos": "n., v.",
+              "coca_rank": 2505
+            },
+            {
+              "id": 2155,
+              "word": "mine",
+              "pos": "(hole in the ground) n.",
+              "coca_rank": 2511
+            },
+            {
+              "id": 2156,
+              "word": "iron",
+              "pos": "n., v.",
+              "coca_rank": 2517
+            },
+            {
+              "id": 2157,
+              "word": "sand",
+              "pos": "n.",
+              "coca_rank": 2522
+            },
+            {
+              "id": 2158,
+              "word": "planning",
+              "pos": "n.",
+              "coca_rank": 2524
+            },
+            {
+              "id": 2159,
+              "word": "leading",
+              "pos": "adj.",
+              "coca_rank": 2525
+            },
+            {
+              "id": 2160,
+              "word": "occasion",
+              "pos": "n.",
+              "coca_rank": 2530
+            },
+            {
+              "id": 2161,
+              "word": "approximately",
+              "pos": "adv.",
+              "coca_rank": 2532
+            },
+            {
+              "id": 2162,
+              "word": "retire",
+              "pos": "v.",
+              "coca_rank": 2533
+            },
+            {
+              "id": 2163,
+              "word": "cap",
+              "pos": "n.",
+              "coca_rank": 2536
+            },
+            {
+              "id": 2164,
+              "word": "attach",
+              "pos": "v.",
+              "coca_rank": 2538
+            },
+            {
+              "id": 2165,
+              "word": "intention",
+              "pos": "n.",
+              "coca_rank": 2540
+            },
+            {
+              "id": 2166,
+              "word": "strongly",
+              "pos": "adv.",
+              "coca_rank": 2545
+            },
+            {
+              "id": 2167,
+              "word": "pot",
+              "pos": "n.",
+              "coca_rank": 2548
+            },
+            {
+              "id": 2168,
+              "word": "rarely",
+              "pos": "adv.",
+              "coca_rank": 2553
+            },
+            {
+              "id": 2169,
+              "word": "doubt",
+              "pos": "n., v.",
+              "coca_rank": 2555
+            },
+            {
+              "id": 2170,
+              "word": "valuable",
+              "pos": "adj.",
+              "coca_rank": 2560
+            },
+            {
+              "id": 2171,
+              "word": "slave",
+              "pos": "n.",
+              "coca_rank": 2564
+            },
+            {
+              "id": 2172,
+              "word": "effectively",
+              "pos": "adv.",
+              "coca_rank": 2566
+            },
+            {
+              "id": 2173,
+              "word": "wonder",
+              "pos": "v., n.",
+              "coca_rank": 2569
+            },
+            {
+              "id": 2174,
+              "word": "innocent",
+              "pos": "adj.",
+              "coca_rank": 2585
+            },
+            {
+              "id": 2175,
+              "word": "hurricane",
+              "pos": "n.",
+              "coca_rank": 2592
+            },
+            {
+              "id": 2176,
+              "word": "equally",
+              "pos": "adv.",
+              "coca_rank": 2602
+            },
+            {
+              "id": 2177,
+              "word": "ahead",
+              "pos": "adv.",
+              "coca_rank": 2614
+            },
+            {
+              "id": 2178,
+              "word": "bend",
+              "pos": "v., n.",
+              "coca_rank": 2615
+            },
+            {
+              "id": 2179,
+              "word": "dust",
+              "pos": "n.",
+              "coca_rank": 2635
+            },
+            {
+              "id": 2180,
+              "word": "mood",
+              "pos": "n.",
+              "coca_rank": 2639
+            },
+            {
+              "id": 2181,
+              "word": "throat",
+              "pos": "n.",
+              "coca_rank": 2650
+            },
+            {
+              "id": 2182,
+              "word": "giant",
+              "pos": "adj., n.",
+              "coca_rank": 2662
+            },
+            {
+              "id": 2183,
+              "word": "graduate",
+              "pos": "n., v.",
+              "coca_rank": 2665
+            },
+            {
+              "id": 2184,
+              "word": "competitive",
+              "pos": "adj.",
+              "coca_rank": 2670
+            },
+            {
+              "id": 2185,
+              "word": "odd",
+              "pos": "adj.",
+              "coca_rank": 2680
+            },
+            {
+              "id": 2186,
+              "word": "stranger",
+              "pos": "n.",
+              "coca_rank": 2682
+            },
+            {
+              "id": 2187,
+              "word": "plot",
+              "pos": "n.",
+              "coca_rank": 2697
+            },
+            {
+              "id": 2188,
+              "word": "prisoner",
+              "pos": "n.",
+              "coca_rank": 2700
+            },
+            {
+              "id": 2189,
+              "word": "drop",
+              "pos": "n.",
+              "coca_rank": 2714
+            },
+            {
+              "id": 2190,
+              "word": "pack",
+              "pos": "n.",
+              "coca_rank": 2715
+            },
+            {
+              "id": 2191,
+              "word": "poem",
+              "pos": "n.",
+              "coca_rank": 2720
+            },
+            {
+              "id": 2192,
+              "word": "weigh",
+              "pos": "v.",
+              "coca_rank": 2722
+            },
+            {
+              "id": 2193,
+              "word": "originally",
+              "pos": "adv.",
+              "coca_rank": 2730
+            },
+            {
+              "id": 2194,
+              "word": "properly",
+              "pos": "adv.",
+              "coca_rank": 2733
+            },
+            {
+              "id": 2195,
+              "word": "recommendation",
+              "pos": "n.",
+              "coca_rank": 2738
+            },
+            {
+              "id": 2196,
+              "word": "impression",
+              "pos": "n.",
+              "coca_rank": 2742
+            },
+            {
+              "id": 2197,
+              "word": "battery",
+              "pos": "n.",
+              "coca_rank": 2744
+            },
+            {
+              "id": 2198,
+              "word": "narrative",
+              "pos": "n., adj.",
+              "coca_rank": 2745
+            },
+            {
+              "id": 2199,
+              "word": "heavily",
+              "pos": "adv.",
+              "coca_rank": 2753
+            },
+            {
+              "id": 2200,
+              "word": "string",
+              "pos": "n.",
+              "coca_rank": 2757
+            },
+            {
+              "id": 2201,
+              "word": "trick",
+              "pos": "n., v.",
+              "coca_rank": 2776
+            },
+            {
+              "id": 2202,
+              "word": "arrest",
+              "pos": "v., n.",
+              "coca_rank": 2786
+            },
+            {
+              "id": 2203,
+              "word": "apologize",
+              "pos": "v.",
+              "coca_rank": 2792
+            },
+            {
+              "id": 2204,
+              "word": "ghost",
+              "pos": "n.",
+              "coca_rank": 2796
+            },
+            {
+              "id": 2205,
+              "word": "alternative",
+              "pos": "adj.",
+              "coca_rank": 2806
+            }
+          ]
+        },
+        {
+          "batch_id": 24,
+          "batch_name": "Batch 24",
+          "word_count": 91,
+          "words": [
+            {
+              "id": 2206,
+              "word": "viewer",
+              "pos": "n.",
+              "coca_rank": 2816
+            },
+            {
+              "id": 2207,
+              "word": "related",
+              "pos": "adj.",
+              "coca_rank": 2829
+            },
+            {
+              "id": 2208,
+              "word": "request",
+              "pos": "v.",
+              "coca_rank": 2840
+            },
+            {
+              "id": 2209,
+              "word": "roll",
+              "pos": "v., n.",
+              "coca_rank": 2841
+            },
+            {
+              "id": 2210,
+              "word": "historic",
+              "pos": "adj.",
+              "coca_rank": 2845
+            },
+            {
+              "id": 2211,
+              "word": "rough",
+              "pos": "adj.",
+              "coca_rank": 2847
+            },
+            {
+              "id": 2212,
+              "word": "race",
+              "pos": "(of people) n.",
+              "coca_rank": 2849
+            },
+            {
+              "id": 2213,
+              "word": "royal",
+              "pos": "adj.",
+              "coca_rank": 2852
+            },
+            {
+              "id": 2214,
+              "word": "champion",
+              "pos": "n.",
+              "coca_rank": 2865
+            },
+            {
+              "id": 2215,
+              "word": "advise",
+              "pos": "v.",
+              "coca_rank": 2868
+            },
+            {
+              "id": 2216,
+              "word": "advanced",
+              "pos": "adj.",
+              "coca_rank": 2870
+            },
+            {
+              "id": 2217,
+              "word": "unlikely",
+              "pos": "adj.",
+              "coca_rank": 2871
+            },
+            {
+              "id": 2218,
+              "word": "access",
+              "pos": "n., v.",
+              "coca_rank": 2875
+            },
+            {
+              "id": 2219,
+              "word": "horrible",
+              "pos": "adj.",
+              "coca_rank": 2876
+            },
+            {
+              "id": 2220,
+              "word": "presentation",
+              "pos": "n.",
+              "coca_rank": 2887
+            },
+            {
+              "id": 2221,
+              "word": "supply",
+              "pos": "n., v.",
+              "coca_rank": 2888
+            },
+            {
+              "id": 2222,
+              "word": "stadium",
+              "pos": "n.",
+              "coca_rank": 2892
+            },
+            {
+              "id": 2223,
+              "word": "translate",
+              "pos": "v.",
+              "coca_rank": 2893
+            },
+            {
+              "id": 2224,
+              "word": "naturally",
+              "pos": "adv.",
+              "coca_rank": 2899
+            },
+            {
+              "id": 2225,
+              "word": "mix",
+              "pos": "v., n.",
+              "coca_rank": 2901
+            },
+            {
+              "id": 2226,
+              "word": "smooth",
+              "pos": "adj.",
+              "coca_rank": 2903
+            },
+            {
+              "id": 2227,
+              "word": "worth",
+              "pos": "adj.",
+              "coca_rank": 2926
+            },
+            {
+              "id": 2228,
+              "word": "corn",
+              "pos": "n.",
+              "coca_rank": 2934
+            },
+            {
+              "id": 2229,
+              "word": "neither",
+              "pos": "adv.",
+              "coca_rank": 2935
+            },
+            {
+              "id": 2230,
+              "word": "hurry",
+              "pos": "n., v.",
+              "coca_rank": 2937
+            },
+            {
+              "id": 2231,
+              "word": "consume",
+              "pos": "v.",
+              "coca_rank": 2953
+            },
+            {
+              "id": 2232,
+              "word": "similarly",
+              "pos": "adv.",
+              "coca_rank": 2957
+            },
+            {
+              "id": 2233,
+              "word": "stick",
+              "pos": "(push into/attach) v.",
+              "coca_rank": 2958
+            },
+            {
+              "id": 2234,
+              "word": "unemployment",
+              "pos": "n.",
+              "coca_rank": 2967
+            },
+            {
+              "id": 2235,
+              "word": "laboratory",
+              "pos": "n.",
+              "coca_rank": 2970
+            },
+            {
+              "id": 2236,
+              "word": "confident",
+              "pos": "adj.",
+              "coca_rank": 2977
+            },
+            {
+              "id": 2237,
+              "word": "quote",
+              "pos": "v., n.",
+              "coca_rank": 2980
+            },
+            {
+              "id": 2238,
+              "word": "highlight",
+              "pos": "v., n.",
+              "coca_rank": 2983
+            },
+            {
+              "id": 2239,
+              "word": "freeze",
+              "pos": "v.",
+              "coca_rank": 2990
+            },
+            {
+              "id": 2240,
+              "word": "mixture",
+              "pos": "n.",
+              "coca_rank": 2997
+            },
+            {
+              "id": 2241,
+              "word": "murder",
+              "pos": "n., v.",
+              "coca_rank": 2998
+            },
+            {
+              "id": 2242,
+              "word": "ingredient",
+              "pos": "n.",
+              "coca_rank": 3004
+            },
+            {
+              "id": 2243,
+              "word": "since",
+              "pos": "adv.",
+              "coca_rank": 3005
+            },
+            {
+              "id": 2244,
+              "word": "qualify",
+              "pos": "v.",
+              "coca_rank": 3007
+            },
+            {
+              "id": 2245,
+              "word": "concentrate",
+              "pos": "v.",
+              "coca_rank": 3011
+            },
+            {
+              "id": 2246,
+              "word": "tube",
+              "pos": "n.",
+              "coca_rank": 3015
+            },
+            {
+              "id": 2247,
+              "word": "regularly",
+              "pos": "adv.",
+              "coca_rank": 3018
+            },
+            {
+              "id": 2248,
+              "word": "ugly",
+              "pos": "adj.",
+              "coca_rank": 3019
+            },
+            {
+              "id": 2249,
+              "word": "tongue",
+              "pos": "n.",
+              "coca_rank": 3022
+            },
+            {
+              "id": 2250,
+              "word": "store",
+              "pos": "v.",
+              "coca_rank": 3039
+            },
+            {
+              "id": 2251,
+              "word": "port",
+              "pos": "n.",
+              "coca_rank": 3060
+            },
+            {
+              "id": 2252,
+              "word": "market",
+              "pos": "v.",
+              "coca_rank": 3062
+            },
+            {
+              "id": 2253,
+              "word": "appointment",
+              "pos": "n.",
+              "coca_rank": 3069
+            },
+            {
+              "id": 2254,
+              "word": "mainly",
+              "pos": "adv.",
+              "coca_rank": 3087
+            },
+            {
+              "id": 2255,
+              "word": "ceiling",
+              "pos": "n.",
+              "coca_rank": 3088
+            },
+            {
+              "id": 2256,
+              "word": "dirt",
+              "pos": "n.",
+              "coca_rank": 3098
+            },
+            {
+              "id": 2257,
+              "word": "bell",
+              "pos": "n.",
+              "coca_rank": 3100
+            },
+            {
+              "id": 2258,
+              "word": "damage",
+              "pos": "n., v.",
+              "coca_rank": 3102
+            },
+            {
+              "id": 2259,
+              "word": "ceremony",
+              "pos": "n.",
+              "coca_rank": 3103
+            },
+            {
+              "id": 2260,
+              "word": "clue",
+              "pos": "n.",
+              "coca_rank": 3104
+            },
+            {
+              "id": 2261,
+              "word": "custom",
+              "pos": "n.",
+              "coca_rank": 3113
+            },
+            {
+              "id": 2262,
+              "word": "double",
+              "pos": "adv.",
+              "coca_rank": 3116
+            },
+            {
+              "id": 2263,
+              "word": "script",
+              "pos": "n.",
+              "coca_rank": 3122
+            },
+            {
+              "id": 2264,
+              "word": "educate",
+              "pos": "v.",
+              "coca_rank": 3123
+            },
+            {
+              "id": 2265,
+              "word": "risk",
+              "pos": "n., v.",
+              "coca_rank": 3125
+            },
+            {
+              "id": 2266,
+              "word": "update",
+              "pos": "v., n.",
+              "coca_rank": 3131
+            },
+            {
+              "id": 2267,
+              "word": "wave",
+              "pos": "v.",
+              "coca_rank": 3138
+            },
+            {
+              "id": 2268,
+              "word": "friendship",
+              "pos": "n.",
+              "coca_rank": 3140
+            },
+            {
+              "id": 2269,
+              "word": "fence",
+              "pos": "n.",
+              "coca_rank": 3148
+            },
+            {
+              "id": 2270,
+              "word": "balance",
+              "pos": "n., v.",
+              "coca_rank": 3159
+            },
+            {
+              "id": 2271,
+              "word": "drunk",
+              "pos": "adj.",
+              "coca_rank": 3162
+            },
+            {
+              "id": 2272,
+              "word": "swim",
+              "pos": "n.",
+              "coca_rank": 3163
+            },
+            {
+              "id": 2273,
+              "word": "pan",
+              "pos": "n.",
+              "coca_rank": 3168
+            },
+            {
+              "id": 2274,
+              "word": "silly",
+              "pos": "adj.",
+              "coca_rank": 3170
+            },
+            {
+              "id": 2275,
+              "word": "flow",
+              "pos": "v., n.",
+              "coca_rank": 3175
+            },
+            {
+              "id": 2276,
+              "word": "remote",
+              "pos": "adj.",
+              "coca_rank": 3176
+            },
+            {
+              "id": 2277,
+              "word": "impressive",
+              "pos": "adj.",
+              "coca_rank": 3194
+            },
+            {
+              "id": 2278,
+              "word": "bake",
+              "pos": "v.",
+              "coca_rank": 3195
+            },
+            {
+              "id": 2279,
+              "word": "spot",
+              "pos": "n.",
+              "coca_rank": 3216
+            },
+            {
+              "id": 2280,
+              "word": "chemical",
+              "pos": "adj., n.",
+              "coca_rank": 3222
+            },
+            {
+              "id": 2281,
+              "word": "horror",
+              "pos": "n.",
+              "coca_rank": 3225
+            },
+            {
+              "id": 2282,
+              "word": "tail",
+              "pos": "n.",
+              "coca_rank": 3232
+            },
+            {
+              "id": 2283,
+              "word": "criminal",
+              "pos": "adj.",
+              "coca_rank": 3249
+            },
+            {
+              "id": 2284,
+              "word": "wrong",
+              "pos": "adv.",
+              "coca_rank": 3254
+            },
+            {
+              "id": 2285,
+              "word": "profession",
+              "pos": "n.",
+              "coca_rank": 3256
+            },
+            {
+              "id": 2286,
+              "word": "incredibly",
+              "pos": "adv.",
+              "coca_rank": 3257
+            },
+            {
+              "id": 2287,
+              "word": "killing",
+              "pos": "n.",
+              "coca_rank": 3259
+            },
+            {
+              "id": 2288,
+              "word": "photographer",
+              "pos": "n.",
+              "coca_rank": 3261
+            },
+            {
+              "id": 2289,
+              "word": "assignment",
+              "pos": "n.",
+              "coca_rank": 3275
+            },
+            {
+              "id": 2290,
+              "word": "punishment",
+              "pos": "n.",
+              "coca_rank": 3288
+            },
+            {
+              "id": 2291,
+              "word": "romantic",
+              "pos": "adj.",
+              "coca_rank": 3292
+            },
+            {
+              "id": 2292,
+              "word": "poetry",
+              "pos": "n.",
+              "coca_rank": 3299
+            },
+            {
+              "id": 2293,
+              "word": "confuse",
+              "pos": "v.",
+              "coca_rank": 3303
+            },
+            {
+              "id": 2294,
+              "word": "coal",
+              "pos": "n.",
+              "coca_rank": 3306
+            },
+            {
+              "id": 2295,
+              "word": "exhibition",
+              "pos": "n.",
+              "coca_rank": 3328
+            },
+            {
+              "id": 2296,
+              "word": "portrait",
+              "pos": "n.",
+              "coca_rank": 3331
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "advanced_3",
+      "level_name": "Advanced 3",
+      "cefr_equivalent": "B1",
+      "description": "Upper intermediate - near-fluent expression",
+      "total_words": 269,
+      "batches": [
+        {
+          "batch_id": 25,
+          "batch_name": "Batch 25",
+          "word_count": 89,
+          "words": [
+            {
+              "id": 2297,
+              "word": "painful",
+              "pos": "adj.",
+              "coca_rank": 3335
+            },
+            {
+              "id": 2298,
+              "word": "calm",
+              "pos": "adj., v., n.",
+              "coca_rank": 3342
+            },
+            {
+              "id": 2299,
+              "word": "headline",
+              "pos": "n.",
+              "coca_rank": 3353
+            },
+            {
+              "id": 2300,
+              "word": "successfully",
+              "pos": "adv.",
+              "coca_rank": 3355
+            },
+            {
+              "id": 2301,
+              "word": "entrance",
+              "pos": "n.",
+              "coca_rank": 3359
+            },
+            {
+              "id": 2302,
+              "word": "relative",
+              "pos": "adj., n.",
+              "coca_rank": 3363
+            },
+            {
+              "id": 2303,
+              "word": "happiness",
+              "pos": "n.",
+              "coca_rank": 3365
+            },
+            {
+              "id": 2304,
+              "word": "explosion",
+              "pos": "n.",
+              "coca_rank": 3375
+            },
+            {
+              "id": 2305,
+              "word": "grateful",
+              "pos": "adj.",
+              "coca_rank": 3381
+            },
+            {
+              "id": 2306,
+              "word": "magic",
+              "pos": "n., adj.",
+              "coca_rank": 3382
+            },
+            {
+              "id": 2307,
+              "word": "suit",
+              "pos": "v.",
+              "coca_rank": 3383
+            },
+            {
+              "id": 2308,
+              "word": "shelf",
+              "pos": "n.",
+              "coca_rank": 3385
+            },
+            {
+              "id": 2309,
+              "word": "garage",
+              "pos": "n.",
+              "coca_rank": 3389
+            },
+            {
+              "id": 2310,
+              "word": "diamond",
+              "pos": "n.",
+              "coca_rank": 3404
+            },
+            {
+              "id": 2311,
+              "word": "shine",
+              "pos": "v.",
+              "coca_rank": 3411
+            },
+            {
+              "id": 2312,
+              "word": "cheat",
+              "pos": "v., n.",
+              "coca_rank": 3415
+            },
+            {
+              "id": 2313,
+              "word": "pipe",
+              "pos": "n.",
+              "coca_rank": 3428
+            },
+            {
+              "id": 2314,
+              "word": "celebration",
+              "pos": "n.",
+              "coca_rank": 3430
+            },
+            {
+              "id": 2315,
+              "word": "announcement",
+              "pos": "n.",
+              "coca_rank": 3456
+            },
+            {
+              "id": 2316,
+              "word": "tire",
+              "pos": "n.",
+              "coca_rank": 3457
+            },
+            {
+              "id": 2317,
+              "word": "prediction",
+              "pos": "n.",
+              "coca_rank": 3461
+            },
+            {
+              "id": 2318,
+              "word": "poet",
+              "pos": "n.",
+              "coca_rank": 3471
+            },
+            {
+              "id": 2319,
+              "word": "explode",
+              "pos": "v.",
+              "coca_rank": 3475
+            },
+            {
+              "id": 2320,
+              "word": "cool",
+              "pos": "v.",
+              "coca_rank": 3476
+            },
+            {
+              "id": 2321,
+              "word": "tight",
+              "pos": "adj.",
+              "coca_rank": 3481
+            },
+            {
+              "id": 2322,
+              "word": "secondary",
+              "pos": "adj.",
+              "coca_rank": 3494
+            },
+            {
+              "id": 2323,
+              "word": "currency",
+              "pos": "n.",
+              "coca_rank": 3511
+            },
+            {
+              "id": 2324,
+              "word": "tip",
+              "pos": "v.",
+              "coca_rank": 3513
+            },
+            {
+              "id": 2325,
+              "word": "robot",
+              "pos": "n.",
+              "coca_rank": 3521
+            },
+            {
+              "id": 2326,
+              "word": "glove",
+              "pos": "n.",
+              "coca_rank": 3527
+            },
+            {
+              "id": 2327,
+              "word": "summary",
+              "pos": "n.",
+              "coca_rank": 3533
+            },
+            {
+              "id": 2328,
+              "word": "leather",
+              "pos": "n.",
+              "coca_rank": 3535
+            },
+            {
+              "id": 2329,
+              "word": "function",
+              "pos": "n.",
+              "coca_rank": 3538
+            },
+            {
+              "id": 2330,
+              "word": "net",
+              "pos": "n.",
+              "coca_rank": 3546
+            },
+            {
+              "id": 2331,
+              "word": "complex",
+              "pos": "adj.",
+              "coca_rank": 3549
+            },
+            {
+              "id": 2332,
+              "word": "uncomfortable",
+              "pos": "adj.",
+              "coca_rank": 3557
+            },
+            {
+              "id": 2333,
+              "word": "pale",
+              "pos": "adj.",
+              "coca_rank": 3562
+            },
+            {
+              "id": 2334,
+              "word": "tent",
+              "pos": "n.",
+              "coca_rank": 3563
+            },
+            {
+              "id": 2335,
+              "word": "automatically",
+              "pos": "adv.",
+              "coca_rank": 3569
+            },
+            {
+              "id": 2336,
+              "word": "fighting",
+              "pos": "n.",
+              "coca_rank": 3570
+            },
+            {
+              "id": 2337,
+              "word": "grain",
+              "pos": "n.",
+              "coca_rank": 3574
+            },
+            {
+              "id": 2338,
+              "word": "warm",
+              "pos": "v.",
+              "coca_rank": 3580
+            },
+            {
+              "id": 2339,
+              "word": "admire",
+              "pos": "v.",
+              "coca_rank": 3588
+            },
+            {
+              "id": 2340,
+              "word": "donate",
+              "pos": "v.",
+              "coca_rank": 3630
+            },
+            {
+              "id": 2341,
+              "word": "toe",
+              "pos": "n.",
+              "coca_rank": 3632
+            },
+            {
+              "id": 2342,
+              "word": "favor",
+              "pos": "n.",
+              "coca_rank": 3637
+            },
+            {
+              "id": 2343,
+              "word": "rope",
+              "pos": "n.",
+              "coca_rank": 3649
+            },
+            {
+              "id": 2344,
+              "word": "reliable",
+              "pos": "adj.",
+              "coca_rank": 3650
+            },
+            {
+              "id": 2345,
+              "word": "label",
+              "pos": "n., v.",
+              "coca_rank": 3651
+            },
+            {
+              "id": 2346,
+              "word": "bubble",
+              "pos": "n.",
+              "coca_rank": 3656
+            },
+            {
+              "id": 2347,
+              "word": "princess",
+              "pos": "n.",
+              "coca_rank": 3659
+            },
+            {
+              "id": 2348,
+              "word": "primary",
+              "pos": "adj.",
+              "coca_rank": 3666
+            },
+            {
+              "id": 2349,
+              "word": "arrival",
+              "pos": "n.",
+              "coca_rank": 3672
+            },
+            {
+              "id": 2350,
+              "word": "nail",
+              "pos": "n.",
+              "coca_rank": 3678
+            },
+            {
+              "id": 2351,
+              "word": "hunt",
+              "pos": "v.",
+              "coca_rank": 3693
+            },
+            {
+              "id": 2352,
+              "word": "kiss",
+              "pos": "v., n.",
+              "coca_rank": 3697
+            },
+            {
+              "id": 2353,
+              "word": "mess",
+              "pos": "n.",
+              "coca_rank": 3715
+            },
+            {
+              "id": 2354,
+              "word": "punish",
+              "pos": "v.",
+              "coca_rank": 3716
+            },
+            {
+              "id": 2355,
+              "word": "competitor",
+              "pos": "n.",
+              "coca_rank": 3722
+            },
+            {
+              "id": 2356,
+              "word": "reservation",
+              "pos": "n.",
+              "coca_rank": 3742
+            },
+            {
+              "id": 2357,
+              "word": "disappointed",
+              "pos": "adj.",
+              "coca_rank": 3744
+            },
+            {
+              "id": 2358,
+              "word": "costume",
+              "pos": "n.",
+              "coca_rank": 3758
+            },
+            {
+              "id": 2359,
+              "word": "helicopter",
+              "pos": "n.",
+              "coca_rank": 3776
+            },
+            {
+              "id": 2360,
+              "word": "ours",
+              "pos": "pron.",
+              "coca_rank": 3791
+            },
+            {
+              "id": 2361,
+              "word": "written",
+              "pos": "adj.",
+              "coca_rank": 3793
+            },
+            {
+              "id": 2362,
+              "word": "injure",
+              "pos": "v.",
+              "coca_rank": 3796
+            },
+            {
+              "id": 2363,
+              "word": "unlike",
+              "pos": "prep.",
+              "coca_rank": 3810
+            },
+            {
+              "id": 2364,
+              "word": "fascinating",
+              "pos": "adj.",
+              "coca_rank": 3811
+            },
+            {
+              "id": 2365,
+              "word": "daily",
+              "pos": "adv.",
+              "coca_rank": 3814
+            },
+            {
+              "id": 2366,
+              "word": "container",
+              "pos": "n.",
+              "coca_rank": 3816
+            },
+            {
+              "id": 2367,
+              "word": "stuff",
+              "pos": "n.",
+              "coca_rank": 3818
+            },
+            {
+              "id": 2368,
+              "word": "documentary",
+              "pos": "n.",
+              "coca_rank": 3828
+            },
+            {
+              "id": 2369,
+              "word": "alarm",
+              "pos": "n.",
+              "coca_rank": 3833
+            },
+            {
+              "id": 2370,
+              "word": "fitness",
+              "pos": "n.",
+              "coca_rank": 3840
+            },
+            {
+              "id": 2371,
+              "word": "addition",
+              "pos": "n.",
+              "coca_rank": 3858
+            },
+            {
+              "id": 2372,
+              "word": "brave",
+              "pos": "adj.",
+              "coca_rank": 3863
+            },
+            {
+              "id": 2373,
+              "word": "powder",
+              "pos": "n.",
+              "coca_rank": 3867
+            },
+            {
+              "id": 2374,
+              "word": "this",
+              "pos": "adv.",
+              "coca_rank": 3871
+            },
+            {
+              "id": 2375,
+              "word": "servant",
+              "pos": "n.",
+              "coca_rank": 3881
+            },
+            {
+              "id": 2376,
+              "word": "gentle",
+              "pos": "adj.",
+              "coca_rank": 3893
+            },
+            {
+              "id": 2377,
+              "word": "lonely",
+              "pos": "adj.",
+              "coca_rank": 3899
+            },
+            {
+              "id": 2378,
+              "word": "aim",
+              "pos": "v., n.",
+              "coca_rank": 3922
+            },
+            {
+              "id": 2379,
+              "word": "bite",
+              "pos": "v., n.",
+              "coca_rank": 3924
+            },
+            {
+              "id": 2380,
+              "word": "destination",
+              "pos": "n.",
+              "coca_rank": 3929
+            },
+            {
+              "id": 2381,
+              "word": "protest",
+              "pos": "n., v.",
+              "coca_rank": 3937
+            },
+            {
+              "id": 2382,
+              "word": "till",
+              "pos": "conj./prep.",
+              "coca_rank": 3950
+            },
+            {
+              "id": 2383,
+              "word": "principal",
+              "pos": "n.",
+              "coca_rank": 3953
+            },
+            {
+              "id": 2384,
+              "word": "persuade",
+              "pos": "v.",
+              "coca_rank": 3962
+            },
+            {
+              "id": 2385,
+              "word": "translation",
+              "pos": "n.",
+              "coca_rank": 3969
+            }
+          ]
+        },
+        {
+          "batch_id": 26,
+          "batch_name": "Batch 26",
+          "word_count": 89,
+          "words": [
+            {
+              "id": 2386,
+              "word": "exit",
+              "pos": "n.",
+              "coca_rank": 3983
+            },
+            {
+              "id": 2387,
+              "word": "volunteer",
+              "pos": "n., v.",
+              "coca_rank": 3988
+            },
+            {
+              "id": 2388,
+              "word": "peaceful",
+              "pos": "adj.",
+              "coca_rank": 4000
+            },
+            {
+              "id": 2389,
+              "word": "upset",
+              "pos": "adj., v.",
+              "coca_rank": 4001
+            },
+            {
+              "id": 2390,
+              "word": "guard",
+              "pos": "n., v.",
+              "coca_rank": 4015
+            },
+            {
+              "id": 2391,
+              "word": "talented",
+              "pos": "adj.",
+              "coca_rank": 4025
+            },
+            {
+              "id": 2392,
+              "word": "award",
+              "pos": "v.",
+              "coca_rank": 4039
+            },
+            {
+              "id": 2393,
+              "word": "excitement",
+              "pos": "n.",
+              "coca_rank": 4040
+            },
+            {
+              "id": 2394,
+              "word": "cotton",
+              "pos": "n.",
+              "coca_rank": 4052
+            },
+            {
+              "id": 2395,
+              "word": "program",
+              "pos": "v.",
+              "coca_rank": 4055
+            },
+            {
+              "id": 2396,
+              "word": "shell",
+              "pos": "n.",
+              "coca_rank": 4062
+            },
+            {
+              "id": 2397,
+              "word": "frame",
+              "pos": "n., v.",
+              "coca_rank": 4064
+            },
+            {
+              "id": 2398,
+              "word": "ban",
+              "pos": "v., n.",
+              "coca_rank": 4069
+            },
+            {
+              "id": 2399,
+              "word": "value",
+              "pos": "n.",
+              "coca_rank": 4072
+            },
+            {
+              "id": 2400,
+              "word": "hate",
+              "pos": "n.",
+              "coca_rank": 4088
+            },
+            {
+              "id": 2401,
+              "word": "average",
+              "pos": "v.",
+              "coca_rank": 4098
+            },
+            {
+              "id": 2402,
+              "word": "age",
+              "pos": "v.",
+              "coca_rank": 4121
+            },
+            {
+              "id": 2403,
+              "word": "fold",
+              "pos": "v.",
+              "coca_rank": 4131
+            },
+            {
+              "id": 2404,
+              "word": "generous",
+              "pos": "adj.",
+              "coca_rank": 4141
+            },
+            {
+              "id": 2405,
+              "word": "earthquake",
+              "pos": "n.",
+              "coca_rank": 4148
+            },
+            {
+              "id": 2406,
+              "word": "signal",
+              "pos": "n., v.",
+              "coca_rank": 4158
+            },
+            {
+              "id": 2407,
+              "word": "respect",
+              "pos": "n., v.",
+              "coca_rank": 4183
+            },
+            {
+              "id": 2408,
+              "word": "photography",
+              "pos": "n.",
+              "coca_rank": 4190
+            },
+            {
+              "id": 2409,
+              "word": "coin",
+              "pos": "n.",
+              "coca_rank": 4191
+            },
+            {
+              "id": 2410,
+              "word": "bee",
+              "pos": "n.",
+              "coca_rank": 4198
+            },
+            {
+              "id": 2411,
+              "word": "continuous",
+              "pos": "adj.",
+              "coca_rank": 4201
+            },
+            {
+              "id": 2412,
+              "word": "worry",
+              "pos": "n.",
+              "coca_rank": 4205
+            },
+            {
+              "id": 2413,
+              "word": "mud",
+              "pos": "n.",
+              "coca_rank": 4210
+            },
+            {
+              "id": 2414,
+              "word": "scan",
+              "pos": "v.",
+              "coca_rank": 4211
+            },
+            {
+              "id": 2415,
+              "word": "pleasant",
+              "pos": "adj.",
+              "coca_rank": 4218
+            },
+            {
+              "id": 2416,
+              "word": "curtain",
+              "pos": "n.",
+              "coca_rank": 4222
+            },
+            {
+              "id": 2417,
+              "word": "switch",
+              "pos": "v.",
+              "coca_rank": 4226
+            },
+            {
+              "id": 2418,
+              "word": "rent",
+              "pos": "n., v.",
+              "coca_rank": 4245
+            },
+            {
+              "id": 2419,
+              "word": "flour",
+              "pos": "n.",
+              "coca_rank": 4256
+            },
+            {
+              "id": 2420,
+              "word": "escape",
+              "pos": "v., n.",
+              "coca_rank": 4271
+            },
+            {
+              "id": 2421,
+              "word": "statue",
+              "pos": "n.",
+              "coca_rank": 4279
+            },
+            {
+              "id": 2422,
+              "word": "medium",
+              "pos": "adj.",
+              "coca_rank": 4289
+            },
+            {
+              "id": 2423,
+              "word": "retired",
+              "pos": "adj.",
+              "coca_rank": 4297
+            },
+            {
+              "id": 2424,
+              "word": "attraction",
+              "pos": "n.",
+              "coca_rank": 4304
+            },
+            {
+              "id": 2425,
+              "word": "needle",
+              "pos": "n.",
+              "coca_rank": 4314
+            },
+            {
+              "id": 2426,
+              "word": "outdoor",
+              "pos": "adj.",
+              "coca_rank": 4339
+            },
+            {
+              "id": 2427,
+              "word": "local",
+              "pos": "n.",
+              "coca_rank": 4346
+            },
+            {
+              "id": 2428,
+              "word": "automatic",
+              "pos": "adj.",
+              "coca_rank": 4350
+            },
+            {
+              "id": 2429,
+              "word": "export",
+              "pos": "n., v.",
+              "coca_rank": 4368
+            },
+            {
+              "id": 2430,
+              "word": "fixed",
+              "pos": "adj.",
+              "coca_rank": 4372
+            },
+            {
+              "id": 2431,
+              "word": "repair",
+              "pos": "n.",
+              "coca_rank": 4383
+            },
+            {
+              "id": 2432,
+              "word": "mild",
+              "pos": "adj.",
+              "coca_rank": 4397
+            },
+            {
+              "id": 2433,
+              "word": "frozen",
+              "pos": "adj.",
+              "coca_rank": 4403
+            },
+            {
+              "id": 2434,
+              "word": "expected",
+              "pos": "adj.",
+              "coca_rank": 4408
+            },
+            {
+              "id": 2435,
+              "word": "clever",
+              "pos": "adj.",
+              "coca_rank": 4439
+            },
+            {
+              "id": 2436,
+              "word": "cloth",
+              "pos": "n.",
+              "coca_rank": 4453
+            },
+            {
+              "id": 2437,
+              "word": "departure",
+              "pos": "n.",
+              "coca_rank": 4459
+            },
+            {
+              "id": 2438,
+              "word": "sort",
+              "pos": "v.",
+              "coca_rank": 4479
+            },
+            {
+              "id": 2439,
+              "word": "spread",
+              "pos": "v.",
+              "coca_rank": 4480
+            },
+            {
+              "id": 2440,
+              "word": "unfair",
+              "pos": "adj.",
+              "coca_rank": 4514
+            },
+            {
+              "id": 2441,
+              "word": "clause",
+              "pos": "n.",
+              "coca_rank": 4556
+            },
+            {
+              "id": 2442,
+              "word": "sink",
+              "pos": "v.",
+              "coca_rank": 4568
+            },
+            {
+              "id": 2443,
+              "word": "kick",
+              "pos": "v., n.",
+              "coca_rank": 4589
+            },
+            {
+              "id": 2444,
+              "word": "sculpture",
+              "pos": "n.",
+              "coca_rank": 4603
+            },
+            {
+              "id": 2445,
+              "word": "drum",
+              "pos": "n.",
+              "coca_rank": 4607
+            },
+            {
+              "id": 2446,
+              "word": "level",
+              "pos": "adj.",
+              "coca_rank": 4610
+            },
+            {
+              "id": 2447,
+              "word": "shy",
+              "pos": "adj.",
+              "coca_rank": 4644
+            },
+            {
+              "id": 2448,
+              "word": "slice",
+              "pos": "n., v.",
+              "coca_rank": 4662
+            },
+            {
+              "id": 2449,
+              "word": "discount",
+              "pos": "n.",
+              "coca_rank": 4665
+            },
+            {
+              "id": 2450,
+              "word": "mention",
+              "pos": "n.",
+              "coca_rank": 4671
+            },
+            {
+              "id": 2451,
+              "word": "charge",
+              "pos": "n., v.",
+              "coca_rank": 4676
+            },
+            {
+              "id": 2452,
+              "word": "ambition",
+              "pos": "n.",
+              "coca_rank": 4703
+            },
+            {
+              "id": 2453,
+              "word": "worldwide",
+              "pos": "adj., adv.",
+              "coca_rank": 4704
+            },
+            {
+              "id": 2454,
+              "word": "sail",
+              "pos": "n.",
+              "coca_rank": 4705
+            },
+            {
+              "id": 2455,
+              "word": "cruel",
+              "pos": "adj.",
+              "coca_rank": 4725
+            },
+            {
+              "id": 2456,
+              "word": "flood",
+              "pos": "n., v.",
+              "coca_rank": 4730
+            },
+            {
+              "id": 2457,
+              "word": "spring",
+              "pos": "v.",
+              "coca_rank": 4738
+            },
+            {
+              "id": 2458,
+              "word": "experienced",
+              "pos": "adj.",
+              "coca_rank": 4754
+            },
+            {
+              "id": 2459,
+              "word": "pin",
+              "pos": "n., v.",
+              "coca_rank": 4765
+            },
+            {
+              "id": 2460,
+              "word": "like",
+              "pos": "(find sb/sth pleasant) n.",
+              "coca_rank": 4768
+            },
+            {
+              "id": 2461,
+              "word": "exchange",
+              "pos": "n., v.",
+              "coca_rank": 4785
+            },
+            {
+              "id": 2462,
+              "word": "battle",
+              "pos": "n.",
+              "coca_rank": 4807
+            },
+            {
+              "id": 2463,
+              "word": "transport",
+              "pos": "v.",
+              "coca_rank": 4820
+            },
+            {
+              "id": 2464,
+              "word": "apart",
+              "pos": "adv.",
+              "coca_rank": 4826
+            },
+            {
+              "id": 2465,
+              "word": "fancy",
+              "pos": "adj.",
+              "coca_rank": 4887
+            },
+            {
+              "id": 2466,
+              "word": "trainer",
+              "pos": "n.",
+              "coca_rank": 4901
+            },
+            {
+              "id": 2467,
+              "word": "bride",
+              "pos": "n.",
+              "coca_rank": 4907
+            },
+            {
+              "id": 2468,
+              "word": "tax",
+              "pos": "n., v.",
+              "coca_rank": 4920
+            },
+            {
+              "id": 2469,
+              "word": "campaign",
+              "pos": "n., v.",
+              "coca_rank": 4925
+            },
+            {
+              "id": 2470,
+              "word": "import",
+              "pos": "n., v.",
+              "coca_rank": 4931
+            },
+            {
+              "id": 2471,
+              "word": "embarrassed",
+              "pos": "adj.",
+              "coca_rank": 4963
+            },
+            {
+              "id": 2472,
+              "word": "similarity",
+              "pos": "n.",
+              "coca_rank": 4982
+            },
+            {
+              "id": 2473,
+              "word": "breathing",
+              "pos": "n.",
+              "coca_rank": 4987
+            },
+            {
+              "id": 2474,
+              "word": "sudden",
+              "pos": "adj.",
+              "coca_rank": 5000
+            }
+          ]
+        },
+        {
+          "batch_id": 27,
+          "batch_name": "Batch 27",
+          "word_count": 91,
+          "words": [
+            {
+              "id": 2475,
+              "word": "keyboard",
+              "pos": "n.",
+              "coca_rank": 5046
+            },
+            {
+              "id": 2476,
+              "word": "alcoholic",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2477,
+              "word": "amazed",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2478,
+              "word": "annoy",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2479,
+              "word": "annoyed",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2480,
+              "word": "annoying",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2481,
+              "word": "backward",
+              "pos": "adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2482,
+              "word": "careless",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2483,
+              "word": "cheerful",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2484,
+              "word": "close2",
+              "pos": "adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2485,
+              "word": "colored",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2486,
+              "word": "confused",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2487,
+              "word": "content1",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2488,
+              "word": "convenient",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2489,
+              "word": "countryside",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2490,
+              "word": "covered",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2491,
+              "word": "cupboard",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2492,
+              "word": "definite",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2493,
+              "word": "determined",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2494,
+              "word": "diagram",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2495,
+              "word": "disadvantage",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2496,
+              "word": "disappointing",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2497,
+              "word": "dislike",
+              "pos": "v., n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2498,
+              "word": "dressed",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2499,
+              "word": "educated",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2500,
+              "word": "embarrassing",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2501,
+              "word": "engaged",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2502,
+              "word": "entertain",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2503,
+              "word": "fashionable",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2504,
+              "word": "fasten",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2505,
+              "word": "frighten",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2506,
+              "word": "frightened",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2507,
+              "word": "frightening",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2508,
+              "word": "fry",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2509,
+              "word": "fur",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2510,
+              "word": "further",
+              "pos": "adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2511,
+              "word": "heating",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2512,
+              "word": "imaginary",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2513,
+              "word": "indirect",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2514,
+              "word": "indoor",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2515,
+              "word": "indoors",
+              "pos": "adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2516,
+              "word": "injured",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2517,
+              "word": "latest",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2518,
+              "word": "lead1",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2519,
+              "word": "leisure",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2520,
+              "word": "lie2",
+              "pos": "(tell a lie) v., n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2521,
+              "word": "liquid",
+              "pos": "n., adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2522,
+              "word": "live2",
+              "pos": "adj., adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2523,
+              "word": "located",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2524,
+              "word": "luxury",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2525,
+              "word": "neat",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2526,
+              "word": "old-fashioned",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2527,
+              "word": "organized",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2528,
+              "word": "organizer",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2529,
+              "word": "outdoors",
+              "pos": "adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2530,
+              "word": "overseas",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2531,
+              "word": "plus1",
+              "pos": "prep.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2532,
+              "word": "poison",
+              "pos": "n., v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2533,
+              "word": "poisonous",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2534,
+              "word": "prepared",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2535,
+              "word": "printing",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2536,
+              "word": "qualification",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2537,
+              "word": "qualified",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2538,
+              "word": "quotation",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2539,
+              "word": "racing",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2540,
+              "word": "receipt",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2541,
+              "word": "relaxed",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2542,
+              "word": "relaxing",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2543,
+              "word": "repeated",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2544,
+              "word": "revise",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2545,
+              "word": "ring2",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2546,
+              "word": "row1",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2547,
+              "word": "sailor",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2548,
+              "word": "sensible",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2549,
+              "word": "shiny",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2550,
+              "word": "spicy",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2551,
+              "word": "spoken",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2552,
+              "word": "statistic",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2553,
+              "word": "suitable",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2554,
+              "word": "summarize",
+              "pos": "v.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2555,
+              "word": "theirs",
+              "pos": "pron.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2556,
+              "word": "ton",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2557,
+              "word": "underwear",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2558,
+              "word": "unemployed",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2559,
+              "word": "unnecessary",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2560,
+              "word": "unpleasant",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2561,
+              "word": "used1",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2562,
+              "word": "used2",
+              "pos": "adj.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2563,
+              "word": "wool",
+              "pos": "n.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2564,
+              "word": "worse",
+              "pos": "adv.",
+              "coca_rank": 99999
+            },
+            {
+              "id": 2565,
+              "word": "worst",
+              "pos": "adv.",
+              "coca_rank": 99999
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
