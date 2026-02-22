@@ -8,15 +8,33 @@ const WordCard = ({
     isFirstWord = false,
     isLastWord = false,
     currentIndex = 0,
-    totalWords = 1
+    totalWords = 1,
+    primaryButtonText
 }) => {
     // State
-    const [selectedPOSIndex, setSelectedPOSIndex] = useState(0);
     const [showTranslations, setShowTranslations] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
+    const [showAllExamples, setShowAllExamples] = useState(false);
+    const [showEnglishDef, setShowEnglishDef] = useState(false);
 
-    // Derived state
-    const currentPOS = word.parts_of_speech[selectedPOSIndex];
+    // POS mapping
+    const getFullPOS = (pos) => {
+        if (!pos) return '';
+        const clean = pos.toLowerCase().trim();
+        const map = {
+            'v': 'Verb', 'v.': 'Verb', 'verb': 'Verb',
+            'n': 'Noun', 'n.': 'Noun', 'noun': 'Noun',
+            'adj': 'Adjective', 'adj.': 'Adjective', 'adjective': 'Adjective',
+            'adv': 'Adverb', 'adv.': 'Adverb', 'adverb': 'Adverb',
+            'prep': 'Preposition', 'prep.': 'Preposition', 'preposition': 'Preposition',
+            'pron': 'Pronoun', 'pron.': 'Pronoun', 'pronoun': 'Pronoun',
+            'conj': 'Conjunction', 'conj.': 'Conjunction', 'conjunction': 'Conjunction',
+            'interj': 'Interjection', 'interj.': 'Interjection', 'interjection': 'Interjection',
+            'art': 'Article', 'art.': 'Article', 'article': 'Article',
+            'part': 'Particle', 'part.': 'Particle', 'particle': 'Particle'
+        };
+        return map[clean] || (clean.charAt(0).toUpperCase() + clean.slice(1));
+    };
 
     // Helper: Web Speech API for audio pronunciation
     const speakWord = (text) => {
@@ -38,6 +56,7 @@ const WordCard = ({
 
     // Helper: Parse {bracketed} text and highlight
     const parseHighlightedText = (text) => {
+        if (!text) return null;
         const parts = text.split(/\{|\}/);
 
         return parts.map((part, index) => {
@@ -57,160 +76,134 @@ const WordCard = ({
     };
 
     return (
-        <div className="w-full bg-white rounded-2xl shadow-lg p-6 min-h-[500px] space-y-6">
-            {/* HEADER SECTION */}
-            <div className="relative mb-6">
-                {/* Word */}
-                <h1 className="text-4xl font-bold text-gray-900 mb-2 pr-14">
-                    {word.word}
-                </h1>
+        <div className="w-full bg-white rounded-3xl shadow-lg p-6 min-h-[500px] flex flex-col max-w-sm mx-auto font-sans relative text-gray-900">
+
+            {/* HERO SECTION */}
+            <div className="flex items-start justify-between mb-4">
+                <div className="flex items-baseline gap-3 relative top-2">
+                    <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                        {word.word}
+                    </h1>
+                    {word.pos && (
+                        <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                            {getFullPOS(word.pos)}
+                        </span>
+                    )}
+                </div>
 
                 {/* Audio Button */}
                 <button
                     onClick={() => speakWord(word.word)}
-                    className="absolute top-0 right-0 w-12 h-12 bg-primary rounded-full shadow-md flex items-center justify-center active:scale-95 transition"
+                    className="w-12 h-12 bg-primary hover:bg-primary/90 text-white rounded-full flex items-center justify-center active:scale-95 transition shadow-md"
                     aria-label="Pronounce word"
                 >
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                     </svg>
                 </button>
-
-                {/* POS Tabs (if multiple parts of speech) */}
-                {word.parts_of_speech.length > 1 && (
-                    <div className="flex gap-2 mt-3">
-                        {word.parts_of_speech.map((pos, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setSelectedPOSIndex(index)}
-                                className={`px-4 py-2 rounded-lg font-medium text-sm transition ${selectedPOSIndex === index
-                                    ? 'bg-primary text-white'
-                                    : 'bg-gray-100 text-gray-600 active:bg-gray-200'
-                                    }`}
-                            >
-                                {pos.pos.charAt(0).toUpperCase() + pos.pos.slice(1)}
-                            </button>
-                        ))}
-                    </div>
-                )}
             </div>
 
-            {/* TRANSLATION SECTION */}
-            <div className="mb-6">
-                {/* Arabic Translation */}
-                <div className="bg-blue-50 rounded-lg p-4 mb-3 text-right" dir="rtl">
-                    <p className="text-xl font-semibold text-primary">
-                        {currentPOS.translation}
-                    </p>
-                </div>
-
-                {/* English Definition */}
-                <p className="text-base text-gray-700 leading-relaxed">
-                    {currentPOS.definition}
+            {/* PRIMARY TRANSLATION */}
+            <div className="mb-6 pb-6 border-b border-gray-100">
+                <p className="text-3xl font-medium text-primary" dir="rtl">
+                    {word.translations?.primary || word.word_ar}
                 </p>
             </div>
 
-            {/* EXAMPLES SECTION */}
-            <div className="mb-6">
-                {/* Header with Toggle */}
-                <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Examples</h3>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            checked={showTranslations}
-                            onChange={(e) => setShowTranslations(e.target.checked)}
-                            className="w-4 h-4 text-primary rounded focus:ring-primary"
-                        />
-                        <span className="text-sm text-gray-600">Show translations</span>
-                    </label>
-                </div>
-
-                {/* Example Items */}
-                <div className="space-y-4">
-                    {currentPOS.examples.map((example, index) => (
+            {/* EXAMPLE UNIT */}
+            {word.examples && word.examples.length > 0 && (
+                <div className="mb-6 flex-1 space-y-4">
+                    {word.examples.slice(0, 2).map((example, index) => (
                         <div key={index} className="space-y-2">
-                            {/* Context Label */}
-                            <p className="text-xs text-gray-500 italic">
-                                {example.context}
+                            <p className="text-lg text-gray-900">
+                                {parseHighlightedText(example.en)}
                             </p>
 
-                            {/* English Sentence */}
-                            <p className="text-base text-gray-900 leading-relaxed">
-                                {parseHighlightedText(example.sentence)}
-                            </p>
-
-                            {/* Arabic Translation (conditional) */}
-                            {showTranslations && (
-                                <div className="bg-gray-50 rounded-lg p-3 text-right" dir="rtl">
-                                    <p className="text-sm text-gray-600">
-                                        {parseHighlightedText(example.translation)}
-                                    </p>
-                                </div>
+                            {showTranslations && example.ar && (
+                                <p className="text-lg text-gray-600" dir="rtl">
+                                    {parseHighlightedText(example.ar)}
+                                </p>
                             )}
                         </div>
                     ))}
-                </div>
-            </div>
 
-            {/* NOTES SECTION (Collapsible) */}
-            <div className="mb-8">
+                    <label className="flex items-center gap-2 cursor-pointer mt-4 w-fit">
+                        <div className={`w-5 h-5 rounded flex items-center justify-center transition ${showTranslations ? 'bg-primary border-primary' : 'bg-white border border-gray-300'}`}>
+                            {showTranslations && (
+                                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            )}
+                        </div>
+                        <input
+                            type="checkbox"
+                            className="hidden"
+                            checked={showTranslations}
+                            onChange={(e) => setShowTranslations(e.target.checked)}
+                        />
+                        <span className="text-sm text-gray-600 select-none hover:text-gray-900 transition">Show translations</span>
+                    </label>
+                </div>
+            )}
+
+            {/* PROGRESSIVE DISCLOSURE */}
+            <div className="mb-6">
                 <button
-                    onClick={() => setShowNotes(!showNotes)}
-                    className="w-full flex items-center justify-between bg-amber-50 border border-amber-200 rounded-lg p-4 active:bg-amber-100 transition"
+                    onClick={() => setShowAllExamples(!showAllExamples)}
+                    className="w-full flex items-center justify-between px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition shadow-sm"
                 >
-                    <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="font-medium text-gray-900">Usage Notes</span>
-                    </div>
-                    <svg
-                        className={`w-5 h-5 text-gray-600 transition-transform ${showNotes ? 'rotate-180' : ''}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
+                    See More Examples &amp; Definition
+                    <svg className={`w-4 h-4 transition-transform ${showAllExamples ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
 
-                {showNotes && (
-                    <div className="mt-2 bg-amber-50 border border-amber-200 rounded-lg p-4">
-                        <p className="text-sm text-gray-700 leading-relaxed">
-                            {word.notes}
-                        </p>
+                {/* Expanded Details */}
+                {showAllExamples && (
+                    <div className="mt-4 space-y-4 p-4 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-800">
+                        {word.definition?.en && (
+                            <div>
+                                <h4 className="font-semibold text-gray-500 uppercase text-xs mb-1 tracking-wider">Definition (EN)</h4>
+                                <p>{word.definition.en}</p>
+                            </div>
+                        )}
+                        {word.definition?.ar && (
+                            <div>
+                                <h4 className="font-semibold text-gray-500 uppercase text-xs mb-1 tracking-wider">Definition (AR)</h4>
+                                <p dir="rtl">{word.definition.ar}</p>
+                            </div>
+                        )}
+                        {word.examples && word.examples.length > 2 && (
+                            <div>
+                                <h4 className="font-semibold text-gray-500 uppercase text-xs mb-2 tracking-wider">More Examples</h4>
+                                <div className="space-y-3">
+                                    {word.examples.slice(2).map((ex, idx) => (
+                                        <div key={idx} className="space-y-1">
+                                            <p className="text-gray-900">{parseHighlightedText(ex.en)}</p>
+                                            {showTranslations && ex.ar && <p className="text-gray-600" dir="rtl">{parseHighlightedText(ex.ar)}</p>}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        {word.usage_notes && (
+                            <div>
+                                <h4 className="font-semibold text-gray-500 uppercase text-xs mb-1 tracking-wider">Usage Notes</h4>
+                                <p className="italic">{word.usage_notes}</p>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
 
-            {/* NAVIGATION SECTION */}
-            <div className="space-y-3">
-                {/* Button Row */}
-                <div className="flex gap-3">
-                    <button
-                        onClick={onPrevious}
-                        disabled={isFirstWord}
-                        className={`py-3 px-6 rounded-xl font-medium transition ${isFirstWord
-                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                            : 'bg-gray-200 text-gray-700 active:scale-95'
-                            }`}
-                    >
-                        ← Previous
-                    </button>
-
-                    <button
-                        onClick={() => onMarkSeen(word.id)}
-                        className="flex-1 py-3 px-6 bg-primary text-white rounded-xl font-semibold active:scale-95 transition"
-                    >
-                        {isLastWord ? 'Finish' : 'Mark as Seen'}
-                    </button>
-                </div>
-
-                {/* Progress Indicator */}
-                <p className="text-sm text-gray-500 text-center">
-                    Word {currentIndex + 1} of {totalWords}
-                </p>
+            {/* ACTION AREA */}
+            <div className="flex mt-auto pt-4 border-t border-gray-100">
+                <button
+                    onClick={() => onMarkSeen(word.id)}
+                    className="w-full py-4 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
+                >
+                    {primaryButtonText || (isLastWord ? 'Finish' : 'Next')}
+                </button>
             </div>
         </div>
     );

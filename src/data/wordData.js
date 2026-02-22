@@ -7,8 +7,12 @@ import batchesMetadata from './batches.json';
  */
 export const loadBatch = async (batchId) => {
     try {
-        const batch = await import(`./batch-${batchId}.json`);
-        return batch.default || batch;
+        const batch = await import('./vocabulary_data.json');
+        const data = batch.default || batch;
+
+        // Optionally filter by batch_id if that's how we differentiate batches
+        // For MVP we just return all words
+        return data;
     } catch (error) {
         console.error(`Failed to load batch ${batchId}:`, error);
         return null;
@@ -43,7 +47,6 @@ export const getWordsFromBatches = async (batchIds) => {
  * @returns {Promise<Object|null>} - The word object or null
  */
 export const getWordById = async (wordId) => {
-    // Determine which batch contains this word
     // Assuming 100 words per batch
     const batchId = Math.ceil(wordId / 100);
     const batch = await loadBatch(batchId);
@@ -134,12 +137,11 @@ export const searchWords = async (searchTerm, batchIds) => {
     const words = await getWordsFromBatches(batchIds);
     const lowerSearch = searchTerm.toLowerCase();
 
-    return words.filter(word =>
-        word.word.toLowerCase().includes(lowerSearch) ||
-        word.parts_of_speech.some(pos =>
-            pos.translation.includes(searchTerm)
-        )
-    );
+    return words.filter(word => {
+        if (word.word.toLowerCase().includes(lowerSearch)) return true;
+        if (word.translations?.primary?.includes(searchTerm)) return true;
+        return false;
+    });
 };
 
 export default {

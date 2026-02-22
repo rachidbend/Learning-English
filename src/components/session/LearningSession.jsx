@@ -46,7 +46,6 @@ const PHASE = {
     SELECT: 'select',
     EXPOSE: 'expose',       // Show WordCard (Step 0)
     QUIZ: 'quiz',           // Quiz question
-    STEP_RESULT: 'step_result', // Brief pass/fail feedback
     WAITING: 'waiting',     // Countdown for next step
     COMPLETE: 'complete',   // Session done
 };
@@ -288,31 +287,17 @@ const LearningSession = () => {
         };
         setWordStates(updatedStates);
 
-        // Store for feedback
-        setLastAnswer({
-            isCorrect,
-            selectedIndex,
-            wordId,
-            step,
-        });
-
-        setPhase(PHASE.STEP_RESULT);
-    }, [currentQuestion, wordStates]);
-
-    // ═══════════════════════════════════════════
-    // STEP RESULT → ADVANCE OR RESTART
-    // ═══════════════════════════════════════════
-    const handleStepResultContinue = useCallback(() => {
-        if (!lastAnswer) return;
-
-        const { wordId, step, isCorrect } = lastAnswer;
-
+        // Advance to next step or restart
         if (isCorrect) {
             advanceWordStep(wordId, step);
         } else {
             restartWord(wordId);
         }
-    }, [lastAnswer]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [currentQuestion, wordStates]);
+
+    // ═══════════════════════════════════════════
+    // ADVANCE OR RESTART
+    // ═══════════════════════════════════════════
 
     const advanceWordStep = useCallback((wordId, completedStep) => {
         const nextStep = completedStep + 1;
@@ -513,7 +498,6 @@ const LearningSession = () => {
                             {phase === PHASE.SELECT && '📚 Learn New Words'}
                             {phase === PHASE.EXPOSE && '📖 New Word'}
                             {phase === PHASE.QUIZ && '🧠 Learning Quiz'}
-                            {phase === PHASE.STEP_RESULT && '📊 Result'}
                             {phase === PHASE.WAITING && '⏱️ Great Progress!'}
                             {phase === PHASE.COMPLETE && '🎉 Complete'}
                         </h1>
@@ -635,17 +619,8 @@ const LearningSession = () => {
                             isLastWord={true}
                             currentIndex={currentWordIndex}
                             totalWords={wordsToLearn.length}
+                            primaryButtonText="Ready"
                         />
-
-                        <div className="mt-4 text-center">
-                            <button
-                                onClick={handleExposureComplete}
-                                className="px-8 py-3 bg-secondary text-white rounded-xl font-semibold
-                               active:scale-95 transition-transform shadow-md"
-                            >
-                                I've studied this word →
-                            </button>
-                        </div>
                     </div>
                 )}
 
@@ -664,16 +639,6 @@ const LearningSession = () => {
                             showSkipButton={false}
                         />
                     </div>
-                )}
-
-                {/* ═══════════ PHASE: STEP RESULT ═══════════ */}
-                {phase === PHASE.STEP_RESULT && lastAnswer && (
-                    <StepResultFeedback
-                        isCorrect={lastAnswer.isCorrect}
-                        step={lastAnswer.step}
-                        wordName={words.find(w => w.id === lastAnswer.wordId)?.word || ''}
-                        onContinue={handleStepResultContinue}
-                    />
                 )}
 
                 {/* ═══════════ PHASE: WAITING ═══════════ */}
@@ -707,58 +672,6 @@ const LearningSession = () => {
 // ═══════════════════════════════════════════
 // SUB-COMPONENTS
 // ═══════════════════════════════════════════
-
-/** Brief pass/fail feedback after a learning quiz */
-const StepResultFeedback = ({ isCorrect, step, wordName, onContinue }) => {
-    // Auto-advance after 2s for correct, manual for incorrect
-    useEffect(() => {
-        if (isCorrect) {
-            const timer = setTimeout(onContinue, 2000);
-            return () => clearTimeout(timer);
-        }
-    }, [isCorrect, onContinue]);
-
-    if (isCorrect) {
-        const nextStepInfo = step + 1 < LEARNING_STEPS_MINUTES.length
-            ? `Next quiz in ${LEARNING_STEPS_MINUTES[step + 1]} minutes`
-            : 'Word will graduate to review!';
-
-        return (
-            <div className="flex items-center justify-center min-h-[400px]" onClick={onContinue}>
-                <div className="text-center">
-                    <div className="text-6xl mb-4 animate-bounce">✅</div>
-                    <h2 className="text-2xl font-bold text-success mb-2">Correct!</h2>
-                    <p className="text-gray-600 mb-4">
-                        Great job with "<span className="font-semibold">{wordName}</span>"
-                    </p>
-                    <div className="inline-block bg-blue-50 rounded-xl px-4 py-3">
-                        <p className="text-sm text-blue-900 font-medium">{nextStepInfo}</p>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-4">Tap to continue</p>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className="flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-                <div className="text-6xl mb-4">💪</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Let's try again</h2>
-                <p className="text-gray-600 mb-6">
-                    We'll review "<span className="font-semibold">{wordName}</span>" one more time
-                </p>
-                <button
-                    onClick={onContinue}
-                    className="px-8 py-3 bg-primary text-white rounded-xl font-semibold
-                   active:scale-95 transition-transform"
-                >
-                    Review Word Again →
-                </button>
-            </div>
-        </div>
-    );
-};
 
 /** Countdown waiting phase between learning steps */
 const WaitingPhase = ({ waitingWords, wordStates, wordsToLearn, words, graduatedCount }) => {
