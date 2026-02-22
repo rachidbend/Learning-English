@@ -1,682 +1,107 @@
 /**
- * Quiz Question Generator
- * Dynamically generates quiz questions from word data
- * 
- * TODO FUTURE: This dynamic generation approach is temporary for MVP.
- * Replace with curated, pre-written questions and answers for:
- * - Better quality control
- * - Perfect grammar and context
- * - No edge cases with word forms (e.g., have/has, irregular verbs)
- * - Appropriate difficulty progression
- * - Professional educational content
+ * NEW Quiz Generator - Uses Pre-Generated Questions
+ * Questions come from vocabulary_data.json with distractors included
  */
 
-import QUESTION_TYPES, { QUESTION_TYPE_METADATA } from './questionTypes';
-import { selectDistractors } from './distractorSelector';
+// Question type selection logic
+export function selectQuestionForWord(word, questionType = null) {
+    const availableQuestions = word.questions || [];
 
-/**
- * Standard question object structure
- * All generators return this format
- */
-const createQuestionObject = (
-    word,
-    questionType,
-    questionText,
-    options,
-    correctIndex,
-    metadata = {}
-) => {
+    if (availableQuestions.length === 0) {
+        console.error(`No questions found for word: ${word.word}`);
+        return null;
+    }
+
+    // Filter by type if specified
+    let questions = questionType
+        ? availableQuestions.filter(q => q.type === questionType)
+        : availableQuestions;
+
+    if (questions.length === 0) {
+        // Fallback to any question if type not found
+        questions = availableQuestions;
+    }
+
+    // Pick random question
+    const question = questions[Math.floor(Math.random() * questions.length)];
+
+    // Build options (correct answer + 3 random distractors)
+    const distractors = question.distractors || [];
+    const shuffledDistractors = shuffle([...distractors]);
+    const selectedDistractors = shuffledDistractors.slice(0, 3);
+
+    const options = shuffle([
+        question.correct_answer,
+        ...selectedDistractors
+    ]);
+
+    // Find correct index
+    const correctIndex = options.indexOf(question.correct_answer);
+
     return {
         id: `q_${word.id}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         word_id: word.id,
         word: word.word,
-        question_type: questionType,
-        question: questionText,
+        question_type: question.type, // Map 'type' to 'question_type' for compatibility
+        type: question.type,
+        question: question.prompt?.text || question.prompt_text, // Handle old/new format
+        questionLanguage: question.prompt?.language || question.prompt_language,
+        correctAnswer: question.correct_answer, // Maintain correct answer
         options: options,
-        correct_index: correctIndex,
-        difficulty: QUESTION_TYPE_METADATA[questionType].difficulty,
-        timestamp: new Date().toISOString(),
+        correct_index: correctIndex, // Required by Quiz component
+        explanation: question.explanation,
+        fullSentence: question.full_sentence,
+        sentenceWithBlank: question.sentence_with_blank,
         metadata: {
-            pos: word.parts_of_speech[0].pos,
-            oxford_rank: word.oxford_rank,
-            ...metadata
+            original_sentence: question.full_sentence,
+            context: question.explanation
         }
     };
-};
+}
 
-/**
- * Shuffle options and update correct index
- * Ensures correct answer isn't always in same position
- */
-const shuffleOptions = (options, correctIndex) => {
-    const shuffled = options.map((option, index) => ({
-        text: option,
-        wasCorrect: index === correctIndex
-    }));
-
-    // Fisher-Yates shuffle
-    for (let i = shuffled.length - 1; i > 0; i--) {
+// Shuffle helper
+function shuffle(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-
-    // Find new correct index
-    const newCorrectIndex = shuffled.findIndex(opt => opt.wasCorrect);
-    const finalOptions = shuffled.map(opt => opt.text);
-
-    return { options: finalOptions, correctIndex: newCorrectIndex };
-};
-
-// ============================================================
-// QUESTION GENERATOR 1: TRANSLATION MATCH
-// ============================================================
-
-/**
- * Generate "What does X mean in Arabic?" question
- * 
- * Example:
- * Q: What does "run" mean in Arabic?
- * Options:
- * - يجري، يركض (correct)
- * - يمشي، يسير (walk)
- * - يقفز، ينط (jump)
- * - يسبح، يعوم (swim)
- */
-export const generateTranslationMatchQuestion = (targetWord, allWords) => {
-    // Get target translation
-    const targetTranslation = targetWord.parts_of_speech[0].translation;
-
-    // Get metadata for this question type
-    const metadata = QUESTION_TYPE_METADATA[QUESTION_TYPES.TRANSLATION_MATCH];
-
-    // Select distractors
-    const distractorWords = selectDistractors(
-        targetWord,
-        allWords,
-        metadata.distractor_strategy,
-        metadata.distractor_count
-    );
-
-    // Build options array
-    const options = [
-        targetTranslation, // Correct answer
-        ...distractorWords.map(w => w.parts_of_speech[0].translation)
-    ];
-
-    // Shuffle options
-    const { options: shuffledOptions, correctIndex } = shuffleOptions(options, 0);
-
-    // Generate question text
-    const questionText = `What does "${targetWord.word}" mean in Arabic?`;
-
-    return createQuestionObject(
-        targetWord,
-        QUESTION_TYPES.TRANSLATION_MATCH,
-        questionText,
-        shuffledOptions,
-        correctIndex,
-        {
-            original_correct_answer: targetTranslation,
-            distractors: distractorWords.map(w => w.id)
-        }
-    );
-};
-
-// ============================================================
-// QUESTION GENERATOR 2: REVERSE TRANSLATION
-// ============================================================
-
-/**
- * Generate "What is the English word for X?" question
- * 
- * Example:
- * Q: What is the English word for "يجري"?
- * Options:
- * - run (correct)
- * - walk
- * - jump
- * - swim
- */
-export const generateReverseTranslationQuestion = (targetWord, allWords) => {
-    const targetTranslation = targetWord.parts_of_speech[0].translation;
-    const metadata = QUESTION_TYPE_METADATA[QUESTION_TYPES.REVERSE_TRANSLATION];
-
-    // Select distractors
-    const distractorWords = selectDistractors(
-        targetWord,
-        allWords,
-        metadata.distractor_strategy,
-        metadata.distractor_count
-    );
-
-    // Build options array
-    const options = [
-        targetWord.word, // Correct answer
-        ...distractorWords.map(w => w.word)
-    ];
-
-    // Shuffle
-    const { options: shuffledOptions, correctIndex } = shuffleOptions(options, 0);
-
-    // Question text
-    const questionText = `What is the English word for "${targetTranslation}"?`;
-
-    return createQuestionObject(
-        targetWord,
-        QUESTION_TYPES.REVERSE_TRANSLATION,
-        questionText,
-        shuffledOptions,
-        correctIndex,
-        {
-            original_correct_answer: targetWord.word,
-            distractors: distractorWords.map(w => w.id)
-        }
-    );
-};
-
-// ============================================================
-// QUESTION GENERATOR 3: SENTENCE COMPLETION
-// ============================================================
-
-/**
- * Generate sentence completion question
- * Uses actual example sentences from word data
- * 
- * Example:
- * Q: Complete the sentence:
- *    "I _____ every morning before work."
- * Options:
- * - run (correct)
- * - sleep
- * - eat
- * - think
- */
-export const generateSentenceCompletionQuestion = (targetWord, allWords) => {
-    const metadata = QUESTION_TYPE_METADATA[QUESTION_TYPES.SENTENCE_COMPLETION];
-
-    // Get all examples and try to find one where we can create a valid blank
-    const examples = targetWord.parts_of_speech[0].examples;
-    const targetPos = targetWord.parts_of_speech[0].pos;
-    let bestExample = null;
-    let bestBlank = null;
-    let replacedWord = null;
-
-    // Try each example to find the best one
-    for (const example of examples) {
-        const result = tryCreateBlank(example.sentence, targetWord.word);
-
-        if (result.success) {
-            bestExample = example;
-            bestBlank = result.blank;
-            replacedWord = result.replacedWord;
-            break; // Found a good one, use it
-        }
-    }
-
-    // Fallback: if no good example found, skip this word for sentence completion
-    // Instead, use the first example but mark it  
-    if (!bestExample) {
-        bestExample = examples[0];
-        const sentence = examples[0].sentence.replace(/\{|\}/g, '');
-        bestBlank = sentence + ' _____';
-        replacedWord = null;
-    }
-
-    // Select distractors
-    const distractorWords = selectDistractors(
-        targetWord,
-        allWords,
-        metadata.distractor_strategy,
-        metadata.distractor_count
-    );
-
-    // Get the exact correct word string
-    const correctFormKey = bestExample.form_used || 'base';
-    let correctFormWord = targetWord.word;
-    if (targetWord.forms && targetWord.forms[correctFormKey]) {
-        correctFormWord = targetWord.forms[correctFormKey];
-    } else {
-        // Fallback for non-augmented words
-        correctFormWord = replacedWord || targetWord.word;
-    }
-
-    // Map distractors to the same tense/form key
-    const options = [correctFormWord];
-
-    for (const distractor of distractorWords) {
-        let mappedDistractor = distractor.word;
-
-        // Try explicit form mapping from dictionary
-        if (distractor.forms && distractor.forms[correctFormKey]) {
-            mappedDistractor = distractor.forms[correctFormKey];
-        } else if (correctFormKey === 'plural' && targetPos === 'noun') {
-            // Very simple fallback for noun plurals if data isn't augmented
-            mappedDistractor = distractor.word + 's';
-        }
-        // If no explicit mapping is found, we keep mappedDistractor as distractor.word (base form)
-
-        options.push(mappedDistractor);
-    }
-
-    // Shuffle
-    const { options: shuffledOptions, correctIndex } = shuffleOptions(options, 0);
-
-    // Question text
-    const questionText = `Complete the sentence:\n"${bestBlank}"`;
-
-    return createQuestionObject(
-        targetWord,
-        QUESTION_TYPES.SENTENCE_COMPLETION,
-        questionText,
-        shuffledOptions,
-        correctIndex,
-        {
-            original_sentence: bestExample.sentence,
-            context: bestExample.context,
-            original_correct_answer: correctFormWord,
-            replaced_word: replacedWord,
-            distractors: distractorWords.map(w => w.id)
-        }
-    );
-};
-
-/**
- * Helper: Try to create a valid blank in a sentence
- */
-const tryCreateBlank = (sentence, baseWord) => {
-    const originalSentence = sentence || '';
-    const cleanSentence = originalSentence.replace(/\{|\}/g, '');
-
-    // Strategy 0: Prefer explicitly marked word from source data (e.g., "She {makes} dinner.")
-    const markedForm = extractMarkedWord(originalSentence);
-    if (markedForm) {
-        const markedRegex = new RegExp(`\\b(${escapeRegex(markedForm)})\\b`, 'i');
-        const match = cleanSentence.match(markedRegex);
-        if (match) {
-            const blank = cleanSentence.replace(markedRegex, '_____');
-            if (isValidBlankPosition(blank, cleanSentence)) {
-                return { success: true, blank, replacedWord: match[0] };
-            }
-        }
-    }
-
-    // Strategy 1: Exact match
-    const exactRegex = new RegExp(`\\b(${escapeRegex(baseWord)})\\b`, 'i');
-    const exactMatch = cleanSentence.match(exactRegex);
-    if (exactMatch) {
-        const blank = cleanSentence.replace(exactRegex, '_____');
-        if (isValidBlankPosition(blank, cleanSentence)) {
-            return { success: true, blank, replacedWord: exactMatch[0] };
-        }
-    }
-
-    // Strategy 2: Try irregular verb forms (for common verbs)
-    const irregularForms = getIrregularVerbForms(baseWord);
-    for (const form of irregularForms) {
-        const formRegex = new RegExp(`\\b(${escapeRegex(form)})\\b`, 'i');
-        const formMatch = cleanSentence.match(formRegex);
-        if (formMatch) {
-            const blank = cleanSentence.replace(formRegex, '_____');
-            if (isValidBlankPosition(blank, cleanSentence)) {
-                return { success: true, blank, replacedWord: formMatch[0] };
-            }
-        }
-    }
-
-    // Strategy 3: Try regular variations
-    const variations = [
-        baseWord + 's',
-        baseWord + 'es',
-        baseWord + 'ed',
-        baseWord + 'd',
-        baseWord + 'ing',
-        baseWord.slice(0, -1) + 'ies',
-        baseWord.slice(0, -1), // remove last letter (e.g., running → run)
-    ];
-
-    for (const variant of variations) {
-        if (variant.length < 2) continue; // Skip if too short
-        const varRegex = new RegExp(`\\b(${escapeRegex(variant)})\\b`, 'i');
-        const varMatch = cleanSentence.match(varRegex);
-        if (varMatch) {
-            const blank = cleanSentence.replace(varRegex, '_____');
-            if (isValidBlankPosition(blank, cleanSentence)) {
-                return { success: true, blank, replacedWord: varMatch[0] };
-            }
-        }
-    }
-
-    return { success: false };
-};
-
-const isValidBlankPosition = (blankSentence, originalSentence) => {
-    // Must contain exactly one blank
-    const blankCount = (blankSentence.match(/_____/g) || []).length;
-    if (blankCount !== 1) return false;
-
-    // Must have content before OR after blank (don't blank out single-word sentences)
-    if (blankSentence.trim() === '_____') return false;
-
-    return true;
-};
-
-/**
- * Get irregular verb forms for common English verbs
- */
-const getIrregularVerbForms = (baseWord) => {
-    const irregulars = {
-        'be': ['am', 'is', 'are', 'was', 'were', 'been', 'being'],
-        'have': ['has', 'had', 'having'],
-        'do': ['does', 'did', 'done', 'doing'],
-        'go': ['goes', 'went', 'gone', 'going'],
-        'make': ['makes', 'made', 'making'],
-        'take': ['takes', 'took', 'taken', 'taking'],
-        'come': ['comes', 'came', 'coming'],
-        'see': ['sees', 'saw', 'seen', 'seeing'],
-        'get': ['gets', 'got', 'gotten', 'getting'],
-        'give': ['gives', 'gave', 'given', 'giving'],
-        'think': ['thinks', 'thought', 'thinking'],
-        'know': ['knows', 'knew', 'known', 'knowing'],
-        'say': ['says', 'said', 'saying'],
-        'tell': ['tells', 'told', 'telling'],
-        'find': ['finds', 'found', 'finding'],
-        'feel': ['feels', 'felt', 'feeling'],
-        'become': ['becomes', 'became', 'becoming'],
-        'leave': ['leaves', 'left', 'leaving'],
-        'put': ['puts', 'putting'],
-        'mean': ['means', 'meant', 'meaning'],
-        'keep': ['keeps', 'kept', 'keeping'],
-        'let': ['lets', 'letting'],
-        'begin': ['begins', 'began', 'begun', 'beginning'],
-        'show': ['shows', 'showed', 'shown', 'showing'],
-        'hear': ['hears', 'heard', 'hearing'],
-        'run': ['runs', 'ran', 'running'],
-        'bring': ['brings', 'brought', 'bringing'],
-        'write': ['writes', 'wrote', 'written', 'writing'],
-        'sit': ['sits', 'sat', 'sitting'],
-        'stand': ['stands', 'stood', 'standing'],
-        'lose': ['loses', 'lost', 'losing'],
-        'pay': ['pays', 'paid', 'paying'],
-        'meet': ['meets', 'met', 'meeting'],
-        'set': ['sets', 'setting'],
-        'learn': ['learns', 'learned', 'learnt', 'learning'],
-        'lead': ['leads', 'led', 'leading'],
-        'understand': ['understands', 'understood', 'understanding'],
-        'speak': ['speaks', 'spoke', 'spoken', 'speaking'],
-        'read': ['reads', 'reading'], // read past = read (same spelling)
-        'spend': ['spends', 'spent', 'spending'],
-        'grow': ['grows', 'grew', 'grown', 'growing'],
-        'win': ['wins', 'won', 'winning'],
-        'teach': ['teaches', 'taught', 'teaching'],
-        'buy': ['buys', 'bought', 'buying'],
-        'send': ['sends', 'sent', 'sending'],
-        'build': ['builds', 'built', 'building'],
-        'fall': ['falls', 'fell', 'fallen', 'falling'],
-        'cut': ['cuts', 'cutting'],
-        'sell': ['sells', 'sold', 'selling'],
-        'break': ['breaks', 'broke', 'broken', 'breaking'],
-        'eat': ['eats', 'ate', 'eaten', 'eating'],
-        'catch': ['catches', 'caught', 'catching'],
-        'draw': ['draws', 'drew', 'drawn', 'drawing'],
-        'choose': ['chooses', 'chose', 'chosen', 'choosing'],
-        'drive': ['drives', 'drove', 'driven', 'driving'],
-        'fight': ['fights', 'fought', 'fighting'],
-        'forget': ['forgets', 'forgot', 'forgotten', 'forgetting'],
-        'hide': ['hides', 'hid', 'hidden', 'hiding'],
-        'hold': ['holds', 'held', 'holding'],
-        'lay': ['lays', 'laid', 'laying'],
-        'lie': ['lies', 'lay', 'lain', 'lying'],
-        'ride': ['rides', 'rode', 'ridden', 'riding'],
-        'ring': ['rings', 'rang', 'rung', 'ringing'],
-        'rise': ['rises', 'rose', 'risen', 'rising'],
-        'shake': ['shakes', 'shook', 'shaken', 'shaking'],
-        'shine': ['shines', 'shone', 'shining'],
-        'sing': ['sings', 'sang', 'sung', 'singing'],
-        'sink': ['sinks', 'sank', 'sunk', 'sinking'],
-        'sleep': ['sleeps', 'slept', 'sleeping'],
-        'slide': ['slides', 'slid', 'sliding'],
-        'speak': ['speaks', 'spoke', 'spoken', 'speaking'],
-        'spring': ['springs', 'sprang', 'sprung', 'springing'],
-        'steal': ['steals', 'stole', 'stolen', 'stealing'],
-        'stick': ['sticks', 'stuck', 'sticking'],
-        'strike': ['strikes', 'struck', 'stricken', 'striking'],
-        'swim': ['swims', 'swam', 'swum', 'swimming'],
-        'swing': ['swings', 'swung', 'swinging'],
-        'tear': ['tears', 'tore', 'torn', 'tearing'],
-        'throw': ['throws', 'threw', 'thrown', 'throwing'],
-        'wake': ['wakes', 'woke', 'woken', 'waking'],
-        'wear': ['wears', 'wore', 'worn', 'wearing'],
-    };
-
-    return irregulars[baseWord.toLowerCase()] || [];
-};
-
-/**
- * Helper to extract {marked} word from sentence
- */
-const extractMarkedWord = (sentence) => {
-    const match = sentence.match(/\{([^}]+)\}/);
-    return match ? match[1] : null;
-};
-
-/**
- * Escape special regex characters
- */
-const escapeRegex = (str) => {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-};
-
-/**
- * Detect the transformation pattern between base word and used form
- * e.g., run -> runs (pattern: 's')
- * e.g., run -> running (pattern: 'ing')
- */
-const detectWordFormPattern = (base, current, pos) => {
-    if (!base || !current || base === current) return 'base';
-
-    const b = base.toLowerCase();
-    const c = current.toLowerCase();
-
-    // Check for common suffixes
-    if (c.endsWith('ing')) return 'ing';
-    if (c.endsWith('ed')) return 'ed';
-    if (c.endsWith('s') && !b.endsWith('s')) return 's';
-
-    // Check irregulars
-    const irregulars = getIrregularVerbForms(b);
-    if (irregulars.includes(c)) return 'irregular';
-
-    return 'base'; // Fallback
-};
-
-/**
- * Apply a transformation pattern to a target word
- */
-const applyWordFormPattern = (word, pattern, sampleTarget, pos) => {
-    if (!word) return '';
-    if (pattern === 'base') return word;
-
-    // Simple heuristic rules
-    // NOTE: reliable NLP would require a library like 'compromise', 
-    // but we want to keep this lightweight.
-
-    if (pattern === 's') {
-        if (word.endsWith('y') && !['a', 'e', 'i', 'o', 'u'].includes(word.charAt(word.length - 2))) {
-            return word.slice(0, -1) + 'ies';
-        }
-        if (word.endsWith('s') || word.endsWith('sh') || word.endsWith('ch') || word.endsWith('x')) {
-            return word + 'es';
-        }
-        return word + 's';
-    }
-
-    if (pattern === 'ing') {
-        if (word.endsWith('e') && !word.endsWith('ee')) {
-            return word.slice(0, -1) + 'ing';
-        }
-        // Doubling final consonant (simplified rule)
-        if (/[bcdfghjklmnpqrstvwxyz][aeiou][bcdfghjklmnpqrstvwxyz]$/i.test(word)) {
-            return word + word.slice(-1) + 'ing';
-        }
-        return word + 'ing';
-    }
-
-    if (pattern === 'ed') {
-        if (word.endsWith('e')) return word + 'd';
-        if (word.endsWith('y') && !['a', 'e', 'i', 'o', 'u'].includes(word.charAt(word.length - 2))) {
-            return word.slice(0, -1) + 'ied';
-        }
-        // Doubling final consonant
-        if (/[bcdfghjklmnpqrstvwxyz][aeiou][bcdfghjklmnpqrstvwxyz]$/i.test(word)) {
-            return word + word.slice(-1) + 'ed';
-        }
-        return word + 'ed';
-    }
-
-    if (pattern === 'irregular') {
-        // Since we don't know correct form for the distractor, 
-        // fallback to standard conjugation if we can extract tense from sampleTarget
-        // For now, just use base as fallback is safer than crashing
-        return word;
-    }
-
-    return word;
-};
-
-// ============================================================
-// MASTER QUESTION GENERATOR
-// ============================================================
-
-/**
- * Generate a quiz question of specified type
- * 
- * @param {Object} targetWord - The word to test
- * @param {Array} allWords - All available words for distractors
- * @param {String} questionType - Type from QUESTION_TYPES
- * @returns {Object} Question object
- */
-export const generateQuestion = (targetWord, allWords, questionType = null) => {
-    // If no type specified, choose randomly
-    if (!questionType) {
-        const types = Object.values(QUESTION_TYPES);
-        questionType = types[Math.floor(Math.random() * types.length)];
-    }
-
-    // Validate word has required data
-    if (!targetWord || !targetWord.parts_of_speech || targetWord.parts_of_speech.length === 0) {
-        console.error('Invalid word data for quiz generation:', targetWord);
-        return null;
-    }
-
-    // Generate based on type
-    switch (questionType) {
-        case QUESTION_TYPES.TRANSLATION_MATCH:
-            return generateTranslationMatchQuestion(targetWord, allWords);
-
-        case QUESTION_TYPES.REVERSE_TRANSLATION:
-            return generateReverseTranslationQuestion(targetWord, allWords);
-
-        case QUESTION_TYPES.SENTENCE_COMPLETION:
-            return generateSentenceCompletionQuestion(targetWord, allWords);
-
-        default:
-            console.warn(`Unknown question type: ${questionType}`);
-            return generateTranslationMatchQuestion(targetWord, allWords); // Fallback
-    }
-};
-
-/**
- * Generate multiple questions for a word
- * Useful for testing the same word with different question types
- * 
- * @param {Object} targetWord - Word to test
- * @param {Array} allWords - All words for distractors
- * @param {Number} count - Number of questions (default 2)
- * @param {Array} types - Specific types to use (optional)
- * @returns {Array} Array of question objects
- */
-export const generateMultipleQuestions = (
-    targetWord,
-    allWords,
-    count = 2,
-    types = null
-) => {
+    return newArray;
+}
+
+// Build multiple questions for a word (for session)
+export function buildQuestionsForWord(word, count = 3) {
     const questions = [];
-    const availableTypes = types || Object.values(QUESTION_TYPES);
+    const availableTypes = ['translation_match', 'reverse_translation', 'sentence_completion'];
 
+    // Try to get variety of question types
     for (let i = 0; i < count; i++) {
-        // Use different question type for each question
         const typeIndex = i % availableTypes.length;
-        const questionType = availableTypes[typeIndex];
-
-        const question = generateQuestion(targetWord, allWords, questionType);
+        const question = selectQuestionForWord(word, availableTypes[typeIndex]);
         if (question) {
             questions.push(question);
         }
     }
 
-    return questions;
-};
-
-/**
- * Generate a quiz (multiple questions for multiple words)
- * 
- * @param {Array} wordsToTest - Words to include in quiz
- * @param {Array} allWords - All words for distractors
- * @param {Object} options - Configuration options
- * @returns {Object} Quiz object with questions array
- */
-export const generateQuiz = (
-    wordsToTest,
-    allWords,
-    options = {}
-) => {
-    const {
-        questionsPerWord = 1,
-        questionTypes = null,
-        shuffle = true
-    } = options;
-
-    const allQuestions = [];
-
-    // Generate questions for each word
-    wordsToTest.forEach(word => {
-        const questions = generateMultipleQuestions(
-            word,
-            allWords,
-            questionsPerWord,
-            questionTypes
-        );
-        allQuestions.push(...questions);
-    });
-
-    // Shuffle questions if requested
-    const finalQuestions = shuffle
-        ? allQuestions.sort(() => Math.random() - 0.5)
-        : allQuestions;
-
-    return {
-        id: `quiz_${Date.now()}`,
-        created_at: new Date().toISOString(),
-        total_questions: finalQuestions.length,
-        questions: finalQuestions,
-        metadata: {
-            words_tested: wordsToTest.map(w => w.id),
-            questions_per_word: questionsPerWord,
-            shuffled: shuffle
+    // If we didn't get enough, add random questions
+    while (questions.length < count) {
+        const question = selectQuestionForWord(word);
+        if (question) {
+            questions.push(question);
+        } else {
+            break;
         }
-    };
-};
+    }
 
-// ============================================================
-// EXPORTS
-// ============================================================
+    return questions;
+}
+
+export const generateQuestion = (targetWord, allWords, questionType = null) => {
+    return selectQuestionForWord(targetWord, questionType);
+};
 
 export default {
-    generateQuestion,
-    generateMultipleQuestions,
-    generateQuiz,
-    generateTranslationMatchQuestion,
-    generateReverseTranslationQuestion,
-    generateSentenceCompletionQuestion,
+    selectQuestionForWord,
+    buildQuestionsForWord,
+    generateQuestion
 };
