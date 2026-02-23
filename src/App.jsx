@@ -75,7 +75,7 @@ function App() {
                 }}
                 style={{ paddingBottom: '80px' }}
               >
-                <ActivePage />
+                <ActivePage onSwitchTab={setActiveTab} />
               </motion.div>
             </AnimatePresence>
 
