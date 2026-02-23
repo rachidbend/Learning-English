@@ -11,7 +11,7 @@ import { useProgress } from '../../hooks/useProgress';
 import { getAvailableNewWordIds } from '../../data/progressManager';
 import { loadBatch } from '../../data/wordData';
 import { buildSession } from '../../engine/sessionBuilder';
-import ProgressCard from '../ProgressCard';
+import ProgressCard from '../molecules/ProgressCard';
 
 const SessionDashboard = () => {
     const navigate = useNavigate();

@@ -27,9 +27,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import WordCard from '../WordCard';
-import Quiz from '../Quiz';
-import LearningStep from './LearningStep';
+import WordCard from '../molecules/WordCard';
+import Quiz from './Quiz';
+import LearningStep from '../molecules/LearningStep';
 
 import { loadProgress, saveProgress, ensureWordProgress, getAvailableNewWordIds } from '../../data/progressManager';
 import { loadBatch } from '../../data/wordData';
