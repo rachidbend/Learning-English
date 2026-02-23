@@ -1,0 +1,288 @@
+{
+    "version": "1.0.0",
+    "levels": [
+        {
+            "level_id": "beginner_1",
+            "level_name": "Beginner 1",
+            "cefr": "A1",
+            "stories": [
+                {
+                    "id": "b1_s1",
+                    "title": "The First Day",
+                    "description": "A student arrives at university for the first time.",
+                    "illustration": "school",
+                    "difficulty": "easy",
+                    "word_count": 85,
+                    "vocabulary_focus": [
+                        1,
+                        21,
+                        80,
+                        97,
+                        84,
+                        57,
+                        34,
+                        32
+                    ],
+                    "content": [
+                        {
+                            "paragraph_id": 1,
+                            "text": "Sara was a new student at the big school in the city. She walked into the building on her first day and looked at all the people around her."
+                        },
+                        {
+                            "paragraph_id": 2,
+                            "text": "She could see many students. Some of them would say hello and some would just go to their classes. Sara wanted to find her room."
+                        },
+                        {
+                            "paragraph_id": 3,
+                            "text": "An old woman at the door told her where to go. Sara said thank you and walked to her class. She could see three students there already."
+                        },
+                        {
+                            "paragraph_id": 4,
+                            "text": "The day was great. Sara met new people and they were all very kind. She knew this year would be a good one."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "id": "b1_s1_q1",
+                            "question": "Where did Sara go on her first day?",
+                            "options": [
+                                "To the market",
+                                "To the school",
+                                "To the park",
+                                "To her family home"
+                            ],
+                            "correct_index": 1,
+                            "explanation": "The story says Sara was a new student at the big school in the city."
+                        },
+                        {
+                            "id": "b1_s1_q2",
+                            "question": "Who helped Sara find her room?",
+                            "options": [
+                                "A young student",
+                                "Her friend",
+                                "An old woman",
+                                "The teacher"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "An old woman at the door told Sara where to go."
+                        },
+                        {
+                            "id": "b1_s1_q3",
+                            "question": "How many students were already in the class?",
+                            "options": [
+                                "Two",
+                                "Three",
+                                "Many",
+                                "None"
+                            ],
+                            "correct_index": 1,
+                            "explanation": "Sara could see three students there already."
+                        },
+                        {
+                            "id": "b1_s1_q4",
+                            "question": "How did Sara feel about the day?",
+                            "options": [
+                                "She was sad",
+                                "She was angry",
+                                "She thought it was great",
+                                "She wanted to go home"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "The story says the day was great and Sara knew this year would be a good one."
+                        }
+                    ]
+                },
+                {
+                    "id": "b1_s2",
+                    "title": "At the Market",
+                    "description": "A young man goes to the market to buy food for his family.",
+                    "illustration": "market",
+                    "difficulty": "easy",
+                    "word_count": 90,
+                    "vocabulary_focus": [
+                        1,
+                        52,
+                        92,
+                        40,
+                        54,
+                        55,
+                        39,
+                        48
+                    ],
+                    "content": [
+                        {
+                            "paragraph_id": 1,
+                            "text": "Ahmed was a young man who lived with his family. Every day, his mother would tell him to go to the market and get some things for the house."
+                        },
+                        {
+                            "paragraph_id": 2,
+                            "text": "At the market, he could find many things. There were people from all over the city. Some would come here every day, and some would come between two and three times a week."
+                        },
+                        {
+                            "paragraph_id": 3,
+                            "text": "Ahmed wanted to get something good for his family. He asked a man at the market what was new today. The man gave him some big red tomatoes."
+                        },
+                        {
+                            "paragraph_id": 4,
+                            "text": "He took the tomatoes and went home. His mother was really happy. She said they would make a great dinner with them."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "id": "b1_s2_q1",
+                            "question": "Who asked Ahmed to go to the market?",
+                            "options": [
+                                "His father",
+                                "His friend",
+                                "His mother",
+                                "His teacher"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "His mother would tell him to go to the market."
+                        },
+                        {
+                            "id": "b1_s2_q2",
+                            "question": "How often did some people go to the market?",
+                            "options": [
+                                "Once a month",
+                                "Every day",
+                                "Once a year",
+                                "Never"
+                            ],
+                            "correct_index": 1,
+                            "explanation": "Some would come to the market every day."
+                        },
+                        {
+                            "id": "b1_s2_q3",
+                            "question": "What did Ahmed buy?",
+                            "options": [
+                                "Fish",
+                                "Bread",
+                                "Tomatoes",
+                                "Chicken"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "The man gave Ahmed some big red tomatoes."
+                        },
+                        {
+                            "id": "b1_s2_q4",
+                            "question": "How did Ahmed's mother feel?",
+                            "options": [
+                                "She was angry",
+                                "She was sad",
+                                "She was really happy",
+                                "She did not care"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "His mother was really happy when Ahmed came home with the tomatoes."
+                        }
+                    ]
+                },
+                {
+                    "id": "b1_s3",
+                    "title": "Family Dinner",
+                    "description": "A family comes together for a special dinner at home.",
+                    "illustration": "family",
+                    "difficulty": "easy",
+                    "word_count": 92,
+                    "vocabulary_focus": [
+                        1,
+                        92,
+                        75,
+                        64,
+                        94,
+                        74,
+                        88,
+                        53
+                    ],
+                    "content": [
+                        {
+                            "paragraph_id": 1,
+                            "text": "It was a special day for the family. Youssef and his old grandmother would come to the house for dinner. The children were very happy."
+                        },
+                        {
+                            "paragraph_id": 2,
+                            "text": "The mother made many great things to eat. She put them all on the big table. Every child wanted to help her with something."
+                        },
+                        {
+                            "paragraph_id": 3,
+                            "text": "When the grandmother came in, she said hello to all of them. She would tell the children stories about her life and they would ask her many questions."
+                        },
+                        {
+                            "paragraph_id": 4,
+                            "text": "They all sat together and had dinner. The grandmother said this was the same food she would make when she was young. It was really a great day for the whole family."
+                        }
+                    ],
+                    "quiz": [
+                        {
+                            "id": "b1_s3_q1",
+                            "question": "Who came to the house for dinner?",
+                            "options": [
+                                "Friends from school",
+                                "Youssef and his grandmother",
+                                "The neighbors",
+                                "Nobody special"
+                            ],
+                            "correct_index": 1,
+                            "explanation": "Youssef and his old grandmother would come to the house for dinner."
+                        },
+                        {
+                            "id": "b1_s3_q2",
+                            "question": "What did the children want to do?",
+                            "options": [
+                                "Go outside",
+                                "Watch something",
+                                "Help their mother",
+                                "Sleep"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "Every child wanted to help the mother with something."
+                        },
+                        {
+                            "id": "b1_s3_q3",
+                            "question": "What did the grandmother tell the children?",
+                            "options": [
+                                "Stories about her life",
+                                "How to cook",
+                                "About the city",
+                                "Nothing"
+                            ],
+                            "correct_index": 0,
+                            "explanation": "She would tell the children stories about her life."
+                        },
+                        {
+                            "id": "b1_s3_q4",
+                            "question": "What did the grandmother say about the food?",
+                            "options": [
+                                "It was new",
+                                "It was bad",
+                                "It was the same food she would make when young",
+                                "She did not like it"
+                            ],
+                            "correct_index": 2,
+                            "explanation": "The grandmother said this was the same food she would make when she was young."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level_id": "beginner_2",
+            "level_name": "Beginner 2",
+            "cefr": "A1+",
+            "stories": []
+        },
+        {
+            "level_id": "elementary_1",
+            "level_name": "Elementary 1",
+            "cefr": "A2",
+            "stories": []
+        },
+        {
+            "level_id": "elementary_2",
+            "level_name": "Elementary 2",
+            "cefr": "A2+",
+            "stories": []
+        }
+    ]
+}
