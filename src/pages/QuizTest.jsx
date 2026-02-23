@@ -4,7 +4,7 @@
  * No route currently points here. Safe to delete once no longer needed for debugging.
  */
 import React, { useState, useEffect } from 'react';
-import Quiz from '../components/Quiz';
+import Quiz from '../components/organisms/Quiz';
 import { generateQuestion } from '../utils/quizGenerator';
 import { loadBatch } from '../data/wordData';
 import QUESTION_TYPES from '../utils/questionTypes';

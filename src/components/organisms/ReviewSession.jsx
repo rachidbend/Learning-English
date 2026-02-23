@@ -27,14 +27,14 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Existing components
-import WordCard from '../WordCard';
-import Quiz from '../Quiz';
+import WordCard from '../molecules/WordCard';
+import Quiz from './Quiz';
 
 // Session components
-import SessionProgress from './SessionProgress';
+import SessionProgress from '../molecules/SessionProgress';
 import SessionComplete from './SessionComplete';
-import WordReviewTransition from './WordReviewTransition';
-import WrongAnswersReview from '../WrongAnswersReview';
+import WordReviewTransition from '../molecules/WordReviewTransition';
+import WrongAnswersReview from './WrongAnswersReview';
 
 // Engine
 import { buildSession } from '../../engine/sessionBuilder';

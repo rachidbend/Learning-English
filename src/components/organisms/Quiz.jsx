@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { QUESTION_TYPE_METADATA } from '../utils/questionTypes';
+import { QUESTION_TYPE_METADATA } from '../../utils/questionTypes';
 
 const Quiz = ({
     question,

@@ -1,49 +1,111 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-primary: #3B82F6;
-  --color-secondary: #6366F1;
-  --color-success: #10B981;
-  --color-error: #EF4444;
-  --color-background: #F9FAFB;
+  /* ─── Color Tokens (Dark Mode Default) ─── */
+  --color-bg-primary: #0f1b2d;
+  --color-bg-secondary: #1a2a3f;
+  --color-bg-tertiary: #243447;
+  --color-bg-input: #1e3045;
 
-  /* Fonts */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-border-subtle: #2a3f58;
+  --color-border-active: #3d5a7a;
 
-  /* Font Sizes */
+  --color-text-primary: #f0f4f8;
+  --color-text-secondary: #8fa8c4;
+  --color-text-muted: #4a6580;
+  --color-text-inverse: #0f1b2d;
+
+  --color-accent-primary: #4ade80;
+  --color-accent-primary-dim: #166534;
+  --color-accent-gold: #fbbf24;
+  --color-accent-gold-dim: #451a03;
+  --color-accent-blue: #60a5fa;
+  --color-accent-blue-dim: #1e3a5f;
+
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-error-dim: #450a0a;
+  --color-neutral: #8fa8c4;
+
+  /* ─── Typography ─── */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-arabic: 'Cairo', 'Noto Sans Arabic', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
   --text-xs: 0.75rem;
   --text-xs--line-height: 1rem;
-
   --text-sm: 0.875rem;
   --text-sm--line-height: 1.25rem;
-
   --text-base: 1rem;
   --text-base--line-height: 1.5rem;
-
   --text-lg: 1.125rem;
   --text-lg--line-height: 1.75rem;
-
   --text-xl: 1.25rem;
   --text-xl--line-height: 1.75rem;
-
   --text-2xl: 1.5rem;
   --text-2xl--line-height: 2rem;
-
   --text-3xl: 1.875rem;
   --text-3xl--line-height: 2.25rem;
-
   --text-4xl: 2.25rem;
   --text-4xl--line-height: 2.5rem;
 
-  /* Spacing */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* ─── Spacing (8px base grid) ─── */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
   --spacing-18: 4.5rem;
+  --spacing-20: 80px;
   --spacing-22: 5.5rem;
   --spacing-26: 6.5rem;
   --spacing-30: 7.5rem;
+
+  /* ─── Border Radius ─── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ─── Shadows ─── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-glow-green: 0 0 20px rgba(74, 222, 128, 0.2);
+  --shadow-glow-gold: 0 0 20px rgba(251, 191, 36, 0.2);
 }
 
-/* Mobile-specific global styles */
+/* ─── Light Mode Overrides ─── */
+[data-theme="light"] {
+  --color-bg-primary: #f0f4f8;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #e8eef5;
+  --color-bg-input: #ffffff;
+  --color-border-subtle: #dde5ef;
+  --color-border-active: #93b5d4;
+  --color-text-primary: #0f1b2d;
+  --color-text-secondary: #4a6580;
+  --color-text-muted: #8fa8c4;
+  --color-text-inverse: #f0f4f8;
+}
+
+/* ─── Base Styles ─── */
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;
@@ -51,8 +113,9 @@
   }
 
   body {
-    background-color: var(--color-background);
-    font-family: var(--font-sans);
+    background-color: var(--color-bg-primary);
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     min-height: -webkit-fill-available;
@@ -64,7 +127,7 @@
   }
 }
 
-/* Animation keyframes for session transitions */
+/* ─── Animation Keyframes ─── */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }

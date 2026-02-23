@@ -1,5 +1,5 @@
 import React from 'react';
-import { QUESTION_TYPE_METADATA } from '../utils/questionTypes';
+import { QUESTION_TYPE_METADATA } from '../../utils/questionTypes';
 
 /**
  * QuizFeedback.jsx (MODIFIED for active recall)
