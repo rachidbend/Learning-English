@@ -14,6 +14,7 @@ export function getOrCreateUID() {
     if (!uid) {
         uid = crypto.randomUUID();
         localStorage.setItem(UID_KEY, uid);
+        localStorage.setItem('app_uid_created', new Date().toISOString());
     }
 
     return uid;
