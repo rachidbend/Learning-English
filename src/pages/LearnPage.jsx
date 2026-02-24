@@ -35,6 +35,7 @@ export default function LearnPage({ onSwitchTab }) {
     } = useLearningProgress();
 
     const [activeSession, setActiveSession] = useState(false);
+    const [sessionCount, setSessionCount] = useState(10);
     const [toastMsg, setToastMsg] = useState(null);
 
     // Start a learning session
@@ -49,6 +50,7 @@ export default function LearnPage({ onSwitchTab }) {
                 word_count: words.length,
             });
             saveSessionPosition(currentBatch.level_id || 'beginner_1', currentBatch.batch_id);
+            setSessionCount(words.length);
             setActiveSession(true);
         },
         [currentBatch, getSessionWords, saveSessionPosition]
@@ -78,7 +80,7 @@ export default function LearnPage({ onSwitchTab }) {
 
     // Active session overlay
     if (activeSession) {
-        return <LearningSessionWrapper onComplete={handleSessionComplete} />;
+        return <LearningSessionWrapper onComplete={handleSessionComplete} sessionCount={sessionCount} />;
     }
 
     const batchProgress = currentBatch ? getBatchProgress(currentBatch.batch_id) : null;
@@ -129,24 +131,22 @@ export default function LearnPage({ onSwitchTab }) {
  */
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 
-function LearningSessionWrapper({ onComplete }) {
+function LearningSessionWrapper({ onComplete, sessionCount }) {
     return (
         <BrowserRouter>
-            <LearningSessionInner onComplete={onComplete} />
+            <LearningSessionInner onComplete={onComplete} sessionCount={sessionCount} />
         </BrowserRouter>
     );
 }
 
-function LearningSessionInner({ onComplete }) {
+function LearningSessionInner({ onComplete, sessionCount }) {
     // Override navigate('/') calls from LearningSession
     const nav = useNavigate();
-    // Monkey-patch: LearningSession calls navigate('/') on exit/complete
-    // We intercept by listening for popstate or wrapping
     React.useEffect(() => {
         const handler = () => onComplete();
         window.addEventListener('popstate', handler);
         return () => window.removeEventListener('popstate', handler);
     }, [onComplete]);
 
-    return <LearningSession />;
+    return <LearningSession sessionCount={sessionCount} />;
 }

@@ -12,6 +12,7 @@ import WordInspector from './WordInspector';
 import SessionControls from './SessionControls';
 import ScenarioPresets from './ScenarioPresets';
 import devUtils from './devUtils';
+import InspectTab from './InspectTab';
 import { exportProgress, importProgress } from '../data/progressManager';
 
 const TABS = [
@@ -20,6 +21,7 @@ const TABS = [
     { id: 'session', label: '🎯 Session' },
     { id: 'scenarios', label: '🎭 Scenarios' },
     { id: 'data', label: '💾 Data' },
+    { id: 'inspect', label: '🔍 Inspect' },
 ];
 
 const DevPanel = () => {
@@ -166,13 +168,14 @@ const DevPanel = () => {
                 {/* Content */}
                 <div style={{
                     flex: 1, overflowY: 'auto', padding: '1.5rem',
-                    minHeight: 0,
+                    minHeight: 0, color: '#111827',
                 }}>
                     {activeTab === 'time' && <TimeControls />}
                     {activeTab === 'words' && <WordInspector />}
                     {activeTab === 'session' && <SessionControls />}
                     {activeTab === 'scenarios' && <ScenarioPresets />}
                     {activeTab === 'data' && <DataInspector />}
+                    {activeTab === 'inspect' && <InspectTab />}
                 </div>
 
                 {/* Footer */}
