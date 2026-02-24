@@ -27,9 +27,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import WordCard from '../molecules/WordCard';
-import Quiz from './Quiz';
-import LearningStep from '../molecules/LearningStep';
+import StudyWordCard from './StudyWordCard';
+import QuizCard from './QuizCard';
+import SessionHeader from '../molecules/SessionHeader';
+import ExitConfirmModal from '../molecules/ExitConfirmModal';
 
 import { loadProgress, saveProgress, ensureWordProgress, getAvailableNewWordIds } from '../../data/progressManager';
 import { loadBatch } from '../../data/wordData';
@@ -66,7 +67,7 @@ const getStepDelayMs = (stepIndex) => {
 // ─────────────────────────────────────────────
 // COMPONENT
 // ─────────────────────────────────────────────
-const LearningSession = () => {
+const LearningSession = ({ sessionCount = 10 }) => {
     const navigate = useNavigate();
 
     // ═══════════════════════════════════════════
@@ -128,8 +129,25 @@ const LearningSession = () => {
                     return;
                 }
 
-                setMaxNewWords(Math.min(10, count));
-                setPhase(PHASE.SELECT);
+                // Skip SELECT — auto-start with sessionCount from LearnPage
+                const wordCount = Math.min(sessionCount, count);
+                setMaxNewWords(wordCount);
+                // Auto-start: select words and begin
+                const selectedIds = newWordIds.slice(0, wordCount);
+                setWordsToLearn(selectedIds);
+                const states = {};
+                selectedIds.forEach(id => {
+                    states[id] = { currentStep: 0, nextStepTime: null, results: [], graduated: false, failedSteps: 0 };
+                });
+                setWordStates(states);
+                setCurrentWordIndex(0);
+                // Start first word exposure
+                ensureWordProgress(prog, selectedIds[0], 1);
+                const wp = prog.wordProgress[String(selectedIds[0])];
+                processFirstExposure(wp);
+                saveProgress(prog);
+                setProgress({ ...prog });
+                setPhase(PHASE.EXPOSE);
             } catch (err) {
                 console.error('[LearningSession] Setup failed:', err);
             }
@@ -455,15 +473,13 @@ const LearningSession = () => {
             navigate('/');
             return;
         }
+        setConfirmExit(true);
+    }, [phase, navigate]);
 
-        if (confirmExit) {
-            if (progress) saveProgress(progress);
-            navigate('/');
-        } else {
-            setConfirmExit(true);
-            setTimeout(() => setConfirmExit(false), 3000);
-        }
-    }, [phase, confirmExit, progress, navigate]);
+    const handleConfirmExit = useCallback(() => {
+        if (progress) saveProgress(progress);
+        navigate('/');
+    }, [progress, navigate]);
 
     // ═══════════════════════════════════════════
     // DERIVED STATE
@@ -479,169 +495,55 @@ const LearningSession = () => {
     // ═══════════════════════════════════════════
     if (phase === PHASE.SETUP) {
         return (
-            <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-center">
-                    <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-4" />
-                    <p className="text-gray-500 text-sm">Loading...</p>
+            <div style={{ minHeight: '100vh', backgroundColor: 'var(--color-bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'center' }}>
+                    <div style={{ width: 40, height: 40, border: '3px solid var(--color-border-subtle)', borderTopColor: 'var(--color-accent-blue)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                    <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-background">
-            {/* ── Header ─────────────────────────────── */}
-            <header className="bg-white shadow-sm sticky top-0 z-10">
-                <div className="px-4 py-4">
-                    <div className="flex items-center justify-between">
-                        <h1 className="text-lg font-bold text-gray-900">
-                            {phase === PHASE.SELECT && '📚 Learn New Words'}
-                            {phase === PHASE.EXPOSE && '📖 New Word'}
-                            {phase === PHASE.QUIZ && '🧠 Learning Quiz'}
-                            {phase === PHASE.WAITING && '⏱️ Great Progress!'}
-                            {phase === PHASE.COMPLETE && '🎉 Complete'}
-                        </h1>
+        <div style={{ minHeight: '100vh', backgroundColor: 'var(--color-bg-primary)' }}>
+            {/* Session Header */}
+            {phase !== PHASE.COMPLETE && phase !== PHASE.SELECT && (
+                <SessionHeader
+                    phase={phase === PHASE.QUIZ ? 'quiz' : 'study'}
+                    currentWordIndex={currentWordIndex}
+                    totalWords={wordsToLearn.length}
+                    graduatedCount={graduatedCount}
+                    onExit={handleExit}
+                />
+            )}
 
-                        <button
-                            onClick={handleExit}
-                            className={`text-sm font-medium transition-colors ${confirmExit
-                                ? 'text-error'
-                                : 'text-gray-500 hover:text-gray-700'
-                                }`}
-                        >
-                            {confirmExit ? 'Tap again to exit' : 'Exit'}
-                        </button>
-                    </div>
+            {/* Exit confirmation modal */}
+            <ExitConfirmModal
+                isOpen={confirmExit}
+                onCancel={() => setConfirmExit(false)}
+                onConfirm={handleConfirmExit}
+            />
 
-                    {/* Progress bar (only during active learning) */}
-                    {wordsToLearn.length > 0 && phase !== PHASE.SELECT && phase !== PHASE.COMPLETE && (
-                        <div className="mt-3">
-                            <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5">
-                                <span>
-                                    Word {Math.min(currentWordIndex + 1, wordsToLearn.length)} of {wordsToLearn.length}
-                                </span>
-                                <span>
-                                    {graduatedCount} graduated
-                                </span>
-                            </div>
-                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500"
-                                    style={{ width: `${(graduatedCount / wordsToLearn.length) * 100}%` }}
-                                />
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </header>
+            <main style={{ maxWidth: '480px', margin: '0 auto' }}>
 
-            <main className="p-4 pb-20 max-w-lg mx-auto">
-
-                {/* ═══════════ PHASE: SELECT ═══════════ */}
-                {phase === PHASE.SELECT && (
-                    <div className="max-w-md mx-auto mt-4">
-                        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                            <div className="text-center mb-6">
-                                <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                    <span className="text-3xl">✨</span>
-                                </div>
-                                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                                    Learn New Words
-                                </h2>
-                                <p className="text-gray-500 text-sm">
-                                    How many words would you like to learn?
-                                </p>
-                            </div>
-
-                            {/* Word count selector */}
-                            <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Number of words
-                                </label>
-                                <div className="grid grid-cols-3 gap-2">
-                                    {[5, 10, 15, 20, 25, 30].filter(n => n <= availableNewCount).map(n => (
-                                        <button
-                                            key={n}
-                                            onClick={() => setMaxNewWords(n)}
-                                            className={`py-3 rounded-xl text-sm font-semibold transition-all ${maxNewWords === n
-                                                ? 'bg-secondary text-white shadow-md'
-                                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                                }`}
-                                        >
-                                            {n}
-                                        </button>
-                                    ))}
-                                </div>
-                                <p className="text-xs text-gray-400 mt-2 text-center">
-                                    {availableNewCount} words available • 10/day recommended
-                                </p>
-                            </div>
-
-                            {/* Info card */}
-                            <div className="bg-blue-50/60 rounded-xl p-4 mb-6">
-                                <p className="text-xs text-blue-800 font-medium mb-2">
-                                    How learning works:
-                                </p>
-                                <div className="space-y-1 text-xs text-blue-700/80">
-                                    <p>📖 Step 1: See the word → immediate quiz</p>
-                                    <p>🧠 Step 2: Recall quiz after 5 minutes</p>
-                                    <p>⭐ Step 3: Final check after 15 minutes</p>
-                                    <p>🎓 Pass all 3 → word graduates to review!</p>
-                                </div>
-                            </div>
-
-                            <button
-                                onClick={handleStartLearning}
-                                className="w-full py-4 bg-secondary text-white rounded-2xl font-bold text-lg
-                               active:scale-[0.97] transition-transform shadow-lg shadow-secondary/20"
-                            >
-                                Start Learning →
-                            </button>
-                        </div>
-                    </div>
-                )}
-
-                {/* ═══════════ PHASE: EXPOSE (WordCard) ═══════════ */}
+                {/* PHASE: EXPOSE (StudyWordCard) */}
                 {phase === PHASE.EXPOSE && currentWord && (
-                    <div>
-                        <LearningStep
-                            step={0}
-                            totalSteps={3}
-                            message="Study this word, then we'll quiz you"
-                        />
-
-                        <WordCard
-                            word={currentWord}
-                            onNext={handleExposureComplete}
-                            onPrevious={() => { }}
-                            onMarkSeen={handleExposureComplete}
-                            isFirstWord={true}
-                            isLastWord={true}
-                            currentIndex={currentWordIndex}
-                            totalWords={wordsToLearn.length}
-                            primaryButtonText="Ready"
-                        />
-                    </div>
+                    <StudyWordCard
+                        word={currentWord}
+                        onNext={handleExposureComplete}
+                    />
                 )}
 
-                {/* ═══════════ PHASE: QUIZ ═══════════ */}
+                {/* PHASE: QUIZ (QuizCard) */}
                 {phase === PHASE.QUIZ && currentQuestion && (
-                    <div>
-                        <LearningStep
-                            step={currentQuestion._step}
-                            totalSteps={3}
-                            message={getStepMessage(currentQuestion._step)}
-                        />
-
-                        <Quiz
-                            question={currentQuestion}
-                            onAnswer={handleQuizAnswer}
-                            showSkipButton={false}
-                        />
-                    </div>
+                    <QuizCard
+                        key={currentQuestion._word_id + '-' + (currentQuestion._step || 0)}
+                        question={currentQuestion}
+                        onAnswer={handleQuizAnswer}
+                    />
                 )}
 
-                {/* ═══════════ PHASE: WAITING ═══════════ */}
+                {/* PHASE: WAITING */}
                 {phase === PHASE.WAITING && (
                     <WaitingPhase
                         waitingWords={waitingWords}
@@ -652,7 +554,7 @@ const LearningSession = () => {
                     />
                 )}
 
-                {/* ═══════════ PHASE: COMPLETE ═══════════ */}
+                {/* PHASE: COMPLETE */}
                 {phase === PHASE.COMPLETE && (
                     <CompletionScreen
                         wordsToLearn={wordsToLearn}
