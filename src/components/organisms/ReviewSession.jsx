@@ -28,7 +28,7 @@ import { useNavigate } from 'react-router-dom';
 
 // Existing components
 import WordCard from '../molecules/WordCard';
-import Quiz from './Quiz';
+import QuizCard from './QuizCard';
 
 // Session components
 import SessionProgress from '../molecules/SessionProgress';
@@ -307,7 +307,7 @@ const ReviewSession = ({ initialSession = null }) => {
             clearTimeout(quickAdvanceTimer.current);
         }
 
-        const advanceDelay = isCorrect ? 1000 : 2000;
+        const advanceDelay = 0; // QuizCard already provides 1200ms visual feedback
 
         quickAdvanceTimer.current = setTimeout(() => {
             setQuickFlash(null);
@@ -512,25 +512,46 @@ const ReviewSession = ({ initialSession = null }) => {
     return (
         <div className="min-h-screen bg-background">
             {/* ── Header with progress ─────────────────── */}
-            <header className="bg-white shadow-sm sticky top-0 z-10">
-                <div className="px-4 py-4">
-                    <div className="flex items-center justify-between mb-3">
-                        <h1 className="text-lg font-bold text-gray-900">Review Session</h1>
+            <header style={{
+                backgroundColor: 'var(--color-bg-secondary)',
+                borderBottom: '1px solid var(--color-border-subtle)',
+                position: 'sticky', top: 0, zIndex: 10,
+                padding: '12px 16px',
+            }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span style={{
+                        fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-semibold)',
+                        color: 'var(--color-text-primary)',
+                    }}>
+                        Review
+                    </span>
 
-                        <button
-                            onClick={handleExit}
-                            className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
-                        >
-                            Exit
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <span style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>
+                            {Math.min(currentQuestionIndex + 1, totalQuestions)} / {totalQuestions} · {wordsCompleted} of {totalWords} words
+                        </span>
+                        <button onClick={handleExit} style={{
+                            background: 'none', border: 'none', cursor: 'pointer',
+                            color: 'var(--color-text-secondary)', padding: '4px',
+                        }}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
                         </button>
                     </div>
+                </div>
 
-                    <SessionProgress
-                        current={currentQuestionIndex}
-                        total={totalQuestions}
-                        wordsCompleted={wordsCompleted}
-                        totalWords={totalWords}
-                    />
+                {/* Progress bar */}
+                <div style={{
+                    height: '3px', backgroundColor: 'var(--color-border-subtle)',
+                    borderRadius: '2px', marginTop: '8px', overflow: 'hidden',
+                }}>
+                    <div style={{
+                        height: '100%',
+                        width: `${totalQuestions > 0 ? Math.round((currentQuestionIndex / totalQuestions) * 100) : 0}%`,
+                        backgroundColor: 'var(--color-accent-primary)',
+                        borderRadius: '2px', transition: 'width 0.5s ease',
+                    }} />
                 </div>
             </header>
 
@@ -596,11 +617,9 @@ const ReviewSession = ({ initialSession = null }) => {
                             </div>
                         )}
 
-                        <Quiz
+                        <QuizCard
                             question={currentQuestion}
                             onAnswer={handleQuizAnswer}
-                            showSkipButton={false}
-                            mode="quick"
                         />
                     </div>
                 )}
