@@ -31,7 +31,7 @@ import { duration, easing, prefersReducedMotion } from './styles/motion';
 import DevPanel from './devtools/DevPanel';
 import OfflineIndicator from './components/atoms/OfflineIndicator';
 
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const PAGE_MAP = {
   learn: LearnPage,
@@ -59,47 +59,53 @@ function App() {
   const reduced = prefersReducedMotion();
 
   return (
-    <ErrorBoundary>
-      <ThemeProvider>
-        <ProgressProvider>
-          <div
-            className="App"
-            style={{
-              maxWidth: '480px',
-              margin: '0 auto',
-              minHeight: '100vh',
-              position: 'relative',
-            }}
-          >
-            <OfflineIndicator />
+    <>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={reduced ? { opacity: 1 } : { opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
-                transition={{
-                  duration: reduced ? 0 : duration.fast,
-                  ease: easing.standard,
-                }}
-                style={{ paddingBottom: '80px' }}
-              >
-                <ErrorBoundary>
-                  <ActivePage onSwitchTab={setActiveTab} />
-                </ErrorBoundary>
-              </motion.div>
-            </AnimatePresence>
 
-            <BottomNavBar activeTab={activeTab} onTabChange={setActiveTab} />
+      <ErrorBoundary>
+        <ThemeProvider>
+          <ProgressProvider>
+            <div
+              className="App"
+              style={{
+                maxWidth: '480px',
+                margin: '0 auto',
+                minHeight: '100vh',
+                position: 'relative',
+              }}
+            >
+              <OfflineIndicator />
 
-            {/* Dev panel overlay — only renders in development mode */}
-            <DevPanel />
-            <Analytics />
-          </div>
-        </ProgressProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={reduced ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
+                  transition={{
+                    duration: reduced ? 0 : duration.fast,
+                    ease: easing.standard,
+                  }}
+                  style={{ paddingBottom: '80px' }}
+                >
+                  <ErrorBoundary>
+                    <ActivePage onSwitchTab={setActiveTab} />
+                  </ErrorBoundary>
+                </motion.div>
+              </AnimatePresence>
+
+              <BottomNavBar activeTab={activeTab} onTabChange={setActiveTab} />
+
+              {/* Dev panel overlay — only renders in development mode */}
+              <DevPanel />
+
+            </div>
+          </ProgressProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
+
+      <Analytics />
+    </>
   );
 }
 
