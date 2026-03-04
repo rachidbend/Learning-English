@@ -31,6 +31,8 @@ import { duration, easing, prefersReducedMotion } from './styles/motion';
 import DevPanel from './devtools/DevPanel';
 import OfflineIndicator from './components/atoms/OfflineIndicator';
 
+import { Analytics } from "@vercel/analytics/next"
+
 const PAGE_MAP = {
   learn: LearnPage,
   review: ReviewPage,
@@ -93,6 +95,7 @@ function App() {
 
             {/* Dev panel overlay — only renders in development mode */}
             <DevPanel />
+            <Analytics />
           </div>
         </ProgressProvider>
       </ThemeProvider>
